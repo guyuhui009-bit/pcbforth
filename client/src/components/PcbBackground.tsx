@@ -54,7 +54,7 @@ export default function PcbBackground() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       // Traces
-      ctx.strokeStyle = "rgba(30, 144, 255, 0.12)";
+      ctx.strokeStyle = "rgba(255, 255, 255, 0.12)";
       ctx.lineWidth = 1;
       lines.forEach((l) => {
         ctx.beginPath();
@@ -71,10 +71,10 @@ export default function PcbBackground() {
       nodes.forEach((n) => {
         ctx.beginPath();
         ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
-        ctx.strokeStyle = "rgba(0, 212, 255, 0.18)";
+        ctx.strokeStyle = "rgba(255, 255, 255, 0.2)";
         ctx.lineWidth = 1;
         ctx.stroke();
-        ctx.fillStyle = "rgba(30, 144, 255, 0.08)";
+        ctx.fillStyle = "rgba(255, 255, 255, 0.06)";
         ctx.fill();
       });
 
@@ -98,8 +98,8 @@ export default function PcbBackground() {
           py = l.y2;
         }
         const grad = ctx.createRadialGradient(px, py, 0, px, py, 8);
-        grad.addColorStop(0, "rgba(0, 212, 255, 0.9)");
-        grad.addColorStop(1, "rgba(0, 212, 255, 0)");
+        grad.addColorStop(0, "rgba(255, 255, 255, 0.85)");
+        grad.addColorStop(1, "rgba(255, 255, 255, 0)");
         ctx.beginPath();
         ctx.arc(px, py, 8, 0, Math.PI * 2);
         ctx.fillStyle = grad;
