@@ -341,18 +341,18 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Language toggle */}
+        {/* Language toggle — EN first for export site */}
         <div className="flex items-center gap-2 px-5 py-3" style={{ borderBottom: `1px solid ${C.sidebarBorder}` }}>
           <Globe size={13} style={{ color: "#7EB3F5" }} />
-          <button onClick={() => setLang("zh")}
-            className="text-xs px-2.5 py-1 rounded-full transition-all font-medium"
-            style={{ background: lang === "zh" ? "#FFFFFF" : "transparent", color: lang === "zh" ? C.blue : C.sidebarText }}>
-            中文
-          </button>
           <button onClick={() => setLang("en")}
             className="text-xs px-2.5 py-1 rounded-full transition-all font-medium"
             style={{ background: lang === "en" ? "#FFFFFF" : "transparent", color: lang === "en" ? C.blue : C.sidebarText }}>
             EN
+          </button>
+          <button onClick={() => setLang("zh")}
+            className="text-xs px-2.5 py-1 rounded-full transition-all font-medium"
+            style={{ background: lang === "zh" ? "#FFFFFF" : "transparent", color: lang === "zh" ? C.blue : C.sidebarText }}>
+            中文
           </button>
         </div>
 
@@ -404,10 +404,10 @@ export default function Home() {
             <span className="font-bold tracking-widest text-sm text-white" style={{ fontFamily: "'Orbitron', monospace" }}>PCBforth</span>
           </div>
           <div className="flex gap-1">
-            <button onClick={() => setLang("zh")} className="text-xs px-2 py-1 rounded font-medium"
-              style={{ background: lang === "zh" ? "#FFFFFF" : "transparent", color: lang === "zh" ? C.blue : C.sidebarText }}>中</button>
             <button onClick={() => setLang("en")} className="text-xs px-2 py-1 rounded font-medium"
               style={{ background: lang === "en" ? "#FFFFFF" : "transparent", color: lang === "en" ? C.blue : C.sidebarText }}>EN</button>
+            <button onClick={() => setLang("zh")} className="text-xs px-2 py-1 rounded font-medium"
+              style={{ background: lang === "zh" ? "#FFFFFF" : "transparent", color: lang === "zh" ? C.blue : C.sidebarText }}>中</button>
           </div>
         </header>
 
@@ -645,18 +645,68 @@ export default function Home() {
               <SectionHeader title={t("contact.title")} />
               <div className="grid lg:grid-cols-2 gap-10 mt-8">
                 <div className="space-y-4">
-                  <ContactItem icon={<Phone size={16} />} label={t("contact.phone")} value="+86 400-888-8888 / +86 755-8888-8888" />
-                  <ContactItem icon={<Mail size={16} />}  label={t("contact.email")} value="info@pcbforth.com" />
+                  <ContactItem icon={<Phone size={16} />} label={t("contact.phone")} value="+86 755-8888-8888  |  +86 400-888-8888" />
+                  {/* Enterprise email addresses */}
+                  <div className="rounded-xl overflow-hidden shadow-sm" style={{ border: `1px solid ${C.cardBorder}` }}>
+                    <div className="px-4 py-2 text-xs font-semibold uppercase tracking-wider" style={{ background: C.blueLight, color: C.blue }}>
+                      {lang === "zh" ? "企业邮箱" : "Enterprise Email"}
+                    </div>
+                    {[
+                      { role: lang === "zh" ? "销售咨询" : "Sales",   addr: "sales@pcbforth.com" },
+                      { role: lang === "zh" ? "技术支持" : "Support", addr: "support@pcbforth.com" },
+                      { role: lang === "zh" ? "快速报价" : "Quote",   addr: "quote@pcbforth.com" },
+                      { role: lang === "zh" ? "综合业务" : "General", addr: "info@pcbforth.com" },
+                    ].map((e) => (
+                      <a key={e.addr} href={`mailto:${e.addr}`}
+                        className="flex items-center justify-between px-4 py-2.5 transition-colors group"
+                        style={{ background: C.cardBg, borderTop: `1px solid ${C.cardBorder}` }}
+                        onMouseEnter={(el) => (el.currentTarget.style.background = C.blueLight)}
+                        onMouseLeave={(el) => (el.currentTarget.style.background = C.cardBg)}>
+                        <span className="text-xs font-medium" style={{ color: C.muted }}>{e.role}</span>
+                        <span className="text-xs font-mono font-semibold" style={{ color: C.blue }}>{e.addr}</span>
+                      </a>
+                    ))}
+                  </div>
                   <ContactItem icon={<MapPin size={16} />} label={t("contact.address")} value={t("contact.address.val")} />
                   <div className="p-4 rounded-xl" style={{ background: C.cardBg, border: `1px solid ${C.blue}33` }}>
                     <div className="text-xs mb-1 font-semibold" style={{ color: C.blue }}>
                       {lang === "zh" ? "工作时间" : "Business Hours"}
                     </div>
                     <div className="text-sm font-semibold" style={{ color: C.heading }}>
-                      {lang === "zh" ? "周一至周五 09:00 – 18:00" : "Mon – Fri  09:00 – 18:00"}
+                      {lang === "zh" ? "周一至周五 09:00 – 18:00" : "Mon – Fri  09:00 – 18:00 (UTC+8)"}
                     </div>
                     <div className="text-xs mt-1" style={{ color: C.muted }}>
                       {lang === "zh" ? "紧急项目可7×24小时联系" : "Urgent projects: 7×24 available"}
+                    </div>
+                  </div>
+                  {/* Social platforms */}
+                  <div className="rounded-xl overflow-hidden shadow-sm" style={{ border: `1px solid ${C.cardBorder}` }}>
+                    <div className="px-4 py-2 text-xs font-semibold uppercase tracking-wider" style={{ background: C.blueLight, color: C.blue }}>
+                      {lang === "zh" ? "社交平台" : "Follow Us"}
+                    </div>
+                    <div className="grid grid-cols-2 gap-0">
+                      {[
+                        { name: "LinkedIn",  href: "https://linkedin.com/company/pcbforth",  color: "#0A66C2", icon: "in" },
+                        { name: "Twitter / X", href: "https://twitter.com/pcbforth",          color: "#000000", icon: "𝕏" },
+                        { name: "YouTube",   href: "https://youtube.com/@pcbforth",           color: "#FF0000", icon: "▶" },
+                        { name: "Facebook",  href: "https://facebook.com/pcbforth",           color: "#1877F2", icon: "f" },
+                        { name: "WhatsApp",  href: "https://wa.me/8675588888888",             color: "#25D366", icon: "W" },
+                        { name: lang === "zh" ? "微信" : "WeChat",   href: "#",              color: "#07C160", icon: "微" },
+                      ].map((s, i) => (
+                        <a key={s.name} href={s.href} target="_blank" rel="noopener noreferrer"
+                          className="flex items-center gap-3 px-4 py-3 transition-colors group"
+                          style={{
+                            background: C.cardBg,
+                            borderTop: i >= 2 ? `1px solid ${C.cardBorder}` : undefined,
+                            borderLeft: i % 2 === 1 ? `1px solid ${C.cardBorder}` : undefined,
+                          }}
+                          onMouseEnter={(el) => (el.currentTarget.style.background = C.blueLight)}
+                          onMouseLeave={(el) => (el.currentTarget.style.background = C.cardBg)}>
+                          <span className="w-7 h-7 rounded-full flex items-center justify-center text-white text-xs font-bold shrink-0"
+                            style={{ background: s.color }}>{s.icon}</span>
+                          <span className="text-xs font-medium" style={{ color: C.heading }}>{s.name}</span>
+                        </a>
+                      ))}
                     </div>
                   </div>
                 </div>
@@ -668,13 +718,61 @@ export default function Home() {
           </section>
 
           {/* ── FOOTER ── */}
-          <footer className="relative py-6 px-8 lg:px-16" style={{ background: C.sidebarBg, borderTop: `1px solid ${C.sidebarBorder}` }}>
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-3 max-w-5xl">
-              <div className="flex items-center gap-3">
-                <img src={LOGO_IMG} alt="PCBforth" className="w-6 h-6" />
-                <span className="text-xs" style={{ color: "#7EB3F5" }}>{t("footer.slogan")}</span>
+          <footer className="relative py-8 px-8 lg:px-16" style={{ background: C.sidebarBgDark, borderTop: `1px solid ${C.sidebarBorder}` }}>
+            <div className="max-w-5xl">
+              {/* Top row */}
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 mb-6">
+                <div className="flex items-center gap-3">
+                  <img src={LOGO_IMG} alt="PCBforth" className="w-8 h-8" />
+                  <div>
+                    <div className="font-bold text-sm tracking-widest text-white" style={{ fontFamily: "'Orbitron', monospace" }}>PCBforth</div>
+                    <div className="text-[10px] mt-0.5" style={{ color: "#7EB3F5" }}>{t("footer.slogan")}</div>
+                  </div>
+                </div>
+                {/* Social icons row */}
+                <div className="flex items-center gap-2">
+                  {[
+                    { name: "LinkedIn",  href: "https://linkedin.com/company/pcbforth", color: "#0A66C2", icon: "in" },
+                    { name: "Twitter",   href: "https://twitter.com/pcbforth",          color: "#1DA1F2", icon: "𝕏" },
+                    { name: "YouTube",   href: "https://youtube.com/@pcbforth",          color: "#FF0000", icon: "▶" },
+                    { name: "Facebook",  href: "https://facebook.com/pcbforth",          color: "#1877F2", icon: "f" },
+                    { name: "WhatsApp",  href: "https://wa.me/8675588888888",            color: "#25D366", icon: "W" },
+                  ].map((s) => (
+                    <a key={s.name} href={s.href} target="_blank" rel="noopener noreferrer"
+                      title={s.name}
+                      className="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold transition-transform hover:scale-110"
+                      style={{ background: s.color }}>
+                      {s.icon}
+                    </a>
+                  ))}
+                </div>
               </div>
-              <div className="text-xs" style={{ color: "#4A7AB5" }}>{t("footer.rights")}</div>
+              {/* Email quick links */}
+              <div className="flex flex-wrap gap-4 mb-5 pb-5" style={{ borderBottom: `1px solid ${C.sidebarBorder}` }}>
+                {[
+                  { label: lang === "zh" ? "销售" : "Sales",   addr: "sales@pcbforth.com" },
+                  { label: lang === "zh" ? "技术" : "Support", addr: "support@pcbforth.com" },
+                  { label: lang === "zh" ? "报价" : "Quote",   addr: "quote@pcbforth.com" },
+                  { label: lang === "zh" ? "综合" : "General", addr: "info@pcbforth.com" },
+                ].map((e) => (
+                  <a key={e.addr} href={`mailto:${e.addr}`}
+                    className="flex items-center gap-1.5 text-xs transition-colors hover:text-white"
+                    style={{ color: "#7EB3F5" }}>
+                    <Mail size={11} />
+                    <span className="font-medium" style={{ color: "#5A8AC8" }}>{e.label}:</span>
+                    {e.addr}
+                  </a>
+                ))}
+              </div>
+              {/* Bottom row */}
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-2">
+                <div className="text-xs" style={{ color: "#4A7AB5" }}>{t("footer.rights")}</div>
+                <div className="flex gap-4 text-xs" style={{ color: "#4A7AB5" }}>
+                  <a href="#" className="hover:text-white transition-colors">{lang === "zh" ? "隐私政策" : "Privacy Policy"}</a>
+                  <a href="#" className="hover:text-white transition-colors">{lang === "zh" ? "服务条款" : "Terms of Service"}</a>
+                  <a href="#" className="hover:text-white transition-colors">{lang === "zh" ? "网站地图" : "Sitemap"}</a>
+                </div>
+              </div>
             </div>
           </footer>
 

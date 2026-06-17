@@ -131,6 +131,17 @@ const translations: Record<string, Record<Lang, string>> = {
   "contact.form.phone": { zh: "联系电话", en: "Phone Number" },
   "contact.form.message": { zh: "需求描述", en: "Project Description" },
   "contact.form.submit": { zh: "提交咨询", en: "Submit Inquiry" },
+  // Social & Email
+  "contact.email.sales": { zh: "销售邮箱", en: "Sales" },
+  "contact.email.support": { zh: "技术支持", en: "Support" },
+  "contact.email.quote": { zh: "报价邮箱", en: "Quote" },
+  "social.follow": { zh: "关注我们", en: "Follow Us" },
+  "social.linkedin": { zh: "领英", en: "LinkedIn" },
+  "social.twitter": { zh: "推特", en: "Twitter / X" },
+  "social.youtube": { zh: "YouTube", en: "YouTube" },
+  "social.facebook": { zh: "脸书", en: "Facebook" },
+  "social.wechat": { zh: "微信", en: "WeChat" },
+  "social.whatsapp": { zh: "WhatsApp", en: "WhatsApp" },
   // Footer
   "footer.rights": { zh: "© 2024 PCBforth 版权所有", en: "© 2024 PCBforth. All rights reserved." },
   "footer.slogan": { zh: "精密驱动创新，从原理图到成品", en: "Precision Drives Innovation — From Schematic to Product" },
@@ -143,7 +154,7 @@ const LanguageContext = createContext<LanguageContextType>({
 });
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [lang, setLang] = useState<Lang>("zh");
+  const [lang, setLang] = useState<Lang>("en");
 
   const t = (key: string): string => {
     return translations[key]?.[lang] ?? key;
