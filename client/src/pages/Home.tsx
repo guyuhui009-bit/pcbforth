@@ -682,36 +682,7 @@ export default function Home() {
                       {lang === "zh" ? "紧急项目可7×24小时联系" : "Urgent projects: 7×24 available"}
                     </div>
                   </div>
-                  {/* Social platforms */}
-                  <div className="rounded-xl overflow-hidden shadow-sm" style={{ border: `1px solid ${C.cardBorder}` }}>
-                    <div className="px-4 py-2 text-xs font-semibold uppercase tracking-wider" style={{ background: C.blueLight, color: C.blue }}>
-                      {lang === "zh" ? "社交平台" : "Follow Us"}
-                    </div>
-                    <div className="grid grid-cols-2 gap-0">
-                      {[
-                        { name: "LinkedIn",  href: "https://linkedin.com/company/pcbforth",  color: "#0A66C2", icon: "in" },
-                        { name: "Twitter / X", href: "https://twitter.com/pcbforth",          color: "#000000", icon: "𝕏" },
-                        { name: "YouTube",   href: "https://youtube.com/@pcbforth",           color: "#FF0000", icon: "▶" },
-                        { name: "Facebook",  href: "https://facebook.com/pcbforth",           color: "#1877F2", icon: "f" },
-                        { name: "WhatsApp",  href: "https://wa.me/8675588888888",             color: "#25D366", icon: "W" },
-                        { name: lang === "zh" ? "微信" : "WeChat",   href: "#",              color: "#07C160", icon: "微" },
-                      ].map((s, i) => (
-                        <a key={s.name} href={s.href} target="_blank" rel="noopener noreferrer"
-                          className="flex items-center gap-3 px-4 py-3 transition-colors group"
-                          style={{
-                            background: C.cardBg,
-                            borderTop: i >= 2 ? `1px solid ${C.cardBorder}` : undefined,
-                            borderLeft: i % 2 === 1 ? `1px solid ${C.cardBorder}` : undefined,
-                          }}
-                          onMouseEnter={(el) => (el.currentTarget.style.background = C.blueLight)}
-                          onMouseLeave={(el) => (el.currentTarget.style.background = C.cardBg)}>
-                          <span className="w-7 h-7 rounded-full flex items-center justify-center text-white text-xs font-bold shrink-0"
-                            style={{ background: s.color }}>{s.icon}</span>
-                          <span className="text-xs font-medium" style={{ color: C.heading }}>{s.name}</span>
-                        </a>
-                      ))}
-                    </div>
-                  </div>
+
                 </div>
                 <div className="p-6 rounded-2xl shadow-sm" style={{ background: C.cardBg, border: `1px solid ${C.cardBorder}` }}>
                   <ContactForm lang={lang} t={t} />
