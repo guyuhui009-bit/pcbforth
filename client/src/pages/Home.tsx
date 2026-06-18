@@ -128,6 +128,132 @@ function SectionHeader({ title, subtitle }: { title: string; subtitle?: string }
   );
 }
 
+// ── PCB product types for fabrication gallery ──
+const FAB_PRODUCTS = [
+  {
+    titleZh: "Load Board",
+    titleEn: "Load Board",
+    descZh: "测试负载板是一种连接测试设备与被测器件的机械及电路接口，主要应用在半导体封装测试领域，支持高速信号传输与精密阻抗匹配。",
+    descEn: "A load board connects test equipment to the device under test via mechanical and circuit interfaces. Primarily used in semiconductor package testing with high-speed signal transmission and precision impedance matching.",
+    img: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
+  },
+  {
+    titleZh: "Probe Card",
+    titleEn: "Probe Card",
+    descZh: "探针卡在CP测试中用于连接测试机和Die上的Pad，通常作为Loadboard的物理接口，实现晶圆级别的电气测试。",
+    descEn: "Used in CP testing to connect the tester to pads on the die. Acts as the physical interface of the load board for wafer-level electrical testing.",
+    img: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=600&q=80",
+  },
+  {
+    titleZh: "BIB（老化测试板）",
+    titleEn: "BIB (Burn-In Board)",
+    descZh: "BIB（BURN IN BOARD，老化测试），完成封装测试的IC在特定的工况和时间内老化测试，筛选早期失效器件，提升产品可靠性。",
+    descEn: "Burn-In Board subjects packaged ICs to stress testing under specific conditions to screen early-failure devices and improve product reliability.",
+    img: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
+  },
+  {
+    titleZh: "Interposer（中介层）",
+    titleEn: "Interposer",
+    descZh: "Probe card的信号通过interposer中介层的转换让Probe head（探针头）的探针可以接收到信号，实现高密度信号互联。",
+    descEn: "Converts signals from the probe card through the interposer layer so that the probe head pins can receive signals, enabling high-density signal interconnection.",
+    img: "https://images.unsplash.com/photo-1581092335397-9583eb92d232?w=600&q=80",
+  },
+  {
+    titleZh: "刚挠结合板",
+    titleEn: "Rigid-Flex PCB",
+    descZh: "产品优势：可模块化设计和三维安装、减少整个产品的重量、布线高密度化，广泛应用于航空航天、医疗设备和可穿戴产品。",
+    descEn: "Advantages: modular design, 3D installation, reduced product weight, high-density routing. Widely used in aerospace, medical devices, and wearables.",
+    img: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&q=80",
+  },
+  {
+    titleZh: "挠性板（FPC）",
+    titleEn: "Flexible PCB (FPC)",
+    descZh: "产品优势：轻薄、缩小电子产品的体积和重量、布线高密度化、自由弯曲、卷绕，适用于需要反复弯折的电子设备。",
+    descEn: "Advantages: lightweight, compact, high-density routing, free bending and winding. Ideal for electronic devices requiring repeated flexing.",
+    img: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
+  },
+  {
+    titleZh: "微波/射频板",
+    titleEn: "Microwave / RF PCB",
+    descZh: "采用Rogers、PTFE等高频材料，支持毫米波、5G、雷达等高频应用，具备低介电损耗、稳定的介电常数和优异的热稳定性。",
+    descEn: "Made with Rogers, PTFE, and other high-frequency materials. Supports mmWave, 5G, and radar applications with low dielectric loss and stable Dk.",
+    img: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=600&q=80",
+  },
+  {
+    titleZh: "医疗设备板",
+    titleEn: "Medical Device PCB",
+    descZh: "满足IEC 60601医疗电气安全标准，具备高可靠性、高精度、超低功耗特性，支持FDA 510(k)、CE医疗认证要求。",
+    descEn: "Meets IEC 60601 medical electrical safety standards with high reliability, precision, and ultra-low power. Supports FDA 510(k) and CE medical certification.",
+    img: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&q=80",
+  },
+];
+
+function FabricationGallery({ lang }: { lang: string }) {
+  const [expanded, setExpanded] = useState<number | null>(null);
+  return (
+    <section className="relative py-14 px-8 lg:px-16" style={{ background: C.pageBg }}>
+      <div className="absolute top-0 left-8 right-8 h-px" style={{ background: `linear-gradient(to right, transparent, ${C.divider}, transparent)` }} />
+      <div className="max-w-5xl">
+        <div className="mb-8">
+          <div className="text-xs uppercase tracking-widest font-semibold mb-1" style={{ color: C.blue }}>
+            {lang === "zh" ? "产品类型" : "Product Types"}
+          </div>
+          <h2 className="text-xl font-bold" style={{ color: C.heading, fontFamily: "'Orbitron', monospace" }}>
+            {lang === "zh" ? "PCB制板工艺 · 典型产品案例" : "PCB Fabrication · Product Showcase"}
+          </h2>
+        </div>
+        <div className="grid sm:grid-cols-2 gap-x-8 gap-y-6">
+          {FAB_PRODUCTS.map((p, i) => (
+            <motion.div key={i}
+              initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }} transition={{ duration: 0.45, delay: (i % 4) * 0.08 }}
+              className="flex gap-0 rounded-xl overflow-hidden transition-shadow duration-300 group"
+              style={{ background: C.cardBg, border: `1px solid ${C.cardBorder}`,
+                boxShadow: "0 2px 10px rgba(21,101,232,0.06)" }}
+              onMouseEnter={(e) => (e.currentTarget.style.boxShadow = "0 6px 24px rgba(21,101,232,0.14)")}
+              onMouseLeave={(e) => (e.currentTarget.style.boxShadow = "0 2px 10px rgba(21,101,232,0.06)")}>
+              {/* Left: dark navy image box */}
+              <div className="w-36 sm:w-40 shrink-0 relative overflow-hidden" style={{ background: "#0A1A3E", minHeight: "160px" }}>
+                <img src={p.img} alt={lang === "zh" ? p.titleZh : p.titleEn}
+                  className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+                  style={{ mixBlendMode: "luminosity" }} />
+                <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, rgba(10,26,62,0.55) 0%, rgba(10,26,62,0.15) 100%)" }} />
+              </div>
+              {/* Right: text content */}
+              <div className="flex-1 p-4 flex flex-col justify-between">
+                <div>
+                  <h3 className="font-bold text-base mb-2 leading-snug" style={{ color: C.blue, fontFamily: "'Orbitron', monospace" }}>
+                    {lang === "zh" ? p.titleZh : p.titleEn}
+                  </h3>
+                  <p className="text-xs leading-relaxed" style={{ color: C.muted,
+                    display: "-webkit-box", WebkitLineClamp: expanded === i ? 99 : 3,
+                    WebkitBoxOrient: "vertical", overflow: "hidden" } as React.CSSProperties}>
+                    {lang === "zh" ? p.descZh : p.descEn}
+                  </p>
+                </div>
+                <button
+                  onClick={() => setExpanded(expanded === i ? null : i)}
+                  className="mt-3 self-start px-4 py-1.5 rounded-full text-xs font-medium transition-all duration-200"
+                  style={{
+                    background: expanded === i ? C.blue : "#E8F0FE",
+                    color: expanded === i ? "#fff" : C.muted,
+                    border: `1px solid ${expanded === i ? C.blue : C.cardBorder}`,
+                  }}
+                  onMouseEnter={(e) => { if (expanded !== i) { e.currentTarget.style.background = C.blueLight; e.currentTarget.style.color = C.blue; } }}
+                  onMouseLeave={(e) => { if (expanded !== i) { e.currentTarget.style.background = "#E8F0FE"; e.currentTarget.style.color = C.muted; } }}>
+                  {expanded === i
+                    ? (lang === "zh" ? "收起" : "Show less")
+                    : (lang === "zh" ? "了解更多" : "Learn more")}
+                </button>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function ServiceSection({ id, title, desc, img, caps, imgLeft, specs }: {
   id: string; title: string; desc: string; img: string;
   caps: string[]; imgLeft: boolean;
@@ -579,8 +705,11 @@ export default function Home() {
             img={PCB_CLOSEUP_IMG} imgLeft={false}
             caps={[t("fabrication.cap1"),t("fabrication.cap2"),t("fabrication.cap3"),t("fabrication.cap4"),t("fabrication.cap5"),t("fabrication.cap6")]}
             specs={lang==="zh"
-              ? [{label:"板材类型",value:"FR4 / Rogers / 铝基 / 软硬结合"},{label:"最小线宽/间距",value:"2mil / 2mil"},{label:"表面处理",value:"ENIG / OSP / HASL / 沉银"},{label:"阻抗控制",value:"±10%"}]
+              ? [{label:"板材类型",value:"FR4 / Rogers / 铝基 / 软硬结合"},{label:"最小线宽/间距",value:"2mil / 2mil"},{label:"表面处理",value:"ENIG / OSP / HASL / 沉銀"},{label:"阻抗控制",value:"±10%"}]
               : [{label:"Materials",value:"FR4 / Rogers / Al / Flex-Rigid"},{label:"Min Trace/Space",value:"2mil / 2mil"},{label:"Surface Finish",value:"ENIG / OSP / HASL / ImAg"},{label:"Impedance",value:"±10%"}]} />
+
+          {/* ── FABRICATION PRODUCT GALLERY ── */}
+          <FabricationGallery lang={lang} />
 
           <ServiceSection id="smt" title={t("smt.title")} desc={t("smt.desc")}
             img={SMT_IMG} imgLeft={true}
