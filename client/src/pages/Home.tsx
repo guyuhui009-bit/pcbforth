@@ -131,62 +131,50 @@ function SectionHeader({ title, subtitle }: { title: string; subtitle?: string }
 // ── PCB product types for fabrication gallery ──
 const FAB_PRODUCTS = [
   {
-    titleZh: "Load Board",
-    titleEn: "Load Board",
-    descZh: "测试负载板是一种连接测试设备与被测器件的机械及电路接口，主要应用在半导体封装测试领域，支持高速信号传输与精密阻抗匹配。",
-    descEn: "A load board connects test equipment to the device under test via mechanical and circuit interfaces. Primarily used in semiconductor package testing with high-speed signal transmission and precision impedance matching.",
-    img: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
+    titleZh: "光模块产品",
+    titleEn: "Optical Module PCB",
+    descZh: "专为400G/800G光模块设计的高密度互联PCB，采用低损耗高频材料，支持超高速差分信号传输，广泛应用于数据中心、5G前传和骨干网光通信系统。",
+    descEn: "High-density interconnect PCB designed for 400G/800G optical modules. Uses low-loss high-frequency materials supporting ultra-high-speed differential signal transmission for data centers, 5G fronthaul, and backbone optical networks.",
+    img: "/manus-storage/pcb-optical-module_6bad39d1.png",
   },
   {
-    titleZh: "Probe Card",
-    titleEn: "Probe Card",
-    descZh: "探针卡在CP测试中用于连接测试机和Die上的Pad，通常作为Loadboard的物理接口，实现晶圆级别的电气测试。",
-    descEn: "Used in CP testing to connect the tester to pads on the die. Acts as the physical interface of the load board for wafer-level electrical testing.",
-    img: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=600&q=80",
+    titleZh: "5G TRX 板",
+    titleEn: "5G TRX Board",
+    descZh: "面向5G基站收发信机（TRX）的高频高速PCB，支持Sub-6GHz和毫米波频段，具备优异的信号完整性和热管理能力，满足5G大规模MIMO天线阵列需求。",
+    descEn: "High-frequency, high-speed PCB for 5G base station transceivers (TRX). Supports Sub-6GHz and mmWave bands with excellent signal integrity and thermal management for massive MIMO antenna arrays.",
+    img: "/manus-storage/pcb-5g-trx_2a3a780a.png",
   },
   {
-    titleZh: "BIB（老化测试板）",
-    titleEn: "BIB (Burn-In Board)",
-    descZh: "BIB（BURN IN BOARD，老化测试），完成封装测试的IC在特定的工况和时间内老化测试，筛选早期失效器件，提升产品可靠性。",
-    descEn: "Burn-In Board subjects packaged ICs to stress testing under specific conditions to screen early-failure devices and improve product reliability.",
-    img: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
-  },
-  {
-    titleZh: "Interposer（中介层）",
-    titleEn: "Interposer",
-    descZh: "Probe card的信号通过interposer中介层的转换让Probe head（探针头）的探针可以接收到信号，实现高密度信号互联。",
-    descEn: "Converts signals from the probe card through the interposer layer so that the probe head pins can receive signals, enabling high-density signal interconnection.",
-    img: "https://images.unsplash.com/photo-1581092335397-9583eb92d232?w=600&q=80",
-  },
-  {
-    titleZh: "刚挠结合板",
-    titleEn: "Rigid-Flex PCB",
-    descZh: "产品优势：可模块化设计和三维安装、减少整个产品的重量、布线高密度化，广泛应用于航空航天、医疗设备和可穿戴产品。",
-    descEn: "Advantages: modular design, 3D installation, reduced product weight, high-density routing. Widely used in aerospace, medical devices, and wearables.",
-    img: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&q=80",
-  },
-  {
-    titleZh: "挠性板（FPC）",
-    titleEn: "Flexible PCB (FPC)",
-    descZh: "产品优势：轻薄、缩小电子产品的体积和重量、布线高密度化、自由弯曲、卷绕，适用于需要反复弯折的电子设备。",
-    descEn: "Advantages: lightweight, compact, high-density routing, free bending and winding. Ideal for electronic devices requiring repeated flexing.",
-    img: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
-  },
-  {
-    titleZh: "微波/射频板",
-    titleEn: "Microwave / RF PCB",
-    descZh: "采用Rogers、PTFE等高频材料，支持毫米波、5G、雷达等高频应用，具备低介电损耗、稳定的介电常数和优异的热稳定性。",
-    descEn: "Made with Rogers, PTFE, and other high-frequency materials. Supports mmWave, 5G, and radar applications with low dielectric loss and stable Dk.",
-    img: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=600&q=80",
+    titleZh: "微波阶梯槽板",
+    titleEn: "Microwave Stepped-Slot PCB",
+    descZh: "微波阶梯槽板采用PTFE/Rogers等低损耗微波基材，通过精密铣槽工艺实现阶梯结构，广泛用于相控阵雷达、卫星通信和毫米波测试系统，具备极低插入损耗和优异的高频一致性。",
+    descEn: "Microwave stepped-slot boards use PTFE/Rogers low-loss substrates with precision milled stepped structures. Widely used in phased-array radar, satellite communications, and mmWave test systems with ultra-low insertion loss.",
+    img: "/manus-storage/pcb-microwave-stepped_47d74f97.png",
   },
   {
     titleZh: "医疗设备板",
     titleEn: "Medical Device PCB",
-    descZh: "满足IEC 60601医疗电气安全标准，具备高可靠性、高精度、超低功耗特性，支持FDA 510(k)、CE医疗认证要求。",
-    descEn: "Meets IEC 60601 medical electrical safety standards with high reliability, precision, and ultra-low power. Supports FDA 510(k) and CE medical certification.",
-    img: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&q=80",
+    descZh: "满足IEC 60601医疗电气安全标准，具备高可靠性、高精度、超低功耗特性，支持FDA 510(k)、CE医疗认证要求，广泛应用于监护仪、手术机器人、体外诊断等高端医疗设备。",
+    descEn: "Meets IEC 60601 medical electrical safety standards with high reliability, precision, and ultra-low power. Supports FDA 510(k) and CE certification for patient monitors, surgical robots, and IVD equipment.",
+    img: "/manus-storage/pcb-medical-device_3c0a0390.png",
+  },
+  {
+    titleZh: "数模转换产品",
+    titleEn: "DAC/ADC Converter PCB",
+    descZh: "高速数模转换（DAC/ADC）PCB对信号完整性要求极高，PCBforth采用精密阻抗控制、低噪声电源分割和差分对等长布线，确保ADC/DAC在GHz采样率下的高精度转换性能。",
+    descEn: "High-speed DAC/ADC PCBs demand extreme signal integrity. PCBforth uses precision impedance control, low-noise power partitioning, and matched differential routing to ensure high-accuracy conversion at GHz sampling rates.",
+    img: "/manus-storage/pcb-dac-converter_60ed09dc.png",
+  },
+  {
+    titleZh: "服务器主板",
+    titleEn: "Server Motherboard PCB",
+    descZh: "服务器主板对高密度布线、电源完整性和散热管理要求极高，PCBforth支持16层以上HDI设计，具备DDR5/PCIe 5.0高速信号布线能力，满足云计算、AI推理服务器的严苛需求。",
+    descEn: "Server motherboards demand high-density routing, power integrity, and thermal management. PCBforth supports 16+ layer HDI with DDR5/PCIe 5.0 high-speed routing for cloud computing and AI inference servers.",
+    img: "/manus-storage/pcb-server-board_6b36de6a.png",
   },
 ];
+
+
 
 function FabricationGallery({ lang }: { lang: string }) {
   const [expanded, setExpanded] = useState<number | null>(null);
