@@ -195,18 +195,182 @@ const FAB_PRODUCTS = [
     featuresEn: ["16+ layer HDI", "DDR5/PCIe 5.0 routing", "Excellent power integrity", "Efficient thermal mgmt", "Back-drill support"],
     specsZh: [{k:"层数",v:"16~40层"},{k:"最小线宽/间距",v:"2mil/2mil"},{k:"基材",v:"Megtron 6 / 高Tg FR4"},{k:"表面处理",v:"ENIG / OSP"},{k:"阻抗精度",v:"±8%"},{k:"最小钻孔",v:"0.1mm激光孔"}],
     specsEn: [{k:"Layers",v:"16~40L"},{k:"Min Trace/Space",v:"2mil/2mil"},{k:"Material",v:"Megtron 6 / High-Tg FR4"},{k:"Surface",v:"ENIG / OSP"},{k:"Impedance",v:"±8%"},{k:"Min Drill",v:"0.1mm laser"}],
+    category: "pcb",
+  },
+];
+
+const SEMI_PRODUCTS = [
+  {
+    titleZh: "Load Board",
+    titleEn: "Load Board",
+    descZh: "测试负载板是一种连接测试设备与被测器件的机械及电路接口，主要应用在半导体封装测试领域，承载DUT（被测器件）并实现信号传输与电源供给。",
+    descEn: "A load board connects test equipment to the device under test (DUT), providing mechanical and electrical interfaces for semiconductor package testing, signal routing, and power delivery.",
+    img: "/manus-storage/semi-load-board_e30bd771.png",
+    featuresZh: ["高密度BGA封装支持", "精密阻抗控制", "低损耗高频材料", "严格尺寸公差±0.05mm", "支持高温老化测试"],
+    featuresEn: ["High-density BGA support", "Precision impedance control", "Low-loss HF materials", "Tight tolerance ±0.05mm", "High-temp burn-in support"],
+    specsZh: [{k:"层数",v:"8~20层"},{k:"最小线宽/间距",v:"2mil/2mil"},{k:"基材",v:"Rogers / 高Tg FR4"},{k:"表面处理",v:"ENIG / 硬金"},{k:"阻抗精度",v:"±5%"},{k:"板厚",v:"1.6~4.0mm"}],
+    specsEn: [{k:"Layers",v:"8~20L"},{k:"Min Trace/Space",v:"2mil/2mil"},{k:"Material",v:"Rogers / High-Tg FR4"},{k:"Surface",v:"ENIG / Hard Gold"},{k:"Impedance",v:"±5%"},{k:"Thickness",v:"1.6~4.0mm"}],
+  },
+  {
+    titleZh: "Probe Card",
+    titleEn: "Probe Card",
+    descZh: "探针卡在CP测试中用于连接测试机和Die上的Pad，通常作为Load Board的物理接口，要求极高的平整度、精密孔位和优异的高频传输特性。",
+    descEn: "Probe cards connect test machines to die pads in CP testing, serving as the physical interface for load boards. Requires extreme flatness, precision hole placement, and excellent HF transmission.",
+    img: "/manus-storage/semi-probe-card_9d203d08.png",
+    featuresZh: ["超高平整度控制", "精密孔位±0.025mm", "低介电损耗基材", "支持晶圆级测试", "高可靠性镀层"],
+    featuresEn: ["Ultra-flat surface control", "Precision hole ±0.025mm", "Low dielectric loss", "Wafer-level test support", "High-reliability plating"],
+    specsZh: [{k:"层数",v:"4~12层"},{k:"平整度",v:"≤0.05mm"},{k:"基材",v:"Rogers / PTFE"},{k:"最小孔径",v:"0.1mm"},{k:"表面处理",v:"ENIG / 硬金"},{k:"板厚",v:"0.8~3.2mm"}],
+    specsEn: [{k:"Layers",v:"4~12L"},{k:"Flatness",v:"≤0.05mm"},{k:"Material",v:"Rogers / PTFE"},{k:"Min Hole",v:"0.1mm"},{k:"Surface",v:"ENIG / Hard Gold"},{k:"Thickness",v:"0.8~3.2mm"}],
+  },
+  {
+    titleZh: "BIB（老化测试板）",
+    titleEn: "BIB (Burn-In Board)",
+    descZh: "BIB（Burn In Board，老化测试板），完成封装测试的IC在特定工况和时间内进行老化测试，筛选早期失效器件，提升产品可靠性，广泛用于存储器、CPU等高可靠性器件测试。",
+    descEn: "Burn-In Boards subject packaged ICs to elevated temperature and voltage stress to screen early failures, improving product reliability for memory, CPU, and other high-reliability devices.",
+    img: "/manus-storage/semi-bib_952afa22.png",
+    featuresZh: ["耐高温材料（≥200°C）", "高压绝缘设计", "大电流承载能力", "支持并行多芯片测试", "长寿命可靠性设计"],
+    featuresEn: ["High-temp material ≥200°C", "High-voltage insulation", "High current capacity", "Parallel multi-chip test", "Long-life reliability design"],
+    specsZh: [{k:"层数",v:"4~8层"},{k:"基材",v:"高Tg FR4 / 聚酰亚胺"},{k:"最高工作温度",v:"200°C"},{k:"表面处理",v:"ENIG / OSP"},{k:"最小线宽/间距",v:"3mil/3mil"},{k:"板厚",v:"1.6~3.2mm"}],
+    specsEn: [{k:"Layers",v:"4~8L"},{k:"Material",v:"High-Tg FR4 / Polyimide"},{k:"Max Temp",v:"200°C"},{k:"Surface",v:"ENIG / OSP"},{k:"Min Trace/Space",v:"3mil/3mil"},{k:"Thickness",v:"1.6~3.2mm"}],
+  },
+  {
+    titleZh: "Interposer（中介层）",
+    titleEn: "Interposer",
+    descZh: "Probe Card的信号通过Interposer中介层的转换，让Probe Head（探针头）的探针可以接收到信号，是探针卡系统中的关键信号转接器件，要求极高的信号完整性和精密加工精度。",
+    descEn: "Interposers convert signals between probe cards and probe heads, serving as critical signal routing components in probe card systems with extreme signal integrity and precision machining requirements.",
+    img: "/manus-storage/semi-interposer_bc21fa1c.png",
+    featuresZh: ["超精密加工±0.01mm", "高信号完整性设计", "低串扰布线结构", "支持高频GHz信号", "微孔HDI工艺"],
+    featuresEn: ["Ultra-precision ±0.01mm", "High signal integrity", "Low crosstalk routing", "GHz signal support", "Micro-via HDI process"],
+    specsZh: [{k:"层数",v:"4~10层"},{k:"最小线宽/间距",v:"1.5mil/1.5mil"},{k:"基材",v:"Rogers / PTFE"},{k:"最小孔径",v:"0.075mm激光孔"},{k:"表面处理",v:"ENIG"},{k:"板厚",v:"0.4~1.6mm"}],
+    specsEn: [{k:"Layers",v:"4~10L"},{k:"Min Trace/Space",v:"1.5mil/1.5mil"},{k:"Material",v:"Rogers / PTFE"},{k:"Min Hole",v:"0.075mm laser"},{k:"Surface",v:"ENIG"},{k:"Thickness",v:"0.4~1.6mm"}],
+  },
+];
+
+const FPC_PRODUCTS = [
+  {
+    titleZh: "刚挠结合板",
+    titleEn: "Rigid-Flex PCB",
+    descZh: "刚挠结合板融合刚性板与挠性板优势，可实现模块化设计和三维安装，减少整个产品的重量，布线高密度化，广泛应用于航空航天、医疗设备、折叠屏手机等高端产品。",
+    descEn: "Rigid-flex PCBs combine rigid and flexible board advantages, enabling modular design and 3D assembly, reducing weight and enabling high-density routing for aerospace, medical, and foldable devices.",
+    img: "/manus-storage/fpc-rigid-flex_e39d911f.jpg",
+    featuresZh: ["刚柔一体三维安装", "减重30%~50%", "高密度HDI布线", "支持2~20层设计", "耐弯折100万次"],
+    featuresEn: ["3D rigid-flex assembly", "30%~50% weight reduction", "High-density HDI routing", "2~20 layer support", "1M+ flex cycle life"],
+    specsZh: [{k:"层数",v:"2~20层"},{k:"最小柔性区宽度",v:"3mm"},{k:"最小线宽/间距",v:"3/3.5mil"},{k:"最小钻孔",v:"0.1mm激光孔"},{k:"表面处理",v:"ENIG / ENEPIG"},{k:"板厚孔径比",v:"16:1（通孔）"}],
+    specsEn: [{k:"Layers",v:"2~20L"},{k:"Min Flex Width",v:"3mm"},{k:"Min Trace/Space",v:"3/3.5mil"},{k:"Min Drill",v:"0.1mm laser"},{k:"Surface",v:"ENIG / ENEPIG"},{k:"Aspect Ratio",v:"16:1 (PTH)"}],
+  },
+  {
+    titleZh: "挠性板（FPC）",
+    titleEn: "Flexible PCB (FPC)",
+    descZh: "挠性板轻薄柔软，可自由弯曲卷绕，缩小电子产品体积和重量，布线高密度化，广泛应用于智能穿戴、消费电子、汽车电子、医疗器械等需要空间紧凑设计的产品。",
+    descEn: "Flexible PCBs are thin, lightweight, and bendable, enabling compact designs for wearables, consumer electronics, automotive, and medical devices requiring space-efficient flexible interconnects.",
+    img: "/manus-storage/fpc-flex_8ebda36d.jpg",
+    featuresZh: ["超薄0.05mm基材", "自由弯曲卷绕设计", "高密度细线路", "支持动态弯折应用", "轻量化减重设计"],
+    featuresEn: ["Ultra-thin 0.05mm substrate", "Free-bend/roll design", "High-density fine traces", "Dynamic flex application", "Lightweight design"],
+    specsZh: [{k:"层数",v:"1~8层"},{k:"基材厚度",v:"0.05~0.2mm"},{k:"最小线宽/间距",v:"2mil/2mil"},{k:"最小钻孔",v:"0.1mm激光孔"},{k:"表面处理",v:"ENIG / OSP / 镀金"},{k:"弯折半径",v:"≥0.5mm"}],
+    specsEn: [{k:"Layers",v:"1~8L"},{k:"Base Thickness",v:"0.05~0.2mm"},{k:"Min Trace/Space",v:"2mil/2mil"},{k:"Min Drill",v:"0.1mm laser"},{k:"Surface",v:"ENIG / OSP / Gold"},{k:"Bend Radius",v:"≥0.5mm"}],
   },
 ];
 
 
 
-function FabricationGallery({ lang }: { lang: string }) {
+function ProductCard({ p, i, hovered, setHovered, lang }: { p: typeof FAB_PRODUCTS[0], i: number, hovered: number | null, setHovered: (v: number | null) => void, lang: string }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }} transition={{ duration: 0.45, delay: (i % 4) * 0.08 }}
+      className="flex gap-0 rounded-xl overflow-hidden transition-shadow duration-300 group relative"
+      style={{ background: C.cardBg, border: `1px solid ${C.cardBorder}`,
+        boxShadow: hovered === i ? "0 8px 32px rgba(21,101,232,0.18)" : "0 2px 10px rgba(21,101,232,0.06)" }}
+      onMouseEnter={() => setHovered(i)}
+      onMouseLeave={() => setHovered(null)}>
+      <div className="w-36 sm:w-44 shrink-0 relative overflow-hidden" style={{ background: "#0d1b2e", minHeight: "180px" }}>
+        <img src={p.img} alt={lang === "zh" ? p.titleZh : p.titleEn}
+          className="w-full h-full object-contain p-2 transition-transform duration-500 group-hover:scale-105" />
+      </div>
+      <div className="flex-1 p-4 flex flex-col justify-between">
+        <div>
+          <h3 className="font-bold text-base mb-2 leading-snug" style={{ color: C.blue, fontFamily: "'Orbitron', monospace" }}>
+            {lang === "zh" ? p.titleZh : p.titleEn}
+          </h3>
+          <p className="text-xs leading-relaxed line-clamp-3" style={{ color: C.muted }}>
+            {lang === "zh" ? p.descZh : p.descEn}
+          </p>
+        </div>
+        <div className="mt-3 flex items-center gap-1.5">
+          <span className="text-xs" style={{ color: C.blue }}>&#9432;</span>
+          <span className="text-xs" style={{ color: C.muted }}>
+            {lang === "zh" ? "悬停查看工艺规格" : "Hover for specs"}
+          </span>
+        </div>
+      </div>
+      {hovered === i && (
+        <motion.div
+          initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.2 }}
+          className="absolute inset-0 rounded-xl flex flex-col p-4 overflow-auto z-20"
+          style={{ background: "rgba(10,20,50,0.97)", backdropFilter: "blur(4px)", border: `1.5px solid ${C.blue}` }}>
+          <div className="font-bold text-sm mb-2" style={{ color: "#60a5fa", fontFamily: "'Orbitron', monospace" }}>
+            {lang === "zh" ? p.titleZh : p.titleEn}
+          </div>
+          <div className="mb-3">
+            <div className="text-xs font-semibold mb-1.5 uppercase tracking-wider" style={{ color: "#93c5fd" }}>
+              {lang === "zh" ? "产品特点" : "Key Features"}
+            </div>
+            <ul className="space-y-1">
+              {(lang === "zh" ? p.featuresZh : p.featuresEn).map((f, fi) => (
+                <li key={fi} className="flex items-start gap-1.5 text-xs" style={{ color: "#cbd5e1" }}>
+                  <span style={{ color: "#34d399", marginTop: "1px" }}>✓</span>
+                  {f}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <div className="text-xs font-semibold mb-1.5 uppercase tracking-wider" style={{ color: "#93c5fd" }}>
+              {lang === "zh" ? "技术规格" : "Specifications"}
+            </div>
+            <table className="w-full text-xs">
+              <tbody>
+                {(lang === "zh" ? p.specsZh : p.specsEn).map((s, si) => (
+                  <tr key={si} style={{ borderBottom: "1px solid rgba(96,165,250,0.15)" }}>
+                    <td className="py-1 pr-2 font-medium" style={{ color: "#93c5fd", whiteSpace: "nowrap" }}>{s.k}</td>
+                    <td className="py-1" style={{ color: "#e2e8f0" }}>{s.v}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </motion.div>
+      )}
+    </motion.div>
+  );
+}
+
+function ProductGroup({ titleZh, titleEn, products, lang }: { titleZh: string, titleEn: string, products: typeof FAB_PRODUCTS, lang: string }) {
   const [hovered, setHovered] = useState<number | null>(null);
+  return (
+    <div className="mb-12">
+      <div className="flex items-center gap-3 mb-6">
+        <div className="w-1 h-6 rounded-full" style={{ background: C.blue }} />
+        <h3 className="text-base font-bold" style={{ color: C.heading, fontFamily: "'Orbitron', monospace" }}>
+          {lang === "zh" ? titleZh : titleEn}
+        </h3>
+      </div>
+      <div className="grid sm:grid-cols-2 gap-x-8 gap-y-6">
+        {products.map((p, i) => (
+          <ProductCard key={i} p={p} i={i} hovered={hovered} setHovered={setHovered} lang={lang} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function FabricationGallery({ lang }: { lang: string }) {
   return (
     <section className="relative py-14 px-8 lg:px-16" style={{ background: C.pageBg }}>
       <div className="absolute top-0 left-8 right-8 h-px" style={{ background: `linear-gradient(to right, transparent, ${C.divider}, transparent)` }} />
       <div className="max-w-5xl">
-        <div className="mb-8">
+        <div className="mb-10">
           <div className="text-xs uppercase tracking-widest font-semibold mb-1" style={{ color: C.blue }}>
             {lang === "zh" ? "产品类型" : "Product Types"}
           </div>
@@ -214,83 +378,28 @@ function FabricationGallery({ lang }: { lang: string }) {
             {lang === "zh" ? "PCB制板工艺 · 典型产品案例" : "PCB Fabrication · Product Showcase"}
           </h2>
         </div>
-        <div className="grid sm:grid-cols-2 gap-x-8 gap-y-6">
-          {FAB_PRODUCTS.map((p, i) => (
-            <motion.div key={i}
-              initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }} transition={{ duration: 0.45, delay: (i % 4) * 0.08 }}
-              className="flex gap-0 rounded-xl overflow-hidden transition-shadow duration-300 group relative"
-              style={{ background: C.cardBg, border: `1px solid ${C.cardBorder}`,
-                boxShadow: hovered === i ? "0 8px 32px rgba(21,101,232,0.18)" : "0 2px 10px rgba(21,101,232,0.06)" }}
-              onMouseEnter={() => setHovered(i)}
-              onMouseLeave={() => setHovered(null)}>
-              {/* Left: image box — original colors, no blue tint */}
-              <div className="w-36 sm:w-44 shrink-0 relative overflow-hidden" style={{ background: "#0d1b2e", minHeight: "180px" }}>
-                <img src={p.img} alt={lang === "zh" ? p.titleZh : p.titleEn}
-                  className="w-full h-full object-contain p-2 transition-transform duration-500 group-hover:scale-105" />
-              </div>
-              {/* Right: text content */}
-              <div className="flex-1 p-4 flex flex-col justify-between">
-                <div>
-                  <h3 className="font-bold text-base mb-2 leading-snug" style={{ color: C.blue, fontFamily: "'Orbitron', monospace" }}>
-                    {lang === "zh" ? p.titleZh : p.titleEn}
-                  </h3>
-                  <p className="text-xs leading-relaxed line-clamp-3" style={{ color: C.muted }}>
-                    {lang === "zh" ? p.descZh : p.descEn}
-                  </p>
-                </div>
-                <div className="mt-3 flex items-center gap-1.5">
-                  <span className="text-xs" style={{ color: C.blue }}>&#9432;</span>
-                  <span className="text-xs" style={{ color: C.muted }}>
-                    {lang === "zh" ? "悬停查看工艺规格" : "Hover for specs"}
-                  </span>
-                </div>
-              </div>
-              {/* Hover overlay: process specs popup */}
-              {hovered === i && (
-                <motion.div
-                  initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.2 }}
-                  className="absolute inset-0 rounded-xl flex flex-col p-4 overflow-auto z-20"
-                  style={{ background: "rgba(10,20,50,0.97)", backdropFilter: "blur(4px)", border: `1.5px solid ${C.blue}` }}>
-                  <div className="font-bold text-sm mb-2" style={{ color: "#60a5fa", fontFamily: "'Orbitron', monospace" }}>
-                    {lang === "zh" ? p.titleZh : p.titleEn}
-                  </div>
-                  {/* Features */}
-                  <div className="mb-3">
-                    <div className="text-xs font-semibold mb-1.5 uppercase tracking-wider" style={{ color: "#93c5fd" }}>
-                      {lang === "zh" ? "产品特点" : "Key Features"}
-                    </div>
-                    <ul className="space-y-1">
-                      {(lang === "zh" ? p.featuresZh : p.featuresEn).map((f, fi) => (
-                        <li key={fi} className="flex items-start gap-1.5 text-xs" style={{ color: "#cbd5e1" }}>
-                          <span style={{ color: "#34d399", marginTop: "1px" }}>✓</span>
-                          {f}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  {/* Specs table */}
-                  <div>
-                    <div className="text-xs font-semibold mb-1.5 uppercase tracking-wider" style={{ color: "#93c5fd" }}>
-                      {lang === "zh" ? "技术规格" : "Specifications"}
-                    </div>
-                    <table className="w-full text-xs">
-                      <tbody>
-                        {(lang === "zh" ? p.specsZh : p.specsEn).map((s, si) => (
-                          <tr key={si} style={{ borderBottom: "1px solid rgba(96,165,250,0.15)" }}>
-                            <td className="py-1 pr-2 font-medium" style={{ color: "#93c5fd", whiteSpace: "nowrap" }}>{s.k}</td>
-                            <td className="py-1" style={{ color: "#e2e8f0" }}>{s.v}</td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-                </motion.div>
-              )}
-            </motion.div>
-          ))}
-        </div>
+        {/* PCB Category */}
+        <ProductGroup
+          titleZh="PCB"
+          titleEn="PCB"
+          products={FAB_PRODUCTS}
+          lang={lang}
+        />
+        {/* Semiconductor Test Board Category */}
+        <ProductGroup
+          titleZh="半导体测试板"
+          titleEn="Semiconductor Test Board"
+          products={SEMI_PRODUCTS}
+          lang={lang}
+        />
+        {/* FPC Category */}
+        <ProductGroup
+          titleZh="FPC"
+          titleEn="FPC"
+          products={FPC_PRODUCTS}
+          lang={lang}
+        />
+
       </div>
     </section>
   );
