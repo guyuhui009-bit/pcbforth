@@ -346,8 +346,13 @@ function ProductCard({ p, i, hovered, setHovered, lang }: { p: typeof FAB_PRODUC
   );
 }
 
+const INITIAL_SHOW = 2;
+
 function ProductGroup({ titleZh, titleEn, products, lang }: { titleZh: string, titleEn: string, products: typeof FAB_PRODUCTS, lang: string }) {
   const [hovered, setHovered] = useState<number | null>(null);
+  const [expanded, setExpanded] = useState(false);
+  const hasMore = products.length > INITIAL_SHOW;
+  const visible = expanded ? products : products.slice(0, INITIAL_SHOW);
   return (
     <div className="mb-12">
       <div className="flex items-center gap-3 mb-6">
@@ -355,12 +360,46 @@ function ProductGroup({ titleZh, titleEn, products, lang }: { titleZh: string, t
         <h3 className="text-base font-bold" style={{ color: C.heading, fontFamily: "'Orbitron', monospace" }}>
           {lang === "zh" ? titleZh : titleEn}
         </h3>
+        {hasMore && (
+          <span className="ml-2 text-xs px-2 py-0.5 rounded-full font-medium" style={{ background: "rgba(21,101,232,0.12)", color: C.blue }}>
+            {products.length} {lang === "zh" ? "项" : "items"}
+          </span>
+        )}
       </div>
       <div className="grid sm:grid-cols-2 gap-x-8 gap-y-6">
-        {products.map((p, i) => (
+        {visible.map((p, i) => (
           <ProductCard key={i} p={p} i={i} hovered={hovered} setHovered={setHovered} lang={lang} />
         ))}
       </div>
+      {hasMore && (
+        <div className="mt-6 flex justify-center">
+          <button
+            onClick={() => setExpanded(!expanded)}
+            className="flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300"
+            style={{
+              background: expanded ? "transparent" : C.blue,
+              color: expanded ? C.blue : "#fff",
+              border: `1.5px solid ${C.blue}`,
+              boxShadow: expanded ? "none" : "0 4px 16px rgba(21,101,232,0.25)",
+            }}>
+            {expanded ? (
+              <>
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                  <path d="M2 9L7 4L12 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+                {lang === "zh" ? "收起" : "Show Less"}
+              </>
+            ) : (
+              <>
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                  <path d="M2 5L7 10L12 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+                {lang === "zh" ? `查看更多 (${products.length - INITIAL_SHOW})` : `Show More (${products.length - INITIAL_SHOW})`}
+              </>
+            )}
+          </button>
+        </div>
+      )}
     </div>
   );
 }
