@@ -134,50 +134,74 @@ const FAB_PRODUCTS = [
     titleZh: "光模块产品",
     titleEn: "Optical Module PCB",
     descZh: "专为400G/800G光模块设计的高密度互联PCB，采用低损耗高频材料，支持超高速差分信号传输，广泛应用于数据中心、5G前传和骨干网光通信系统。",
-    descEn: "High-density interconnect PCB designed for 400G/800G optical modules. Uses low-loss high-frequency materials supporting ultra-high-speed differential signal transmission for data centers, 5G fronthaul, and backbone optical networks.",
+    descEn: "High-density interconnect PCB for 400G/800G optical modules. Low-loss high-frequency materials, ultra-high-speed differential signal transmission for data centers and 5G fronthaul.",
     img: "/manus-storage/pcb-optical-module_6bad39d1.png",
+    featuresZh: ["超低插入损耗设计", "差分对等长布线", "精密阻抗控制±5%", "支持400G/800G速率", "低Dk/Df高频材料"],
+    featuresEn: ["Ultra-low insertion loss", "Matched differential routing", "Impedance control ±5%", "400G/800G data rate", "Low Dk/Df materials"],
+    specsZh: [{k:"层数",v:"8~16层"},{k:"最小线宽/间距",v:"2mil/2mil"},{k:"基材",v:"Rogers / Megtron"},{k:"表面处理",v:"ENIG / ENEPIG"},{k:"阻抗精度",v:"±5%"},{k:"板厚",v:"0.8~2.4mm"}],
+    specsEn: [{k:"Layers",v:"8~16L"},{k:"Min Trace/Space",v:"2mil/2mil"},{k:"Material",v:"Rogers / Megtron"},{k:"Surface",v:"ENIG / ENEPIG"},{k:"Impedance",v:"±5%"},{k:"Thickness",v:"0.8~2.4mm"}],
   },
   {
     titleZh: "5G TRX 板",
     titleEn: "5G TRX Board",
     descZh: "面向5G基站收发信机（TRX）的高频高速PCB，支持Sub-6GHz和毫米波频段，具备优异的信号完整性和热管理能力，满足5G大规模MIMO天线阵列需求。",
-    descEn: "High-frequency, high-speed PCB for 5G base station transceivers (TRX). Supports Sub-6GHz and mmWave bands with excellent signal integrity and thermal management for massive MIMO antenna arrays.",
+    descEn: "High-frequency PCB for 5G base station TRX. Supports Sub-6GHz and mmWave with excellent signal integrity and thermal management for massive MIMO arrays.",
     img: "/manus-storage/pcb-5g-trx_2a3a780a.png",
+    featuresZh: ["Sub-6GHz及毫米波支持", "大规模MIMO兼容", "低热阻散热设计", "高密度盲埋孔HDI", "严格EMC管控"],
+    featuresEn: ["Sub-6GHz & mmWave", "Massive MIMO compatible", "Low thermal resistance", "HDI blind/buried via", "Strict EMC control"],
+    specsZh: [{k:"层数",v:"12~20层"},{k:"最小线宽/间距",v:"2.5mil/2.5mil"},{k:"基材",v:"Rogers 4350B / FR4"},{k:"表面处理",v:"ENIG"},{k:"阻抗精度",v:"±8%"},{k:"最小钻孔",v:"0.1mm激光孔"}],
+    specsEn: [{k:"Layers",v:"12~20L"},{k:"Min Trace/Space",v:"2.5mil/2.5mil"},{k:"Material",v:"Rogers 4350B / FR4"},{k:"Surface",v:"ENIG"},{k:"Impedance",v:"±8%"},{k:"Min Drill",v:"0.1mm laser"}],
   },
   {
     titleZh: "微波阶梯槽板",
     titleEn: "Microwave Stepped-Slot PCB",
-    descZh: "微波阶梯槽板采用PTFE/Rogers等低损耗微波基材，通过精密铣槽工艺实现阶梯结构，广泛用于相控阵雷达、卫星通信和毫米波测试系统，具备极低插入损耗和优异的高频一致性。",
-    descEn: "Microwave stepped-slot boards use PTFE/Rogers low-loss substrates with precision milled stepped structures. Widely used in phased-array radar, satellite communications, and mmWave test systems with ultra-low insertion loss.",
+    descZh: "采用PTFE/Rogers等低损耗微波基材，通过精密铣槽工艺实现阶梯结构，广泛用于相控阵雷达、卫星通信和毫米波测试系统，具备极低插入损耗和优异的高频一致性。",
+    descEn: "PTFE/Rogers low-loss substrates with precision milled stepped structures. Used in phased-array radar, satellite comms, and mmWave test systems.",
     img: "/manus-storage/pcb-microwave-stepped_47d74f97.png",
+    featuresZh: ["精密CNC铣槽工艺", "PTFE/Rogers基材", "极低插入损耗", "优异高频一致性", "支持DC~100GHz"],
+    featuresEn: ["Precision CNC milling", "PTFE/Rogers substrate", "Ultra-low insertion loss", "Excellent HF consistency", "DC~100GHz support"],
+    specsZh: [{k:"层数",v:"2~8层"},{k:"基材",v:"PTFE / Rogers 5880"},{k:"最小线宽/间距",v:"3mil/3mil"},{k:"阶梯槽精度",v:"±0.05mm"},{k:"表面处理",v:"ENIG / 镀金"},{k:"板厚",v:"0.5~3.2mm"}],
+    specsEn: [{k:"Layers",v:"2~8L"},{k:"Material",v:"PTFE / Rogers 5880"},{k:"Min Trace/Space",v:"3mil/3mil"},{k:"Slot Tolerance",v:"±0.05mm"},{k:"Surface",v:"ENIG / Hard Gold"},{k:"Thickness",v:"0.5~3.2mm"}],
   },
   {
     titleZh: "医疗设备板",
     titleEn: "Medical Device PCB",
     descZh: "满足IEC 60601医疗电气安全标准，具备高可靠性、高精度、超低功耗特性，支持FDA 510(k)、CE医疗认证要求，广泛应用于监护仪、手术机器人、体外诊断等高端医疗设备。",
-    descEn: "Meets IEC 60601 medical electrical safety standards with high reliability, precision, and ultra-low power. Supports FDA 510(k) and CE certification for patient monitors, surgical robots, and IVD equipment.",
+    descEn: "Meets IEC 60601 standards with high reliability and ultra-low power. Supports FDA 510(k) and CE certification for patient monitors, surgical robots, and IVD equipment.",
     img: "/manus-storage/pcb-medical-device_3c0a0390.png",
+    featuresZh: ["IEC 60601医疗认证", "超低功耗设计", "高可靠性材料", "FDA 510(k)支持", "严格清洁度管控"],
+    featuresEn: ["IEC 60601 certified", "Ultra-low power design", "High-reliability materials", "FDA 510(k) support", "Strict cleanliness control"],
+    specsZh: [{k:"层数",v:"4~16层"},{k:"最小线宽/间距",v:"3mil/3mil"},{k:"基材",v:"高Tg FR4 / Rogers"},{k:"表面处理",v:"ENIG / OSP"},{k:"阻抗精度",v:"±8%"},{k:"板厚",v:"0.8~3.2mm"}],
+    specsEn: [{k:"Layers",v:"4~16L"},{k:"Min Trace/Space",v:"3mil/3mil"},{k:"Material",v:"High-Tg FR4 / Rogers"},{k:"Surface",v:"ENIG / OSP"},{k:"Impedance",v:"±8%"},{k:"Thickness",v:"0.8~3.2mm"}],
   },
   {
     titleZh: "数模转换产品",
     titleEn: "DAC/ADC Converter PCB",
     descZh: "高速数模转换（DAC/ADC）PCB对信号完整性要求极高，PCBforth采用精密阻抗控制、低噪声电源分割和差分对等长布线，确保ADC/DAC在GHz采样率下的高精度转换性能。",
-    descEn: "High-speed DAC/ADC PCBs demand extreme signal integrity. PCBforth uses precision impedance control, low-noise power partitioning, and matched differential routing to ensure high-accuracy conversion at GHz sampling rates.",
+    descEn: "High-speed DAC/ADC PCBs with precision impedance control, low-noise power partitioning, and matched differential routing for GHz sampling rates.",
     img: "/manus-storage/pcb-dac-converter_60ed09dc.png",
+    featuresZh: ["精密阻抗控制±5%", "低噪声电源分割", "差分对等长布线", "模拟/数字地分离", "支持GHz采样率"],
+    featuresEn: ["Impedance control ±5%", "Low-noise power split", "Matched diff. routing", "Analog/digital GND split", "GHz sampling rate"],
+    specsZh: [{k:"层数",v:"6~12层"},{k:"最小线宽/间距",v:"2.5mil/2.5mil"},{k:"基材",v:"高Tg FR4 / Megtron"},{k:"表面处理",v:"ENIG"},{k:"阻抗精度",v:"±5%"},{k:"板厚",v:"1.0~2.4mm"}],
+    specsEn: [{k:"Layers",v:"6~12L"},{k:"Min Trace/Space",v:"2.5mil/2.5mil"},{k:"Material",v:"High-Tg FR4 / Megtron"},{k:"Surface",v:"ENIG"},{k:"Impedance",v:"±5%"},{k:"Thickness",v:"1.0~2.4mm"}],
   },
   {
     titleZh: "服务器主板",
     titleEn: "Server Motherboard PCB",
     descZh: "服务器主板对高密度布线、电源完整性和散热管理要求极高，PCBforth支持16层以上HDI设计，具备DDR5/PCIe 5.0高速信号布线能力，满足云计算、AI推理服务器的严苛需求。",
-    descEn: "Server motherboards demand high-density routing, power integrity, and thermal management. PCBforth supports 16+ layer HDI with DDR5/PCIe 5.0 high-speed routing for cloud computing and AI inference servers.",
+    descEn: "High-density server motherboard PCB supporting 16+ layer HDI with DDR5/PCIe 5.0 routing for cloud computing and AI inference servers.",
     img: "/manus-storage/pcb-server-board_6b36de6a.png",
+    featuresZh: ["16层以上HDI设计", "DDR5/PCIe 5.0布线", "优异电源完整性", "高效散热管理", "背钻工艺支持"],
+    featuresEn: ["16+ layer HDI", "DDR5/PCIe 5.0 routing", "Excellent power integrity", "Efficient thermal mgmt", "Back-drill support"],
+    specsZh: [{k:"层数",v:"16~40层"},{k:"最小线宽/间距",v:"2mil/2mil"},{k:"基材",v:"Megtron 6 / 高Tg FR4"},{k:"表面处理",v:"ENIG / OSP"},{k:"阻抗精度",v:"±8%"},{k:"最小钻孔",v:"0.1mm激光孔"}],
+    specsEn: [{k:"Layers",v:"16~40L"},{k:"Min Trace/Space",v:"2mil/2mil"},{k:"Material",v:"Megtron 6 / High-Tg FR4"},{k:"Surface",v:"ENIG / OSP"},{k:"Impedance",v:"±8%"},{k:"Min Drill",v:"0.1mm laser"}],
   },
 ];
 
 
 
 function FabricationGallery({ lang }: { lang: string }) {
-  const [expanded, setExpanded] = useState<number | null>(null);
+  const [hovered, setHovered] = useState<number | null>(null);
   return (
     <section className="relative py-14 px-8 lg:px-16" style={{ background: C.pageBg }}>
       <div className="absolute top-0 left-8 right-8 h-px" style={{ background: `linear-gradient(to right, transparent, ${C.divider}, transparent)` }} />
@@ -195,17 +219,15 @@ function FabricationGallery({ lang }: { lang: string }) {
             <motion.div key={i}
               initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }} transition={{ duration: 0.45, delay: (i % 4) * 0.08 }}
-              className="flex gap-0 rounded-xl overflow-hidden transition-shadow duration-300 group"
+              className="flex gap-0 rounded-xl overflow-hidden transition-shadow duration-300 group relative"
               style={{ background: C.cardBg, border: `1px solid ${C.cardBorder}`,
-                boxShadow: "0 2px 10px rgba(21,101,232,0.06)" }}
-              onMouseEnter={(e) => (e.currentTarget.style.boxShadow = "0 6px 24px rgba(21,101,232,0.14)")}
-              onMouseLeave={(e) => (e.currentTarget.style.boxShadow = "0 2px 10px rgba(21,101,232,0.06)")}>
-              {/* Left: dark navy image box */}
-              <div className="w-36 sm:w-40 shrink-0 relative overflow-hidden" style={{ background: "#0A1A3E", minHeight: "160px" }}>
+                boxShadow: hovered === i ? "0 8px 32px rgba(21,101,232,0.18)" : "0 2px 10px rgba(21,101,232,0.06)" }}
+              onMouseEnter={() => setHovered(i)}
+              onMouseLeave={() => setHovered(null)}>
+              {/* Left: image box — original colors, no blue tint */}
+              <div className="w-36 sm:w-44 shrink-0 relative overflow-hidden" style={{ background: "#0d1b2e", minHeight: "180px" }}>
                 <img src={p.img} alt={lang === "zh" ? p.titleZh : p.titleEn}
-                  className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
-                  style={{ mixBlendMode: "luminosity" }} />
-                <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, rgba(10,26,62,0.55) 0%, rgba(10,26,62,0.15) 100%)" }} />
+                  className="w-full h-full object-contain p-2 transition-transform duration-500 group-hover:scale-105" />
               </div>
               {/* Right: text content */}
               <div className="flex-1 p-4 flex flex-col justify-between">
@@ -213,27 +235,59 @@ function FabricationGallery({ lang }: { lang: string }) {
                   <h3 className="font-bold text-base mb-2 leading-snug" style={{ color: C.blue, fontFamily: "'Orbitron', monospace" }}>
                     {lang === "zh" ? p.titleZh : p.titleEn}
                   </h3>
-                  <p className="text-xs leading-relaxed" style={{ color: C.muted,
-                    display: "-webkit-box", WebkitLineClamp: expanded === i ? 99 : 3,
-                    WebkitBoxOrient: "vertical", overflow: "hidden" } as React.CSSProperties}>
+                  <p className="text-xs leading-relaxed line-clamp-3" style={{ color: C.muted }}>
                     {lang === "zh" ? p.descZh : p.descEn}
                   </p>
                 </div>
-                <button
-                  onClick={() => setExpanded(expanded === i ? null : i)}
-                  className="mt-3 self-start px-4 py-1.5 rounded-full text-xs font-medium transition-all duration-200"
-                  style={{
-                    background: expanded === i ? C.blue : "#E8F0FE",
-                    color: expanded === i ? "#fff" : C.muted,
-                    border: `1px solid ${expanded === i ? C.blue : C.cardBorder}`,
-                  }}
-                  onMouseEnter={(e) => { if (expanded !== i) { e.currentTarget.style.background = C.blueLight; e.currentTarget.style.color = C.blue; } }}
-                  onMouseLeave={(e) => { if (expanded !== i) { e.currentTarget.style.background = "#E8F0FE"; e.currentTarget.style.color = C.muted; } }}>
-                  {expanded === i
-                    ? (lang === "zh" ? "收起" : "Show less")
-                    : (lang === "zh" ? "了解更多" : "Learn more")}
-                </button>
+                <div className="mt-3 flex items-center gap-1.5">
+                  <span className="text-xs" style={{ color: C.blue }}>&#9432;</span>
+                  <span className="text-xs" style={{ color: C.muted }}>
+                    {lang === "zh" ? "悬停查看工艺规格" : "Hover for specs"}
+                  </span>
+                </div>
               </div>
+              {/* Hover overlay: process specs popup */}
+              {hovered === i && (
+                <motion.div
+                  initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.2 }}
+                  className="absolute inset-0 rounded-xl flex flex-col p-4 overflow-auto z-20"
+                  style={{ background: "rgba(10,20,50,0.97)", backdropFilter: "blur(4px)", border: `1.5px solid ${C.blue}` }}>
+                  <div className="font-bold text-sm mb-2" style={{ color: "#60a5fa", fontFamily: "'Orbitron', monospace" }}>
+                    {lang === "zh" ? p.titleZh : p.titleEn}
+                  </div>
+                  {/* Features */}
+                  <div className="mb-3">
+                    <div className="text-xs font-semibold mb-1.5 uppercase tracking-wider" style={{ color: "#93c5fd" }}>
+                      {lang === "zh" ? "产品特点" : "Key Features"}
+                    </div>
+                    <ul className="space-y-1">
+                      {(lang === "zh" ? p.featuresZh : p.featuresEn).map((f, fi) => (
+                        <li key={fi} className="flex items-start gap-1.5 text-xs" style={{ color: "#cbd5e1" }}>
+                          <span style={{ color: "#34d399", marginTop: "1px" }}>✓</span>
+                          {f}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  {/* Specs table */}
+                  <div>
+                    <div className="text-xs font-semibold mb-1.5 uppercase tracking-wider" style={{ color: "#93c5fd" }}>
+                      {lang === "zh" ? "技术规格" : "Specifications"}
+                    </div>
+                    <table className="w-full text-xs">
+                      <tbody>
+                        {(lang === "zh" ? p.specsZh : p.specsEn).map((s, si) => (
+                          <tr key={si} style={{ borderBottom: "1px solid rgba(96,165,250,0.15)" }}>
+                            <td className="py-1 pr-2 font-medium" style={{ color: "#93c5fd", whiteSpace: "nowrap" }}>{s.k}</td>
+                            <td className="py-1" style={{ color: "#e2e8f0" }}>{s.v}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </motion.div>
+              )}
             </motion.div>
           ))}
         </div>
