@@ -219,8 +219,8 @@ const SEMI_PRODUCTS = [
     img: "/manus-storage/semi-probe-card_9d203d08.png",
     featuresZh: ["超高平整度控制", "精密孔位±0.025mm", "低介电损耗基材", "支持晶圆级测试", "高可靠性镀层"],
     featuresEn: ["Ultra-flat surface control", "Precision hole ±0.025mm", "Low dielectric loss", "Wafer-level test support", "High-reliability plating"],
-    specsZh: [{k:"层数",v:"4~12层"},{k:"平整度",v:"≤0.05mm"},{k:"基材",v:"Rogers / PTFE"},{k:"最小孔径",v:"0.1mm"},{k:"表面处理",v:"ENIG / 硬金"},{k:"板厚",v:"0.8~3.2mm"}],
-    specsEn: [{k:"Layers",v:"4~12L"},{k:"Flatness",v:"≤0.05mm"},{k:"Material",v:"Rogers / PTFE"},{k:"Min Hole",v:"0.1mm"},{k:"Surface",v:"ENIG / Hard Gold"},{k:"Thickness",v:"0.8~3.2mm"}],
+    specsZh: [{k:"层数",v:"4~12层"},{k:"平整度",v:"≤0.05mm"},{k:"基材",v:"Rogers / PTFE"},{k:"最小孔径",v:"0.1mm"},{k:"表面处理",v:"ENIG / 硬金"},{k:"板厚",v:"1.6~6.5mm"}],
+    specsEn: [{k:"Layers",v:"4~12L"},{k:"Flatness",v:"≤0.05mm"},{k:"Material",v:"Rogers / PTFE"},{k:"Min Hole",v:"0.1mm"},{k:"Surface",v:"ENIG / Hard Gold"},{k:"Thickness",v:"1.6~6.5mm"}],
   },
   {
     titleZh: "BIB（老化测试板）",
