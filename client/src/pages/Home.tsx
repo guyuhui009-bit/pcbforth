@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 
 const HERO_IMG       = "https://d2xsxph8kpxj0f.cloudfront.net/310519663428091085/aYQJJtJvoY6MGcnCaXC5PY/hero-office-bQUscTaip2eHBcvkK4mirZ.webp";
+const PCB_BOARD_BG   = "/manus-storage/pcb-board-clean_3b15713b.jpg";
 const PCB_DESIGN_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663428091085/aYQJJtJvoY6MGcnCaXC5PY/pcb-design-work-bu97oMgGBiG2X2G5qGs3rS.webp";
 const SMT_IMG        = "https://d2xsxph8kpxj0f.cloudfront.net/310519663428091085/aYQJJtJvoY6MGcnCaXC5PY/smt-factory-3eJXyeWZ5KdrtTWt6mUtaD.webp";
 const PCB_CLOSEUP_IMG= "https://d2xsxph8kpxj0f.cloudfront.net/310519663428091085/aYQJJtJvoY6MGcnCaXC5PY/pcb-closeup-Cy9ukiz8EQ8effcUqLcBqY.webp";
@@ -415,12 +416,14 @@ export default function Home() {
 
           {/* ── HERO ── */}
           <section id="section-home" className="relative min-h-screen flex flex-col justify-center overflow-hidden"
-            style={{ background: C.sidebarBg }}>
-            {/* PCB background in hero only */}
-            <div className="absolute inset-0 opacity-30"><PcbBackground /></div>
+            style={{ background: C.sidebarBgDark }}>
+            {/* Real PCB board photo background */}
             <div className="absolute inset-0">
-              <img src={HERO_IMG} alt="hero" className="w-full h-full object-cover opacity-15" />
-              <div className="absolute inset-0" style={{ background: `linear-gradient(to right, ${C.sidebarBgDark}f5, ${C.sidebarBg}cc, ${C.sidebarBg}88)` }} />
+              <img src={PCB_BOARD_BG} alt="PCB background" className="w-full h-full object-cover" style={{ objectPosition: "center center" }} />
+              {/* Deep blue overlay — matches reference: dark navy tint over PCB board */}
+              <div className="absolute inset-0" style={{ background: "rgba(8, 18, 50, 0.68)" }} />
+              {/* Left gradient for text legibility */}
+              <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(5,15,45,0.75) 0%, rgba(5,15,45,0.45) 55%, rgba(5,15,45,0.10) 100%)" }} />
             </div>
 
             <div className="relative z-10 px-8 lg:px-16 py-20 max-w-4xl">
