@@ -597,6 +597,10 @@ const SIM_TABS = [
     ],
     specsZh: [{k:"仿真工具",v:"Ansys SIwave / HyperLynx"},{k:"最高速率",v:"224G PAM4"},{k:"频率范围",v:"DC ~ 100GHz"},{k:"报告交付",v:"含整改建议"}],
     specsEn: [{k:"Tools",v:"Ansys SIwave / HyperLynx"},{k:"Max Rate",v:"224G PAM4"},{k:"Freq. Range",v:"DC ~ 100GHz"},{k:"Report",v:"With fix recommendations"}],
+    images: [
+      { src: "/manus-storage/sim_highspeed_sparams_9aec77aa.png", captionZh: "S参数插入损耗/回波损耗分析", captionEn: "S-parameter Insertion/Return Loss Analysis" },
+      { src: "/manus-storage/sim_highspeed_eye_c336a20e.jpg", captionZh: "高速串行眼图仿真（PAM4）", captionEn: "High-Speed Eye Diagram Simulation (PAM4)" },
+    ],
   },
   {
     id: "ddr",
@@ -622,6 +626,9 @@ const SIM_TABS = [
     ],
     specsZh: [{k:"支持规格",v:"DDR3~DDR5 / LPDDR5"},{k:"最高速率",v:"DDR5-8400"},{k:"仿真工具",v:"HyperLynx / HSPICE"},{k:"报告",v:"时序裕量报告"}],
     specsEn: [{k:"Supported",v:"DDR3~DDR5 / LPDDR5"},{k:"Max Rate",v:"DDR5-8400"},{k:"Tools",v:"HyperLynx / HSPICE"},{k:"Report",v:"Timing margin report"}],
+    images: [
+      { src: "/manus-storage/sim_ddr_timing_1cf98a53.jpg", captionZh: "DDR3时序仿真分析（建立/保持时间）", captionEn: "DDR3 Timing Simulation (Setup/Hold Time Analysis)" },
+    ],
   },
   {
     id: "pi",
@@ -647,6 +654,10 @@ const SIM_TABS = [
     ],
     specsZh: [{k:"仿真工具",v:"Ansys SIwave / PowerSI"},{k:"分析类型",v:"IR-drop / PDN / 热分析"},{k:"频率范围",v:"DC ~ 10GHz"},{k:"报告",v:"含优化方案"}],
     specsEn: [{k:"Tools",v:"Ansys SIwave / PowerSI"},{k:"Analysis",v:"IR-drop / PDN / Thermal"},{k:"Freq. Range",v:"DC ~ 10GHz"},{k:"Report",v:"With optimization plan"}],
+    images: [
+      { src: "/manus-storage/sim_pi_irdrop_a69b6ed2.png", captionZh: "DC IR-Drop直流压降热力图仿真", captionEn: "DC IR-Drop Voltage Distribution Heatmap" },
+      { src: "/manus-storage/sim_pi_pdn_a24d46f8.png", captionZh: "PDN阻抗频率曲线分析", captionEn: "PDN Impedance vs. Frequency Curve" },
+    ],
   },
   {
     id: "emc",
@@ -672,6 +683,9 @@ const SIM_TABS = [
     ],
     specsZh: [{k:"仿真工具",v:"CST / ANSYS HFSS"},{k:"分析类型",v:"辐射/传导/ESD"},{k:"标准支持",v:"FCC / CE / CISPR"},{k:"报告",v:"含整改建议"}],
     specsEn: [{k:"Tools",v:"CST / ANSYS HFSS"},{k:"Analysis",v:"Radiated/Conducted/ESD"},{k:"Standards",v:"FCC / CE / CISPR"},{k:"Report",v:"With fix recommendations"}],
+    images: [
+      { src: "/manus-storage/sim_emc_cst_edecd766.png", captionZh: "PCB辐射发射仿真（CST工具）", captionEn: "PCB Radiated Emission Simulation (CST Tool)" },
+    ],
   },
   {
     id: "thermal",
@@ -697,6 +711,9 @@ const SIM_TABS = [
     ],
     specsZh: [{k:"仿真工具",v:"Ansys Icepak / FloTHERM"},{k:"分析类型",v:"稳态/瞬态热分析"},{k:"最高功率密度",v:"支持>100W/cm²"},{k:"报告",v:"温度云图+优化方案"}],
     specsEn: [{k:"Tools",v:"Ansys Icepak / FloTHERM"},{k:"Analysis",v:"Steady/Transient Thermal"},{k:"Max Power Density",v:">100W/cm² supported"},{k:"Report",v:"Temp. map + optimization"}],
+    images: [
+      { src: "/manus-storage/sim_thermal_temp_1f8c5f64.png", captionZh: "PCB温度场仿真（Icepak热力分布云图）", captionEn: "PCB Temperature Field Simulation (Icepak Thermal Map)" },
+    ],
   },
 ];
 
@@ -794,6 +811,35 @@ function SimulationSection({ lang }: { lang: string }) {
               </div>
             </motion.div>
           </div>
+
+          {/* Simulation screenshots gallery */}
+          {tab.images && tab.images.length > 0 && (
+            <div className="mt-6 mb-6">
+              <div className="text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: C.blue }}>
+                {lang === "zh" ? "仿真案例图示" : "Simulation Case Examples"}
+              </div>
+              <div className={`grid gap-4 ${tab.images.length === 1 ? "grid-cols-1" : "grid-cols-1 md:grid-cols-2"}`}>
+                {tab.images.map((img, i) => (
+                  <motion.div key={i}
+                    initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }} transition={{ duration: 0.4, delay: i * 0.1 }}
+                    className="rounded-xl overflow-hidden"
+                    style={{ border: `1px solid ${C.cardBorder}`, boxShadow: "0 2px 12px rgba(21,101,232,0.08)" }}>
+                    <div className="relative bg-gray-950 flex items-center justify-center" style={{ minHeight: "200px" }}>
+                      <img src={img.src} alt={lang === "zh" ? img.captionZh : img.captionEn}
+                        className="w-full h-auto object-contain max-h-64" />
+                    </div>
+                    <div className="px-4 py-2.5 flex items-center gap-2" style={{ background: C.blueLight }}>
+                      <span className="w-2 h-2 rounded-full shrink-0" style={{ background: C.blue }} />
+                      <span className="text-xs font-medium" style={{ color: C.heading }}>
+                        {lang === "zh" ? img.captionZh : img.captionEn}
+                      </span>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* Specs table */}
           <div className="rounded-xl overflow-hidden shadow-sm" style={{ border: `1px solid ${C.cardBorder}` }}>
