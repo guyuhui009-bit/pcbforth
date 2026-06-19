@@ -1235,11 +1235,26 @@ export default function Home() {
                   {lang === "zh" ? "合作伙伴" : "Partners"}
                 </div>
                 <div className="flex flex-wrap gap-3">
-                  {["Huawei","Lenovo","Foxconn","BYD","DJI","Hikvision","OPPO","Xiaomi"].map((p) => (
-                    <div key={p} className="px-4 py-2 rounded-lg text-xs font-mono font-semibold transition-all"
-                      style={{ background: C.cardBg, border: `1px solid ${C.cardBorder}`, color: C.heading,
-                        boxShadow: "0 1px 4px rgba(21,101,232,0.06)" }}>
-                      {p}
+                  {[
+                    { name: "Huawei",   src: "/manus-storage/huawei_30f714ec.png" },
+                    { name: "Lenovo",   src: "/manus-storage/lenovo_5784cdb1.png" },
+                    { name: "Foxconn",  src: "/manus-storage/foxconn_9bb47df3.png" },
+                    { name: "BYD",      src: "/manus-storage/byd_dd5faf8f.png" },
+                    { name: "DJI",      src: "/manus-storage/dji_5c01d17d.png" },
+                    { name: "Hikvision",src: "/manus-storage/hikvision_102ee657.png" },
+                    { name: "OPPO",     src: "/manus-storage/oppo_7c0d9508.png" },
+                    { name: "Xiaomi",   src: "/manus-storage/xiaomi_281634e8.png" },
+                  ].map((p) => (
+                    <div key={p.name}
+                      className="flex items-center justify-center rounded-xl transition-all duration-200 hover:-translate-y-0.5"
+                      style={{ background: C.cardBg, border: `1px solid ${C.cardBorder}`,
+                        boxShadow: "0 1px 6px rgba(21,101,232,0.07)",
+                        width: "108px", height: "52px", padding: "8px 12px" }}
+                      onMouseEnter={(e) => (e.currentTarget.style.boxShadow = "0 4px 16px rgba(21,101,232,0.15)")}
+                      onMouseLeave={(e) => (e.currentTarget.style.boxShadow = "0 1px 6px rgba(21,101,232,0.07)")}>
+                      <img src={p.src} alt={p.name}
+                        className="max-w-full max-h-full object-contain"
+                        style={{ filter: "grayscale(20%) contrast(1.05)" }} />
                     </div>
                   ))}
                 </div>
