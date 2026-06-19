@@ -81,13 +81,13 @@ const translations: Record<string, Record<Lang, string>> = {
   "simulation.cap6": { zh: "仿真报告输出", en: "Simulation report output" },
   // Fabrication
   "fabrication.title": { zh: "PCB制板工艺", en: "PCB Fabrication" },
-  "fabrication.desc": { zh: "PCBforth自有PCB制板工厂，拥有先进的生产设备和完善的质量管理体系，支持FR4、高频Rogers、铝基板、软硬结合板等多种材料，最小线宽/间距达到2mil，满足各类高端产品的制板需求。", en: "PCBforth has its own PCB fabrication factory with advanced production equipment and a comprehensive quality management system. We support FR4, high-frequency Rogers, aluminum substrates, flex-rigid boards, and more, with minimum line width/spacing of 2mil." },
-  "fabrication.cap1": { zh: "FR4/Rogers/铝基板", en: "FR4 / Rogers / Aluminum substrate" },
-  "fabrication.cap2": { zh: "最小线宽/间距2mil", en: "Min. trace/space 2mil" },
+  "fabrication.desc": { zh: "PCBforth与中国头部PCB制造工厂建立深度战略合作关系，合作工厂均通过ISO9001、UL、IPC Class 2/3等国际权威认证，具备完善的质量管理体系。支持FR4、高频Rogers、铝基板、软硬结合板等多种材料，最小线宽/间距达到2mil，可承接从样板到百万级量产的全规模订单，为全球客户提供高品质、高可靠性的PCB制板服务。", en: "PCBforth maintains deep strategic partnerships with China's leading PCB manufacturers — all certified under ISO9001, UL, and IPC Class 2/3 international standards with robust quality management systems. We support FR4, high-frequency Rogers, aluminum substrates, flex-rigid boards, and more, with minimum trace/space of 2mil. From prototypes to million-unit mass production, we deliver high-quality, high-reliability PCBs to global customers." },
+  "fabrication.cap1": { zh: "战略合作头部PCB工厂", en: "Strategic partner: top-tier PCB factories" },
+  "fabrication.cap2": { zh: "ISO9001 / UL / IPC Class 2/3认证", en: "ISO9001 / UL / IPC Class 2/3 certified" },
   "fabrication.cap3": { zh: "最多40层叠层设计", en: "Up to 40-layer stackup" },
   "fabrication.cap4": { zh: "盲埋孔/HDI工艺", en: "Blind/buried via & HDI" },
-  "fabrication.cap5": { zh: "阻抗控制±10%", en: "Impedance control ±10%" },
-  "fabrication.cap6": { zh: "IPC Class 2/3认证", en: "IPC Class 2/3 certified" },
+  "fabrication.cap5": { zh: "阻抗控制±10%，最小线宽2mil", en: "Impedance ±10%, min. trace 2mil" },
+  "fabrication.cap6": { zh: "样板至量产全规模承接", en: "Prototype to mass production" },
   // SMT
   "smt.title": { zh: "SMT一站式服务", en: "SMT One-Stop Service" },
   "smt.desc": { zh: "PCBforth提供完整的SMT贴片焊接一站式服务，从钢网制作、锡膏印刷、贴片、回流焊、AOI检测到ICT测试，全流程质量把控。支持0201及以上封装，BGA、QFN等复杂封装焊接，满足从样板到量产的全部需求。", en: "PCBforth provides complete SMT one-stop services — from stencil fabrication, solder paste printing, component placement, reflow soldering, AOI inspection to ICT testing. We support 0201 and above packages, BGA, QFN, and other complex package soldering for prototypes to mass production." },

@@ -14,9 +14,15 @@ import {
 
 const HERO_IMG       = "https://d2xsxph8kpxj0f.cloudfront.net/310519663428091085/aYQJJtJvoY6MGcnCaXC5PY/hero-office-bQUscTaip2eHBcvkK4mirZ.webp";
 const PCB_BOARD_BG   = "/manus-storage/pcb-board-clean_3b15713b.jpg";
-const PCB_DESIGN_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663428091085/aYQJJtJvoY6MGcnCaXC5PY/pcb-design-work-bu97oMgGBiG2X2G5qGs3rS.webp";
-const SMT_IMG        = "https://d2xsxph8kpxj0f.cloudfront.net/310519663428091085/aYQJJtJvoY6MGcnCaXC5PY/smt-factory-3eJXyeWZ5KdrtTWt6mUtaD.webp";
-const PCB_CLOSEUP_IMG= "https://d2xsxph8kpxj0f.cloudfront.net/310519663428091085/aYQJJtJvoY6MGcnCaXC5PY/pcb-closeup-Cy9ukiz8EQ8effcUqLcBqY.webp";
+// Service section images - each uniquely matched to its service
+const SCHEMATIC_IMG  = "https://d2xsxph8kpxj0f.cloudfront.net/310519663428091085/aYQJJtJvoY6MGcnCaXC5PY/schematic-design-G9CEQ7yFoefsZrWtoNncXg.webp";  // Engineer at Altium Designer dual-screen
+const PCB_LAYOUT_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663428091085/aYQJJtJvoY6MGcnCaXC5PY/pcb-layout-N9hdCW8QzoGwNd22zSp5bU.webp";    // Altium DDR4 PCB layout top view
+const BOM_IMG        = "https://d2xsxph8kpxj0f.cloudfront.net/310519663428091085/aYQJJtJvoY6MGcnCaXC5PY/bom-components-LaoBZpakZdo2p3ZXy3DTrv.webp"; // TI/NXP/Infineon components tray
+const FAB_IMG        = "https://d2xsxph8kpxj0f.cloudfront.net/310519663428091085/aYQJJtJvoY6MGcnCaXC5PY/pcb-factory-4UzgDFEB7gCWz5ixUWGk4c.webp";   // Chinese PCB factory ISO9001 clean room
+const SMT_IMG        = "https://d2xsxph8kpxj0f.cloudfront.net/310519663428091085/aYQJJtJvoY6MGcnCaXC5PY/smt-assembly-Mjb5aCUn5NTrqvWSVEHNAq.webp";  // ASM SIPLACE SMT line
+// Keep for backward compat / cases section
+const PCB_DESIGN_IMG = SCHEMATIC_IMG;
+const PCB_CLOSEUP_IMG= PCB_LAYOUT_IMG;
 
 // Inline SVG logo — zero network request
 function PcbLogo({ size = 36 }: { size?: number }) {
@@ -1175,21 +1181,21 @@ export default function Home() {
 
           {/* ── SERVICE SECTIONS ── */}
           <ServiceSection id="schematic" title={t("schematic.title")} desc={t("schematic.desc")}
-            img={PCB_DESIGN_IMG} imgLeft={false}
+            img={SCHEMATIC_IMG} imgLeft={false}
             caps={[t("schematic.cap1"),t("schematic.cap2"),t("schematic.cap3"),t("schematic.cap4"),t("schematic.cap5"),t("schematic.cap6")]}
             specs={lang==="zh"
               ? [{label:"支持EDA工具",value:"Altium / Cadence / KiCad"},{label:"原理图规模",value:"最大10,000+网络"},{label:"交付周期",value:"3~10工作日"},{label:"设计审查",value:"DRC + EMC规则检查"}]
               : [{label:"EDA Tools",value:"Altium / Cadence / KiCad"},{label:"Schematic Scale",value:"Up to 10,000+ nets"},{label:"Lead Time",value:"3~10 business days"},{label:"Design Review",value:"DRC + EMC rule check"}]} />
 
           <ServiceSection id="layout" title={t("layout.title")} desc={t("layout.desc")}
-            img={PCB_CLOSEUP_IMG} imgLeft={true}
+            img={PCB_LAYOUT_IMG} imgLeft={true}
             caps={[t("layout.cap1"),t("layout.cap2"),t("layout.cap3"),t("layout.cap4"),t("layout.cap5"),t("layout.cap6")]}
             specs={lang==="zh"
               ? [{label:"最大层数",value:"40层"},{label:"最小线宽/间距",value:"2mil / 2mil"},{label:"最小孔径",value:"0.1mm"},{label:"板厚范围",value:"0.4mm ~ 6.0mm"}]
               : [{label:"Max Layers",value:"40 layers"},{label:"Min Trace/Space",value:"2mil / 2mil"},{label:"Min Via Drill",value:"0.1mm"},{label:"Board Thickness",value:"0.4mm ~ 6.0mm"}]} />
 
           <ServiceSection id="bom" title={t("bom.title")} desc={t("bom.desc")}
-            img={SMT_IMG} imgLeft={false}
+            img={BOM_IMG} imgLeft={false}
             caps={[t("bom.cap1"),t("bom.cap2"),t("bom.cap3"),t("bom.cap4"),t("bom.cap5"),t("bom.cap6")]}
             specs={lang==="zh"
               ? [{label:"合作供应商",value:"TI / NXP / ST / Infineon等"},{label:"备货品类",value:"50,000+ SKU"},{label:"替代料响应",value:"24小时内"},{label:"价格优势",value:"较市场价低10~30%"}]
@@ -1198,7 +1204,7 @@ export default function Home() {
           <SimulationSection lang={lang} />
 
           <ServiceSection id="fabrication" title={t("fabrication.title")} desc={t("fabrication.desc")}
-            img={PCB_CLOSEUP_IMG} imgLeft={false}
+            img={FAB_IMG} imgLeft={false}
             caps={[t("fabrication.cap1"),t("fabrication.cap2"),t("fabrication.cap3"),t("fabrication.cap4"),t("fabrication.cap5"),t("fabrication.cap6")]}
             specs={lang==="zh"
               ? [{label:"板材类型",value:"FR4 / Rogers / 铝基 / 软硬结合"},{label:"最小线宽/间距",value:"2mil / 2mil"},{label:"表面处理",value:"ENIG / OSP / HASL / 沉銀"},{label:"阻抗控制",value:"±10%"}]
