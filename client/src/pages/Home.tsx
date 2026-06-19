@@ -17,7 +17,24 @@ const PCB_BOARD_BG   = "/manus-storage/pcb-board-clean_3b15713b.jpg";
 const PCB_DESIGN_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663428091085/aYQJJtJvoY6MGcnCaXC5PY/pcb-design-work-bu97oMgGBiG2X2G5qGs3rS.webp";
 const SMT_IMG        = "https://d2xsxph8kpxj0f.cloudfront.net/310519663428091085/aYQJJtJvoY6MGcnCaXC5PY/smt-factory-3eJXyeWZ5KdrtTWt6mUtaD.webp";
 const PCB_CLOSEUP_IMG= "https://d2xsxph8kpxj0f.cloudfront.net/310519663428091085/aYQJJtJvoY6MGcnCaXC5PY/pcb-closeup-Cy9ukiz8EQ8effcUqLcBqY.webp";
-const LOGO_IMG       = "https://d2xsxph8kpxj0f.cloudfront.net/310519663428091085/aYQJJtJvoY6MGcnCaXC5PY/pcbforth-logo-Z9kJow3e2Q7dj7GQKxa9kd.webp";
+
+// Inline SVG logo — zero network request
+function PcbLogo({ size = 36 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="36" height="36" rx="8" fill="#1565E8"/>
+      <rect x="6" y="6" width="10" height="10" rx="2" fill="none" stroke="#60A5FA" strokeWidth="1.5"/>
+      <rect x="20" y="6" width="10" height="10" rx="2" fill="none" stroke="#60A5FA" strokeWidth="1.5"/>
+      <rect x="6" y="20" width="10" height="10" rx="2" fill="none" stroke="#60A5FA" strokeWidth="1.5"/>
+      <rect x="20" y="20" width="10" height="10" rx="2" fill="#1565E8" stroke="#60A5FA" strokeWidth="1.5"/>
+      <line x1="11" y1="16" x2="11" y2="20" stroke="#93C5FD" strokeWidth="1.5"/>
+      <line x1="25" y1="16" x2="25" y2="20" stroke="#93C5FD" strokeWidth="1.5"/>
+      <line x1="16" y1="11" x2="20" y2="11" stroke="#93C5FD" strokeWidth="1.5"/>
+      <line x1="16" y1="25" x2="20" y2="25" stroke="#93C5FD" strokeWidth="1.5"/>
+      <circle cx="25" cy="25" r="3" fill="#60A5FA"/>
+    </svg>
+  );
+}
 
 // ── Design tokens (Blue-White theme) ──
 const C = {
@@ -285,6 +302,7 @@ function ProductCard({ p, i, hovered, setHovered, lang }: { p: typeof FAB_PRODUC
       onMouseLeave={() => setHovered(null)}>
       <div className="w-36 sm:w-44 shrink-0 relative overflow-hidden" style={{ background: "#0d1b2e", minHeight: "180px" }}>
         <img src={p.img} alt={lang === "zh" ? p.titleZh : p.titleEn}
+          loading="lazy" decoding="async"
           className="w-full h-full object-contain p-2 transition-transform duration-500 group-hover:scale-105" />
       </div>
       <div className="flex-1 p-4 flex flex-col justify-between">
@@ -461,7 +479,7 @@ function ServiceSection({ id, title, desc, img, caps, imgLeft, specs }: {
             <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }} transition={{ duration: 0.6 }}
               className="relative rounded-2xl overflow-hidden h-64 lg:h-auto min-h-[260px] shadow-lg">
-              <img src={img} alt={title} className="w-full h-full object-cover" />
+              <img src={img} alt={title} loading="lazy" decoding="async" className="w-full h-full object-cover" />
               <div className="absolute inset-0 rounded-2xl pointer-events-none" style={{ border: `1px solid ${C.cardBorder}` }} />
             </motion.div>
           )}
@@ -490,7 +508,7 @@ function ServiceSection({ id, title, desc, img, caps, imgLeft, specs }: {
             <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }} transition={{ duration: 0.6 }}
               className="relative rounded-2xl overflow-hidden h-64 lg:h-auto min-h-[260px] shadow-lg">
-              <img src={img} alt={title} className="w-full h-full object-cover" />
+              <img src={img} alt={title} loading="lazy" decoding="async" className="w-full h-full object-cover" />
               <div className="absolute inset-0 rounded-2xl pointer-events-none" style={{ border: `1px solid ${C.cardBorder}` }} />
             </motion.div>
           )}
@@ -509,7 +527,7 @@ function CaseCard({ title, desc, tags, img }: { title: string; desc: string; tag
       onMouseEnter={(e) => (e.currentTarget.style.boxShadow = "0 8px 30px rgba(21,101,232,0.15)")}
       onMouseLeave={(e) => (e.currentTarget.style.boxShadow = "0 2px 12px rgba(21,101,232,0.07)")}>
       <div className="relative h-44 overflow-hidden">
-        <img src={img} alt={title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+        <img src={img} alt={title} loading="lazy" decoding="async" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
         <div className="absolute bottom-3 left-4 flex flex-wrap gap-1.5">
           {tags.map((tag) => (
@@ -827,6 +845,7 @@ function SimulationSection({ lang }: { lang: string }) {
                     style={{ border: `1px solid ${C.cardBorder}`, boxShadow: "0 2px 12px rgba(21,101,232,0.08)" }}>
                     <div className="relative bg-gray-950 flex items-center justify-center" style={{ minHeight: "200px" }}>
                       <img src={img.src} alt={lang === "zh" ? img.captionZh : img.captionEn}
+                        loading="lazy" decoding="async"
                         className="w-full h-auto object-contain max-h-64" />
                     </div>
                     <div className="px-4 py-2.5 flex items-center gap-2" style={{ background: C.blueLight }}>
@@ -943,7 +962,7 @@ export default function Home() {
 
         {/* Logo */}
         <div className="flex items-center gap-3 px-5 py-5" style={{ borderBottom: `1px solid ${C.sidebarBorder}`, background: C.sidebarBgDark }}>
-          <img src={LOGO_IMG} alt="PCBforth" className="w-9 h-9 object-contain" />
+          <PcbLogo size={36} />
           <div>
             <div className="font-bold text-base tracking-widest text-white" style={{ fontFamily: "'Orbitron', monospace" }}>PCBforth</div>
             <div className="text-[10px] tracking-wider" style={{ color: "#7EB3F5" }}>PCB SOLUTIONS</div>
@@ -1009,7 +1028,7 @@ export default function Home() {
             <Menu size={22} />
           </button>
           <div className="flex items-center gap-2">
-            <img src={LOGO_IMG} alt="PCBforth" className="w-7 h-7" />
+            <PcbLogo size={28} />
             <span className="font-bold tracking-widest text-sm text-white" style={{ fontFamily: "'Orbitron', monospace" }}>PCBforth</span>
           </div>
           <div className="flex gap-1">
@@ -1027,7 +1046,7 @@ export default function Home() {
             style={{ background: C.sidebarBgDark }}>
             {/* Real PCB board photo background */}
             <div className="absolute inset-0">
-              <img src={PCB_BOARD_BG} alt="PCB background" className="w-full h-full object-cover" style={{ objectPosition: "center center" }} />
+              <img src={PCB_BOARD_BG} alt="PCB background" fetchPriority="high" decoding="async" className="w-full h-full object-cover" style={{ objectPosition: "center center" }} />
               {/* Deep blue overlay — matches reference: dark navy tint over PCB board */}
               <div className="absolute inset-0" style={{ background: "rgba(8, 18, 50, 0.68)" }} />
               {/* Left gradient for text legibility */}
@@ -1147,7 +1166,7 @@ export default function Home() {
                 </motion.div>
                 <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
                   className="relative rounded-2xl overflow-hidden h-72 lg:h-auto min-h-[280px] shadow-lg">
-                  <img src={PCB_DESIGN_IMG} alt="PCB Design" className="w-full h-full object-cover" />
+                  <img src={PCB_DESIGN_IMG} alt="PCB Design" loading="lazy" decoding="async" className="w-full h-full object-cover" />
                   <div className="absolute inset-0 rounded-2xl pointer-events-none" style={{ border: `1px solid ${C.cardBorder}` }} />
                 </motion.div>
               </div>
@@ -1170,7 +1189,7 @@ export default function Home() {
               : [{label:"Max Layers",value:"40 layers"},{label:"Min Trace/Space",value:"2mil / 2mil"},{label:"Min Via Drill",value:"0.1mm"},{label:"Board Thickness",value:"0.4mm ~ 6.0mm"}]} />
 
           <ServiceSection id="bom" title={t("bom.title")} desc={t("bom.desc")}
-            img="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80" imgLeft={false}
+            img={SMT_IMG} imgLeft={false}
             caps={[t("bom.cap1"),t("bom.cap2"),t("bom.cap3"),t("bom.cap4"),t("bom.cap5"),t("bom.cap6")]}
             specs={lang==="zh"
               ? [{label:"合作供应商",value:"TI / NXP / ST / Infineon等"},{label:"备货品类",value:"50,000+ SKU"},{label:"替代料响应",value:"24小时内"},{label:"价格优势",value:"较市场价低10~30%"}]
@@ -1236,25 +1255,25 @@ export default function Home() {
                 </div>
                 <div className="flex flex-wrap gap-3">
                   {[
-                    { name: "Huawei",   src: "/manus-storage/huawei_30f714ec.png" },
-                    { name: "Lenovo",   src: "/manus-storage/lenovo_5784cdb1.png" },
-                    { name: "Foxconn",  src: "/manus-storage/foxconn_9bb47df3.png" },
-                    { name: "BYD",      src: "/manus-storage/byd_dd5faf8f.png" },
-                    { name: "DJI",      src: "/manus-storage/dji_5c01d17d.png" },
-                    { name: "Hikvision",src: "/manus-storage/hikvision_102ee657.png" },
-                    { name: "OPPO",     src: "/manus-storage/oppo_7c0d9508.png" },
-                    { name: "Xiaomi",   src: "/manus-storage/xiaomi_281634e8.png" },
+                    { name: "Huawei",    color: "#CF0A2C", bg: "#fff5f5" },
+                    { name: "Lenovo",    color: "#E2231A", bg: "#fff5f5" },
+                    { name: "Foxconn",   color: "#003087", bg: "#f0f4ff" },
+                    { name: "BYD",       color: "#003087", bg: "#f0f4ff" },
+                    { name: "DJI",       color: "#1A1A1A", bg: "#f8f8f8" },
+                    { name: "Hikvision", color: "#E30613", bg: "#fff5f5" },
+                    { name: "OPPO",      color: "#1D8348", bg: "#f0fff4" },
+                    { name: "Xiaomi",    color: "#FF6900", bg: "#fff8f0" },
                   ].map((p) => (
                     <div key={p.name}
-                      className="flex items-center justify-center rounded-xl transition-all duration-200 hover:-translate-y-0.5"
-                      style={{ background: C.cardBg, border: `1px solid ${C.cardBorder}`,
+                      className="flex items-center justify-center rounded-xl transition-all duration-200 hover:-translate-y-0.5 select-none"
+                      style={{ background: p.bg, border: `1px solid ${C.cardBorder}`,
                         boxShadow: "0 1px 6px rgba(21,101,232,0.07)",
                         width: "108px", height: "52px", padding: "8px 12px" }}
                       onMouseEnter={(e) => (e.currentTarget.style.boxShadow = "0 4px 16px rgba(21,101,232,0.15)")}
                       onMouseLeave={(e) => (e.currentTarget.style.boxShadow = "0 1px 6px rgba(21,101,232,0.07)")}>
-                      <img src={p.src} alt={p.name}
-                        className="max-w-full max-h-full object-contain"
-                        style={{ filter: "grayscale(20%) contrast(1.05)" }} />
+                      <span style={{ color: p.color, fontWeight: 700, fontSize: "13px", letterSpacing: "0.02em", fontFamily: "Arial, sans-serif" }}>
+                        {p.name}
+                      </span>
                     </div>
                   ))}
                 </div>
@@ -1318,7 +1337,7 @@ export default function Home() {
               {/* Top row */}
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 mb-6">
                 <div className="flex items-center gap-3">
-                  <img src={LOGO_IMG} alt="PCBforth" className="w-8 h-8" />
+                  <PcbLogo size={32} />
                   <div>
                     <div className="font-bold text-sm tracking-widest text-white" style={{ fontFamily: "'Orbitron', monospace" }}>PCBforth</div>
                     <div className="text-[10px] mt-0.5" style={{ color: "#7EB3F5" }}>{t("footer.slogan")}</div>
