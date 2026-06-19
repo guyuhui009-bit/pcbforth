@@ -571,6 +571,252 @@ function ContactForm({ lang, t }: { lang: string; t: (k: string) => string }) {
   );
 }
 
+// ── Simulation Detail Section ──
+const SIM_TABS = [
+  {
+    id: "highspeed",
+    labelZh: "高速串行",
+    labelEn: "High-Speed Serial",
+    targetZh: "PCIE5、SATA、SAS、SFP28、10GBase-KR、100GBase-KR4、56G/112G/224G PAM4等高速串行信号",
+    targetEn: "PCIE5, SATA, SAS, SFP28, 10GBase-KR, 100GBase-KR4, 56G/112G/224G PAM4 high-speed serial signals",
+    painZh: "阻抗失配、损耗过大、ISI严重",
+    painEn: "Impedance mismatch, excessive loss, severe ISI",
+    stepsZh: ["层叠设计","板材选型","S参数无源通道评估","Hspice/AMI有源仿真"],
+    stepsEn: ["Stackup Design","Material Selection","S-param Passive Channel","Hspice/AMI Active Sim"],
+    stepDescZh: [
+      "根据实际情况规划层叠，综合考虑半固化片/芯板型号、厚度、含胶量等，提供阻抗控制和布线层规划建议。",
+      "根据系统信号种类及通道情况，合理选择板材（FR4/Rogers/Megtron），保证信号质量，降低生产成本。",
+      "通过S参数判断通道是否符合协议标准，对插入损耗、回波损耗等细节进行分析，保证系统性能。",
+      "加上特定速率码型进行眼图仿真，通过眼高眼宽标准衡量信号质量，提供整改建议。",
+    ],
+    stepDescEn: [
+      "Plan the stackup based on actual requirements, considering prepreg/core type, thickness, resin content, and flow rate. Provide impedance control and routing layer recommendations.",
+      "Select appropriate materials (FR4/Rogers/Megtron) based on signal type and channel conditions to ensure signal quality and reduce production cost.",
+      "Evaluate channel compliance via S-parameters — analyze insertion loss, return loss, and other details to ensure system performance.",
+      "Run eye diagram simulation with specific rate patterns; evaluate signal quality by eye height/width against protocol masks and provide fix recommendations.",
+    ],
+    specsZh: [{k:"仿真工具",v:"Ansys SIwave / HyperLynx"},{k:"最高速率",v:"224G PAM4"},{k:"频率范围",v:"DC ~ 100GHz"},{k:"报告交付",v:"含整改建议"}],
+    specsEn: [{k:"Tools",v:"Ansys SIwave / HyperLynx"},{k:"Max Rate",v:"224G PAM4"},{k:"Freq. Range",v:"DC ~ 100GHz"},{k:"Report",v:"With fix recommendations"}],
+  },
+  {
+    id: "ddr",
+    labelZh: "DDRx 仿真",
+    labelEn: "DDRx Simulation",
+    targetZh: "DDR3/DDR4/DDR5/LPDDR4/LPDDR5等内存接口信号",
+    targetEn: "DDR3/DDR4/DDR5/LPDDR4/LPDDR5 memory interface signals",
+    painZh: "拓扑不合理、时序裕量不足、串扰过大",
+    painEn: "Improper topology, insufficient timing margin, excessive crosstalk",
+    stepsZh: ["拓扑规划","时序预算","信号完整性仿真","串扰分析"],
+    stepsEn: ["Topology Planning","Timing Budget","SI Simulation","Crosstalk Analysis"],
+    stepDescZh: [
+      "根据DDR规格和板卡设计，规划T型/菊花链/Fly-by等拓扑，确保信号完整性。",
+      "基于时钟频率和信号速率，计算建立时间/保持时间裕量，指导布线长度和等长设计。",
+      "使用IBIS/SPICE模型进行眼图仿真，验证信号质量满足JEDEC规范要求。",
+      "分析数据总线、地址/命令线之间的串扰，提供间距和屏蔽层建议，降低误码率。",
+    ],
+    stepDescEn: [
+      "Plan T-topology/daisy-chain/fly-by topology based on DDR spec and board design to ensure signal integrity.",
+      "Calculate setup/hold timing margins based on clock frequency and signal rate; guide routing length and length-matching design.",
+      "Use IBIS/SPICE models for eye diagram simulation to verify signal quality meets JEDEC specifications.",
+      "Analyze crosstalk between data bus and address/command lines; provide spacing and shielding recommendations to reduce BER.",
+    ],
+    specsZh: [{k:"支持规格",v:"DDR3~DDR5 / LPDDR5"},{k:"最高速率",v:"DDR5-8400"},{k:"仿真工具",v:"HyperLynx / HSPICE"},{k:"报告",v:"时序裕量报告"}],
+    specsEn: [{k:"Supported",v:"DDR3~DDR5 / LPDDR5"},{k:"Max Rate",v:"DDR5-8400"},{k:"Tools",v:"HyperLynx / HSPICE"},{k:"Report",v:"Timing margin report"}],
+  },
+  {
+    id: "pi",
+    labelZh: "PI 仿真",
+    labelEn: "PI Simulation",
+    targetZh: "电源完整性（PI）分析，适用于高速数字系统、服务器、通信设备等",
+    targetEn: "Power Integrity (PI) analysis for high-speed digital systems, servers, and telecom equipment",
+    painZh: "电源噪声过大、IR-drop超标、平面谐振",
+    painEn: "Excessive power noise, IR-drop violation, plane resonance",
+    stepsZh: ["IR-drop仿真","PDN阻抗分析","平面谐振分析","电热协同仿真"],
+    stepsEn: ["IR-drop Sim","PDN Impedance","Plane Resonance","Electrothermal Co-sim"],
+    stepDescZh: [
+      "确定电源压降是否符合要求，仿真分析电流密度和载流能力，定位最佳反馈点位置。",
+      "分析电源供电网络阻抗，评估电源噪声与纹波，优化去耦电容方案，提供电容设计指导。",
+      "基于EMC要求进行平面谐振仿真分析，评估谐振风险，提供PCB设计优化建议。",
+      "协同分析静态焦耳热、导体电导率及器件功耗，仿真单板温度分布，指导PCB散热设计。",
+    ],
+    stepDescEn: [
+      "Verify power voltage drop compliance, analyze current density and current-carrying capacity, and locate optimal feedback point.",
+      "Analyze PDN impedance, evaluate power noise and ripple, optimize decoupling capacitor placement, and provide capacitor design guidance.",
+      "Perform plane resonance simulation based on EMC requirements, assess resonance risk, and provide PCB design optimization recommendations.",
+      "Co-analyze static Joule heat, conductor conductivity, and device power dissipation; simulate board temperature distribution to guide thermal design.",
+    ],
+    specsZh: [{k:"仿真工具",v:"Ansys SIwave / PowerSI"},{k:"分析类型",v:"IR-drop / PDN / 热分析"},{k:"频率范围",v:"DC ~ 10GHz"},{k:"报告",v:"含优化方案"}],
+    specsEn: [{k:"Tools",v:"Ansys SIwave / PowerSI"},{k:"Analysis",v:"IR-drop / PDN / Thermal"},{k:"Freq. Range",v:"DC ~ 10GHz"},{k:"Report",v:"With optimization plan"}],
+  },
+  {
+    id: "emc",
+    labelZh: "EMC 仿真",
+    labelEn: "EMC Simulation",
+    targetZh: "电磁兼容（EMC）分析，包括辐射发射、传导干扰、ESD防护等",
+    targetEn: "EMC analysis including radiated emission, conducted interference, and ESD protection",
+    painZh: "辐射超标、传导干扰、ESD失效",
+    painEn: "Radiated emission excess, conducted interference, ESD failure",
+    stepsZh: ["辐射发射分析","传导干扰分析","ESD防护设计","整改验证"],
+    stepsEn: ["Radiated Emission","Conducted Interference","ESD Protection","Fix Verification"],
+    stepDescZh: [
+      "仿真PCB的辐射发射特性，识别主要辐射源，提供布线和屏蔽优化建议，确保满足FCC/CE标准。",
+      "分析电源线和信号线上的传导干扰，优化滤波器设计和PCB布局，降低传导噪声。",
+      "评估ESD保护器件选型和布局，优化ESD放电路径，保护关键器件免受静电损伤。",
+      "对整改后的设计进行仿真验证，确认EMC性能满足目标标准，出具整改报告。",
+    ],
+    stepDescEn: [
+      "Simulate PCB radiated emission characteristics, identify major radiation sources, and provide routing and shielding recommendations to meet FCC/CE standards.",
+      "Analyze conducted interference on power and signal lines, optimize filter design and PCB layout to reduce conducted noise.",
+      "Evaluate ESD protection device selection and placement, optimize ESD discharge paths to protect critical components from electrostatic damage.",
+      "Verify the revised design through simulation to confirm EMC performance meets target standards and issue a fix report.",
+    ],
+    specsZh: [{k:"仿真工具",v:"CST / ANSYS HFSS"},{k:"分析类型",v:"辐射/传导/ESD"},{k:"标准支持",v:"FCC / CE / CISPR"},{k:"报告",v:"含整改建议"}],
+    specsEn: [{k:"Tools",v:"CST / ANSYS HFSS"},{k:"Analysis",v:"Radiated/Conducted/ESD"},{k:"Standards",v:"FCC / CE / CISPR"},{k:"Report",v:"With fix recommendations"}],
+  },
+  {
+    id: "thermal",
+    labelZh: "热仿真",
+    labelEn: "Thermal Simulation",
+    targetZh: "PCB及系统级热分析，适用于高功率密度设计、散热优化",
+    targetEn: "PCB and system-level thermal analysis for high power density designs and thermal optimization",
+    painZh: "热点温度过高、散热路径不合理、器件寿命缩短",
+    painEn: "Hot spot overtemperature, poor thermal path, reduced component lifetime",
+    stepsZh: ["热源建模","散热路径分析","温度场仿真","散热优化"],
+    stepsEn: ["Heat Source Modeling","Thermal Path Analysis","Temperature Field Sim","Thermal Optimization"],
+    stepDescZh: [
+      "建立器件功耗模型，包括静态功耗、动态功耗及结温-功耗特性，为热仿真提供准确输入。",
+      "分析PCB铜层、过孔、散热焊盘等散热路径，评估热阻分布，识别散热瓶颈。",
+      "使用CFD工具进行稳态/瞬态温度场仿真，输出温度云图和热流密度分布。",
+      "基于仿真结果优化散热器选型、铜箔面积、过孔密度和热界面材料，确保器件在安全温度范围内工作。",
+    ],
+    stepDescEn: [
+      "Build device power dissipation models including static/dynamic power and junction temperature characteristics for accurate thermal simulation input.",
+      "Analyze thermal paths through PCB copper layers, vias, and thermal pads; evaluate thermal resistance distribution and identify thermal bottlenecks.",
+      "Use CFD tools for steady-state/transient temperature field simulation; output temperature contour maps and heat flux density distribution.",
+      "Optimize heatsink selection, copper area, via density, and thermal interface materials based on simulation results to ensure components operate within safe temperature ranges.",
+    ],
+    specsZh: [{k:"仿真工具",v:"Ansys Icepak / FloTHERM"},{k:"分析类型",v:"稳态/瞬态热分析"},{k:"最高功率密度",v:"支持>100W/cm²"},{k:"报告",v:"温度云图+优化方案"}],
+    specsEn: [{k:"Tools",v:"Ansys Icepak / FloTHERM"},{k:"Analysis",v:"Steady/Transient Thermal"},{k:"Max Power Density",v:">100W/cm² supported"},{k:"Report",v:"Temp. map + optimization"}],
+  },
+];
+
+function SimulationSection({ lang }: { lang: string }) {
+  const [activeTab, setActiveTab] = useState(0);
+  const [activeStep, setActiveStep] = useState(0);
+  const tab = SIM_TABS[activeTab];
+  return (
+    <section id="section-simulation" className="relative py-16 px-8 lg:px-16" style={{ background: C.sectionAlt }}>
+      <div className="absolute top-0 left-8 right-8 h-px" style={{ background: `linear-gradient(to right, transparent, ${C.divider}, transparent)` }} />
+      <div className="max-w-5xl">
+        <SectionHeader
+          title={lang === "zh" ? "仿真分析" : "Simulation Analysis"}
+          subtitle={lang === "zh"
+            ? "PCBforth提供全面的PCB仿真分析服务，覆盖信号完整性、电源完整性、电磁兼容和热分析，帮助您在制板前发现并解决设计问题。"
+            : "PCBforth provides comprehensive PCB simulation services covering SI, PI, EMC, and thermal analysis — identify and resolve design issues before fabrication."}
+        />
+
+        {/* Tab navigation */}
+        <div className="flex flex-wrap gap-1 mt-8 mb-6 p-1 rounded-xl" style={{ background: C.cardBg, border: `1px solid ${C.cardBorder}` }}>
+          {SIM_TABS.map((t, i) => (
+            <button key={t.id} onClick={() => { setActiveTab(i); setActiveStep(0); }}
+              className="px-4 py-2 rounded-lg text-xs font-semibold transition-all duration-200"
+              style={{
+                background: activeTab === i ? C.blue : "transparent",
+                color: activeTab === i ? "#FFFFFF" : C.muted,
+              }}>
+              {lang === "zh" ? t.labelZh : t.labelEn}
+            </button>
+          ))}
+        </div>
+
+        {/* Tab content */}
+        <motion.div key={activeTab} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }}>
+          {/* Overview row */}
+          <div className="grid lg:grid-cols-2 gap-5 mb-6">
+            <div className="p-5 rounded-xl" style={{ background: C.cardBg, border: `1px solid ${C.cardBorder}` }}>
+              <div className="text-xs font-semibold uppercase tracking-widest mb-2" style={{ color: C.blue }}>
+                {lang === "zh" ? "仿真对象" : "Simulation Targets"}
+              </div>
+              <p className="text-sm leading-relaxed" style={{ color: C.body }}>
+                {lang === "zh" ? tab.targetZh : tab.targetEn}
+              </p>
+            </div>
+            <div className="p-5 rounded-xl" style={{ background: "#FFF7ED", border: "1px solid #FED7AA" }}>
+              <div className="text-xs font-semibold uppercase tracking-widest mb-2" style={{ color: "#EA580C" }}>
+                {lang === "zh" ? "仿真难点" : "Key Challenges"}
+              </div>
+              <p className="text-sm leading-relaxed" style={{ color: "#9A3412" }}>
+                {lang === "zh" ? tab.painZh : tab.painEn}
+              </p>
+            </div>
+          </div>
+
+          {/* Flow steps */}
+          <div className="mb-6">
+            <div className="text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: C.blue }}>
+              {lang === "zh" ? "仿真流程" : "Simulation Workflow"}
+            </div>
+            {/* Step tabs */}
+            <div className="flex flex-wrap gap-2 mb-4">
+              {(lang === "zh" ? tab.stepsZh : tab.stepsEn).map((step, i) => (
+                <button key={i} onClick={() => setActiveStep(i)}
+                  className="flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-medium transition-all duration-200"
+                  style={{
+                    background: activeStep === i ? C.blue : C.blueLight,
+                    color: activeStep === i ? "#FFFFFF" : C.body,
+                    border: `1px solid ${activeStep === i ? C.blue : C.cardBorder}`,
+                  }}>
+                  <span className="w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold"
+                    style={{ background: activeStep === i ? "rgba(255,255,255,0.25)" : C.blue, color: activeStep === i ? "#fff" : "#fff" }}>
+                    {i + 1}
+                  </span>
+                  {step}
+                </button>
+              ))}
+            </div>
+            {/* Step detail */}
+            <motion.div key={`${activeTab}-${activeStep}`}
+              initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.25 }}
+              className="p-5 rounded-xl" style={{ background: C.cardBg, border: `1px solid ${C.blue}33` }}>
+              <div className="flex items-start gap-3">
+                <div className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold text-white shrink-0 mt-0.5"
+                  style={{ background: C.blue }}>
+                  {activeStep + 1}
+                </div>
+                <div>
+                  <div className="font-semibold text-sm mb-1.5" style={{ color: C.heading }}>
+                    {lang === "zh" ? tab.stepsZh[activeStep] : tab.stepsEn[activeStep]}
+                  </div>
+                  <p className="text-sm leading-relaxed" style={{ color: C.body }}>
+                    {lang === "zh" ? tab.stepDescZh[activeStep] : tab.stepDescEn[activeStep]}
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Specs table */}
+          <div className="rounded-xl overflow-hidden shadow-sm" style={{ border: `1px solid ${C.cardBorder}` }}>
+            <div className="px-4 py-2 text-xs font-semibold uppercase tracking-wider" style={{ background: C.blueLight, color: C.blue }}>
+              {lang === "zh" ? "技术规格" : "Technical Specifications"}
+            </div>
+            <table className="w-full text-xs">
+              <tbody>
+                {(lang === "zh" ? tab.specsZh : tab.specsEn).map((s, i) => (
+                  <tr key={s.k} style={{ background: i % 2 === 0 ? C.cardBg : C.blueLight }}>
+                    <td className="px-4 py-2.5 font-semibold w-1/3" style={{ color: C.blue }}>{s.k}</td>
+                    <td className="px-4 py-2.5 font-mono" style={{ color: C.heading }}>{s.v}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
 function FlowStep({ num, label }: { num: string; label: string }) {
   return (
     <div className="flex flex-col items-center gap-2">
@@ -884,12 +1130,7 @@ export default function Home() {
               ? [{label:"合作供应商",value:"TI / NXP / ST / Infineon等"},{label:"备货品类",value:"50,000+ SKU"},{label:"替代料响应",value:"24小时内"},{label:"价格优势",value:"较市场价低10~30%"}]
               : [{label:"Key Suppliers",value:"TI / NXP / ST / Infineon"},{label:"Stock SKUs",value:"50,000+"},{label:"Alt. Response",value:"Within 24 hours"},{label:"Price Advantage",value:"10~30% below market"}]} />
 
-          <ServiceSection id="simulation" title={t("simulation.title")} desc={t("simulation.desc")}
-            img="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80" imgLeft={true}
-            caps={[t("simulation.cap1"),t("simulation.cap2"),t("simulation.cap3"),t("simulation.cap4"),t("simulation.cap5"),t("simulation.cap6")]}
-            specs={lang==="zh"
-              ? [{label:"仿真工具",value:"Ansys SIwave / HyperLynx / CST"},{label:"信号速率",value:"支持56Gbps PAM4"},{label:"频率范围",value:"DC ~ 100GHz"},{label:"报告交付",value:"含整改建议"}]
-              : [{label:"Sim. Tools",value:"Ansys SIwave / HyperLynx / CST"},{label:"Signal Rate",value:"Up to 56Gbps PAM4"},{label:"Freq. Range",value:"DC ~ 100GHz"},{label:"Report",value:"With fix recommendations"}]} />
+          <SimulationSection lang={lang} />
 
           <ServiceSection id="fabrication" title={t("fabrication.title")} desc={t("fabrication.desc")}
             img={PCB_CLOSEUP_IMG} imgLeft={false}
