@@ -1010,8 +1010,17 @@ export default function Home() {
           </div>
         </nav>
 
-        {/* Bottom contact */}
-        <div className="px-5 py-4 space-y-1.5" style={{ borderTop: `1px solid ${C.sidebarBorder}`, background: C.sidebarBgDark }}>
+        {/* Bottom contact + Quote CTA */}
+        <div className="px-5 py-4 space-y-2.5" style={{ borderTop: `1px solid ${C.sidebarBorder}`, background: C.sidebarBgDark }}>
+          {/* Quote CTA button */}
+          <a href="/quote"
+            className="flex items-center justify-center gap-2 w-full py-2.5 rounded-lg text-xs font-bold text-white transition-all duration-200 active:scale-95"
+            style={{ background: C.blue }}
+            onMouseEnter={(e) => (e.currentTarget.style.background = C.blueDark)}
+            onMouseLeave={(e) => (e.currentTarget.style.background = C.blue)}>
+            <ArrowRight size={12} />
+            {lang === "zh" ? "立即获取报价" : "Get a Quote"}
+          </a>
           <div className="flex items-center gap-2 text-xs" style={{ color: "#7EB3F5" }}>
             <Phone size={11} /> +86 400-888-8888
           </div>
@@ -1072,13 +1081,13 @@ export default function Home() {
                 </h1>
                 <p className="text-xl text-white/80 mb-10 leading-relaxed max-w-xl">{t("hero.subtitle")}</p>
                 <div className="flex flex-wrap gap-4 mb-14">
-                  <button onClick={() => scrollToSection("contact")}
+                  <a href="/quote"
                     className="flex items-center gap-2 px-7 py-3.5 rounded-lg font-semibold text-white transition-all duration-200 active:scale-95 text-sm shadow-lg"
                     style={{ background: C.blue }}
                     onMouseEnter={(e) => (e.currentTarget.style.background = C.blueDark)}
                     onMouseLeave={(e) => (e.currentTarget.style.background = C.blue)}>
                     {t("hero.cta1")} <ArrowRight size={15} />
-                  </button>
+                  </a>
                   <button onClick={() => scrollToSection("cases")}
                     className="flex items-center gap-2 px-7 py-3.5 rounded-lg font-semibold transition-all duration-200 active:scale-95 text-sm"
                     style={{ border: "1px solid rgba(255,255,255,0.4)", color: "#FFFFFF", background: "rgba(255,255,255,0.08)" }}
