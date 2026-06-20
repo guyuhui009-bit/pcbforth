@@ -1262,11 +1262,6 @@ export default function Home() {
                 <h2 className="text-2xl lg:text-3xl font-bold" style={{ color: C.heading, fontFamily: "'Orbitron', monospace" }}>
                   {lang === "zh" ? "我什么时候找 PCBforth?" : "We Can Help If You Need"}
                 </h2>
-                <p className="mt-3 text-sm max-w-xl mx-auto" style={{ color: C.muted }}>
-                  {lang === "zh"
-                    ? "欧美客户最关心的七个场景，我们都能帮到你"
-                    : "Seven common engineering challenges our clients bring to us"}
-                </p>
               </div>
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                 {[

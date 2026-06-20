@@ -261,11 +261,6 @@ export default function DesignServices() {
             <h2 className="text-2xl lg:text-3xl font-bold" style={{ color: C.heading, fontFamily: "'Orbitron', monospace" }}>
               {lang === "zh" ? "为什么选择 PCBforth 设计服务？" : "Why PCBforth Design Services?"}
             </h2>
-            <p className="mt-3 text-sm max-w-2xl mx-auto" style={{ color: C.muted }}>
-              {lang === "zh"
-                ? "PCBWay 和 JLCPCB 提供优质的 PCB 制造服务，但它们不提供工程设计支持。PCBforth 填补了这一空白。"
-                : "PCBWay and JLCPCB offer excellent PCB manufacturing, but they don't provide engineering design support. PCBforth fills that gap."}
-            </p>
           </div>
           <div className="grid sm:grid-cols-2 gap-5">
             {differentiators.map((d, i) => (
