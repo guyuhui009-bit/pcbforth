@@ -80,16 +80,16 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
-  { id: "home",        icon: <Zap size={15} />,      labelZh: "首页",       labelEn: "Home" },
-  { id: "about",       icon: <Users size={15} />,    labelZh: "关于我们",   labelEn: "About Us" },
-  { id: "schematic",   icon: <Activity size={15} />, labelZh: "PCB原理图",  labelEn: "Schematic",    group: "services" },
-  { id: "layout",      icon: <Layers size={15} />,   labelZh: "PCB Layout", labelEn: "PCB Layout",   group: "services" },
-  { id: "bom",         icon: <Package size={15} />,  labelZh: "元器件选型", labelEn: "BOM & Parts",  group: "services" },
-  { id: "simulation",  icon: <Cpu size={15} />,      labelZh: "仿真分析",   labelEn: "Simulation",   group: "services" },
-  { id: "fabrication", icon: <Wrench size={15} />,   labelZh: "制板工艺",   labelEn: "Fabrication",  group: "services" },
-  { id: "smt",         icon: <Factory size={15} />,  labelZh: "SMT一站式",  labelEn: "SMT One-Stop", group: "services" },
-  { id: "cases",       icon: <Award size={15} />,    labelZh: "合作案例",   labelEn: "Cases" },
-  { id: "contact",     icon: <Phone size={15} />,    labelZh: "联系我们",   labelEn: "Contact" },
+  { id: "home",        icon: <Zap size={15} />,      labelZh: "首页",             labelEn: "Home" },
+  { id: "about",       icon: <Users size={15} />,    labelZh: "关于我们",       labelEn: "About Us" },
+  { id: "schematic",   icon: <Activity size={15} />, labelZh: "原理图设计",     labelEn: "Schematic Design",    group: "services" },
+  { id: "layout",      icon: <Layers size={15} />,   labelZh: "PCB Layout",     labelEn: "PCB Layout",          group: "services" },
+  { id: "bom",         icon: <Package size={15} />,  labelZh: "元器件工程",     labelEn: "Component Engineering", group: "services" },
+  { id: "simulation",  icon: <Cpu size={15} />,      labelZh: "仿真验证",       labelEn: "Simulation & Verification", group: "services" },
+  { id: "fabrication", icon: <Wrench size={15} />,   labelZh: "PCB制造",       labelEn: "PCB Fabrication",     group: "services" },
+  { id: "smt",         icon: <Factory size={15} />,  labelZh: "SMT组装",       labelEn: "SMT Assembly",        group: "services" },
+  { id: "cases",       icon: <Award size={15} />,    labelZh: "合作案例",       labelEn: "Cases" },
+  { id: "contact",     icon: <Phone size={15} />,    labelZh: "联系我们",       labelEn: "Contact" },
 ];
 
 // ── Count-up animation hook ──
@@ -971,7 +971,7 @@ export default function Home() {
           <PcbLogo size={36} />
           <div>
             <div className="font-bold text-base tracking-widest text-white" style={{ fontFamily: "'Orbitron', monospace" }}>PCBforth</div>
-            <div className="text-[10px] tracking-wider" style={{ color: "#7EB3F5" }}>PCB SOLUTIONS</div>
+            <div className="text-[10px] tracking-wider" style={{ color: "#7EB3F5" }}>HARDWARE ENGINEERING</div>
           </div>
         </div>
 
@@ -1077,39 +1077,45 @@ export default function Home() {
                   <div className="w-2 h-2 rounded-full bg-white animate-pulse" />
                 </div>
 
-                {/* Main headline — split into two lines for visual weight */}
-                <h1 className="font-black text-white leading-[1.08] mb-5"
-                  style={{ fontFamily: "'Orbitron', monospace", fontSize: "clamp(2rem, 5vw, 3.5rem)" }}>
+                {/* Main headline */}
+                <h1 className="font-black text-white leading-[1.1] mb-3"
+                  style={{ fontFamily: "'Orbitron', monospace", fontSize: "clamp(1.8rem, 4.5vw, 3.2rem)" }}>
                   {lang === "zh" ? (
                     <>
-                      <span>一站式PCB制造</span>
+                      <span>专业电子硬件</span>
                       <br />
-                      <span style={{ color: "#60A5FA" }}>与组装合作伙伴</span>
+                      <span style={{ color: "#60A5FA" }}>开发与制造服务</span>
                     </>
                   ) : (
                     <>
-                      <span>One-Stop PCB</span>
+                      <span>One-Stop Electronic Hardware</span>
                       <br />
-                      <span style={{ color: "#60A5FA" }}>Manufacturing & Assembly</span>
+                      <span style={{ color: "#60A5FA" }}>Development & Manufacturing</span>
                     </>
                   )}
                 </h1>
 
-                {/* Sub-headline — keyword pills */}
+                {/* Sub-headline line 1 */}
+                <p className="text-base text-white/80 mb-1 leading-relaxed">
+                  {t("hero.subtitle")}
+                </p>
+                {/* Sub-headline line 2 */}
+                <p className="text-sm text-white/55 mb-7 leading-relaxed tracking-wide">
+                  {t("hero.subtitle2")}
+                </p>
+
+                {/* Service tags */}
                 <div className="flex flex-wrap items-center gap-2 mb-8">
-                  {(lang === "zh"
-                    ? ["样板到量产", "快速交付", "IPC Class 2/3", "全球发货"]
-                    : ["Prototype to Mass Production", "Fast Turnaround", "IPC Class 2/3", "Global Delivery"]
-                  ).map((tag, i) => (
+                  {["hero.tag1", "hero.tag2", "hero.tag3", "hero.tag4"].map((key, i) => (
                     <span key={i}
-                      className="text-xs font-semibold px-3 py-1 rounded-full"
+                      className="text-xs font-semibold px-3 py-1.5 rounded-full"
                       style={{
-                        background: i === 0 ? "rgba(21,101,232,0.7)" : "rgba(255,255,255,0.10)",
-                        border: "1px solid rgba(255,255,255,0.20)",
+                        background: "rgba(21,101,232,0.55)",
+                        border: "1px solid rgba(96,165,250,0.4)",
                         color: "#FFFFFF",
                         backdropFilter: "blur(4px)",
                       }}>
-                      {tag}
+                      {t(key)}
                     </span>
                   ))}
                 </div>
@@ -1214,12 +1220,12 @@ export default function Home() {
                   {/* Flow */}
                   <div className="mt-6 p-4 rounded-xl" style={{ background: C.blueLight, border: `1px solid ${C.cardBorder}` }}>
                     <div className="text-xs mb-3 tracking-wider uppercase font-semibold" style={{ color: C.blue }}>
-                      {lang === "zh" ? "一站式服务流程" : "One-Stop Process"}
+                      {lang === "zh" ? "全流程服务流程" : "Full-Cycle Engineering Process"}
                     </div>
                     <div className="flex items-center gap-1 overflow-x-auto pb-1">
                       {(lang === "zh"
-                        ? ["需求","原理图","Layout","仿真","制板","SMT","交付"]
-                        : ["Req.","Sch.","Layout","Sim.","Fab.","SMT","Deliver"]
+                        ? ["需求","原理图","Layout","仿真验证","PCB制造","SMT组装","交付"]
+                        : ["Req.","Schematic","Layout","Simulation","Fabrication","Assembly","Delivery"]
                       ).map((step, i, arr) => (
                         <div key={step} className="flex items-center gap-1 shrink-0">
                           <FlowStep num={String(i + 1)} label={step} />
@@ -1405,7 +1411,7 @@ export default function Home() {
                   <PcbLogo size={32} />
                   <div>
                     <div className="font-bold text-sm tracking-widest text-white" style={{ fontFamily: "'Orbitron', monospace" }}>PCBforth</div>
-                    <div className="text-[10px] mt-0.5" style={{ color: "#7EB3F5" }}>{t("footer.slogan")}</div>
+                    <div className="text-[10px] mt-0.5" style={{ color: "#7EB3F5" }}>{lang === "zh" ? "硬件工程服务商" : "Hardware Engineering"}</div>
                   </div>
                 </div>
                 {/* Social icons row */}
