@@ -1194,6 +1194,120 @@ export default function Home() {
             </div>
           </section>
 
+          {/* ── WE CAN HELP ── */}
+          <section className="relative py-14 px-8 lg:px-16" style={{ background: C.pageBg }}>
+            <div className="absolute top-0 left-8 right-8 h-px" style={{ background: `linear-gradient(to right, transparent, ${C.divider}, transparent)` }} />
+            <div className="max-w-5xl">
+              <div className="text-center mb-10">
+                <div className="text-xs uppercase tracking-widest font-semibold mb-2" style={{ color: C.blue }}>
+                  {lang === "zh" ? "使用场景" : "When To Choose Us"}
+                </div>
+                <h2 className="text-2xl lg:text-3xl font-bold" style={{ color: C.heading, fontFamily: "'Orbitron', monospace" }}>
+                  {lang === "zh" ? "我什么时候找 PCBforth?" : "We Can Help If You Need"}
+                </h2>
+                <p className="mt-3 text-sm max-w-xl mx-auto" style={{ color: C.muted }}>
+                  {lang === "zh"
+                    ? "欧美客户最关心的七个场景，我们都能帮到你"
+                    : "Seven common engineering challenges our clients bring to us"}
+                </p>
+              </div>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                {[
+                  {
+                    iconColor: "#3B82F6",
+                    bgColor: "#EFF6FF",
+                    zh: "PCB Layout 支持",
+                    en: "PCB Layout Support",
+                    descZh: "高速、高密度多层板设计，差分对等长、阻抗控制全流程覆盖",
+                    descEn: "High-speed, high-density multilayer board design with full signal integrity coverage",
+                  },
+                  {
+                    iconColor: "#8B5CF6",
+                    bgColor: "#F5F3FF",
+                    zh: "高速 PCB 设计",
+                    en: "High-Speed PCB Design",
+                    descZh: "DDR5、PCIe 5.0、224G PAM4等高速信号布线与SI仿真",
+                    descEn: "DDR5, PCIe 5.0, 224G PAM4 routing with SI simulation and eye diagram verification",
+                  },
+                  {
+                    iconColor: "#10B981",
+                    bgColor: "#ECFDF5",
+                    zh: "元器件选型",
+                    en: "Component Selection",
+                    descZh: "全球供应商资源，替代料方案和供应链风险管控",
+                    descEn: "Global supplier network, alternative sourcing and supply chain risk management",
+                  },
+                  {
+                    iconColor: "#F59E0B",
+                    bgColor: "#FFFBEB",
+                    zh: "面向制造的设计",
+                    en: "Design for Manufacturing",
+                    descZh: "DFM分析确保设计可制造性，降低批量生产成本",
+                    descEn: "DFM analysis to ensure manufacturability and reduce mass production costs",
+                  },
+                  {
+                    iconColor: "#EF4444",
+                    bgColor: "#FEF2F2",
+                    zh: "样板制作",
+                    en: "Prototype Build",
+                    descZh: "72小时样板交期，小批量快速验证设计方案",
+                    descEn: "72-hour prototype turnaround for rapid design validation and iteration",
+                  },
+                  {
+                    iconColor: "#0EA5E9",
+                    bgColor: "#F0F9FF",
+                    zh: "交钥匙式 PCBA",
+                    en: "Full Turnkey PCBA",
+                    descZh: "元器件采购、SMT贴片、焊接、测试全流程交付",
+                    descEn: "Component procurement, SMT assembly, soldering and testing — full turnkey delivery",
+                  },
+                  {
+                    iconColor: "#6366F1",
+                    bgColor: "#EEF2FF",
+                    zh: "量产转移",
+                    en: "Production Transfer",
+                    descZh: "将现有设计平滑迁移至我们产线，降低换厂风险",
+                    descEn: "Smooth production transfer to our lines with DFM review and process validation",
+                  },
+                ].map((item, i) => (
+                  <motion.div key={i}
+                    initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }} transition={{ duration: 0.4, delay: (i % 4) * 0.07 }}
+                    className="flex items-start gap-3 p-4 rounded-xl transition-all duration-200 hover:shadow-md hover:-translate-y-0.5"
+                    style={{ background: C.cardBg, border: `1px solid ${C.cardBorder}` }}>
+                    <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 mt-0.5"
+                      style={{ background: item.bgColor }}>
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M3 8L6.5 11.5L13 4.5" stroke={item.iconColor} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </div>
+                    <div>
+                      <div className="font-semibold text-sm mb-1" style={{ color: C.heading }}>
+                        {lang === "zh" ? item.zh : item.en}
+                      </div>
+                      <p className="text-xs leading-relaxed" style={{ color: C.muted }}>
+                        {lang === "zh" ? item.descZh : item.descEn}
+                      </p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+              {/* Bottom CTA */}
+              <div className="mt-10 text-center">
+                <a href="/quote"
+                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-lg font-semibold text-white text-sm transition-all duration-200 active:scale-95 shadow-lg"
+                  style={{ background: C.blue }}
+                  onMouseEnter={(e) => (e.currentTarget.style.background = '#0D4DC4')}
+                  onMouseLeave={(e) => (e.currentTarget.style.background = C.blue)}>
+                  {lang === "zh" ? "讨论您的项目" : "Discuss Your Project"}
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <path d="M2.5 7H11.5M7.5 3L11.5 7L7.5 11" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </section>
+
           {/* ── ABOUT ── */}
           <section id="section-about" className="relative py-16 px-8 lg:px-16" style={{ background: C.pageBg }}>
             <div className="absolute top-0 left-8 right-8 h-px" style={{ background: `linear-gradient(to right, transparent, ${C.divider}, transparent)` }} />
