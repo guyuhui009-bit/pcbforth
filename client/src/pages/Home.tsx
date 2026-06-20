@@ -1079,18 +1079,18 @@ export default function Home() {
 
                 {/* Main headline */}
                 <h1 className="font-black text-white leading-[1.1] mb-3"
-                  style={{ fontFamily: "'Orbitron', monospace", fontSize: "clamp(1.8rem, 4.5vw, 3.2rem)" }}>
+                  style={{ fontFamily: "'Orbitron', monospace", fontSize: "clamp(1.6rem, 4vw, 2.9rem)" }}>
                   {lang === "zh" ? (
                     <>
-                      <span>专业电子硬件</span>
+                      <span>将您的电子创意</span>
                       <br />
-                      <span style={{ color: "#60A5FA" }}>开发与制造服务</span>
+                      <span style={{ color: "#60A5FA" }}>变成可量产产品</span>
                     </>
                   ) : (
                     <>
-                      <span>One-Stop Electronic Hardware</span>
+                      <span>Turn Your Electronic Ideas Into</span>
                       <br />
-                      <span style={{ color: "#60A5FA" }}>Development & Manufacturing</span>
+                      <span style={{ color: "#60A5FA" }}>Production-Ready Hardware</span>
                     </>
                   )}
                 </h1>
