@@ -1261,14 +1261,7 @@ export default function Home() {
                     descZh: "元器件采购、SMT贴片、焊接、测试全流程交付",
                     descEn: "Component procurement, SMT assembly, soldering and testing — full turnkey delivery",
                   },
-                  {
-                    iconColor: "#6366F1",
-                    bgColor: "#EEF2FF",
-                    zh: "量产转移",
-                    en: "Production Transfer",
-                    descZh: "将现有设计平滑迁移至我们产线，降低换厂风险",
-                    descEn: "Smooth production transfer to our lines with DFM review and process validation",
-                  },
+
                 ].map((item, i) => (
                   <motion.div key={i}
                     initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }}
