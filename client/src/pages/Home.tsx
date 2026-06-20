@@ -6,10 +6,11 @@ import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { useLang } from "@/contexts/LanguageContext";
 import PcbBackground from "@/components/PcbBackground";
+import { useLocation } from "wouter";
 import {
   Cpu, Layers, Package, Activity, Factory, Zap,
   Users, Award, Clock, CheckCircle, Phone, Mail, MapPin,
-  ChevronRight, Menu, Globe, ArrowRight, Star, Shield, Wrench,
+  ChevronRight, ChevronDown, Menu, Globe, ArrowRight, Star, Shield, Wrench, Pencil,
 } from "lucide-react";
 
 const HERO_IMG       = "https://d2xsxph8kpxj0f.cloudfront.net/310519663428091085/aYQJJtJvoY6MGcnCaXC5PY/hero-office-bQUscTaip2eHBcvkK4mirZ.webp";
@@ -954,6 +955,18 @@ export default function Home() {
   }, []);
 
   const serviceGroups = navItems.filter((n) => n.group === "services");
+  const [, navigate] = useLocation();
+  const [designServicesOpen, setDesignServicesOpen] = useState(false);
+
+  const designServiceItems = [
+    { path: "/design-services/schematic",   iconEl: <Activity size={13} />, zh: "原理图设计",       en: "Schematic Design" },
+    { path: "/design-services/pcb-layout",  iconEl: <Layers size={13} />,   zh: "PCB Layout",      en: "PCB Layout" },
+    { path: "/design-services/si",          iconEl: <Zap size={13} />,      zh: "信号完整性分析",  en: "Signal Integrity" },
+    { path: "/design-services/pi",          iconEl: <Cpu size={13} />,      zh: "电源完整性分析",  en: "Power Integrity" },
+    { path: "/design-services/emc",         iconEl: <Shield size={13} />,   zh: "EMC 设计",        en: "EMC Design" },
+    { path: "/design-services/dfm",         iconEl: <CheckCircle size={13} />, zh: "DFM 审查",     en: "DFM Review" },
+    { path: "/design-services/components",  iconEl: <Package size={13} />,  zh: "元器件选型",      en: "Component Selection" },
+  ];
 
   return (
     <div className="flex h-screen overflow-hidden relative font-sans" style={{ background: C.pageBg }}>
@@ -995,9 +1008,53 @@ export default function Home() {
           {navItems.filter((n) => !n.group).slice(0, 2).map((item) => (
             <NavButton key={item.id} item={item} active={activeSection === item.id} lang={lang} onClick={() => scrollToSection(item.id)} />
           ))}
+          {/* ── Design Services collapsible menu ── */}
           <div className="mt-4 mb-1">
             <div className="text-[10px] uppercase tracking-widest px-3 mb-2 font-semibold" style={{ color: "#5A8AC8" }}>
-              {lang === "zh" ? "核心业务" : "Core Services"}
+              {lang === "zh" ? "设计服务" : "Design Services"}
+            </div>
+            {/* Parent button */}
+            <button
+              onClick={() => setDesignServicesOpen(!designServicesOpen)}
+              className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg mb-0.5 text-sm transition-all duration-200"
+              style={{
+                background: designServicesOpen ? "rgba(21,101,232,0.25)" : "transparent",
+                color: designServicesOpen ? "#FFFFFF" : C.sidebarText,
+                border: designServicesOpen ? "1px solid rgba(255,255,255,0.2)" : "1px solid transparent",
+              }}>
+              <span style={{ color: designServicesOpen ? "#FFFFFF" : "#7EB3F5" }}><Pencil size={15} /></span>
+              <span className="flex-1 text-left truncate">{lang === "zh" ? "PCB 设计服务" : "PCB Design Services"}</span>
+              <span style={{ color: designServicesOpen ? "#FFFFFF" : "#7EB3F5", transition: "transform 0.2s", transform: designServicesOpen ? "rotate(180deg)" : "rotate(0deg)" }}>
+                <ChevronDown size={13} />
+              </span>
+            </button>
+            {/* Sub-items */}
+            {designServicesOpen && (
+              <div className="ml-3 pl-3 border-l" style={{ borderColor: "rgba(96,165,250,0.3)" }}>
+                {designServiceItems.map((item) => (
+                  <button
+                    key={item.path}
+                    onClick={() => navigate(item.path)}
+                    className="w-full flex items-center gap-2.5 px-2 py-2 rounded-lg mb-0.5 text-xs transition-all duration-200 hover:bg-white/10"
+                    style={{ color: C.sidebarText }}>
+                    <span style={{ color: "#7EB3F5" }}>{item.iconEl}</span>
+                    <span className="truncate">{lang === "zh" ? item.zh : item.en}</span>
+                  </button>
+                ))}
+                <button
+                  onClick={() => navigate("/design-services")}
+                  className="w-full flex items-center gap-2 px-2 py-2 rounded-lg mb-0.5 text-xs transition-all duration-200 hover:bg-white/10"
+                  style={{ color: "#60A5FA" }}>
+                  <ArrowRight size={11} />
+                  <span>{lang === "zh" ? "查看全部设计服务" : "View All Design Services"}</span>
+                </button>
+              </div>
+            )}
+          </div>
+
+          <div className="mt-2 mb-1">
+            <div className="text-[10px] uppercase tracking-widest px-3 mb-2 font-semibold" style={{ color: "#5A8AC8" }}>
+              {lang === "zh" ? "核心业务" : "Manufacturing"}
             </div>
             {serviceGroups.map((item) => (
               <NavButton key={item.id} item={item} active={activeSection === item.id} lang={lang} onClick={() => scrollToSection(item.id)} />

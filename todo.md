@@ -17,3 +17,15 @@
   - [x] 提交成功页面（含报价编号）
   - [x] 管理员通知（提交后自动通知站长）
   - [x] vitest 单元测试（6 个测试全部通过）
+- [x] Design Services 独立一级菜单板块
+  - [x] 侧边栏添加 "PCB Design Services" 可折叠菜单（含7个子项）
+  - [x] Design Services 总览页（/design-services）：差异化定位 + 7张服务卡片
+  - [x] Schematic Design 子页（/design-services/schematic）
+  - [x] PCB Layout 子页（/design-services/pcb-layout）
+  - [x] Signal Integrity Analysis 子页（/design-services/si）
+  - [x] Power Integrity Analysis 子页（/design-services/pi）
+  - [x] EMC Design 子页（/design-services/emc）
+  - [x] DFM Review 子页（/design-services/dfm）
+  - [x] Component Selection 子页（/design-services/components）
+  - [x] 共享 ServicePageLayout 组件（Header 面包屑 + Hero + 服务说明 + 流程 + 规格表 + FAQ + CTA）
+  - [x] App.tsx 注册所有 Design Services 路由

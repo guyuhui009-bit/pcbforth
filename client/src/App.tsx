@@ -7,12 +7,33 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 import { LanguageProvider } from "./contexts/LanguageContext";
 import Home from "./pages/Home";
 import Quote from "./pages/Quote";
+import DesignServices from "./pages/DesignServices";
+import SchematicDesign from "./pages/design-services/SchematicDesign";
+import PcbLayout from "./pages/design-services/PcbLayout";
+import SignalIntegrity from "./pages/design-services/SignalIntegrity";
+import PowerIntegrity from "./pages/design-services/PowerIntegrity";
+import EmcDesign from "./pages/design-services/EmcDesign";
+import DfmReview from "./pages/design-services/DfmReview";
+import ComponentSelection from "./pages/design-services/ComponentSelection";
 
 function Router() {
   return (
     <Switch>
+      {/* Home */}
       <Route path={"/"} component={Home} />
+      {/* Quote */}
       <Route path={"/quote"} component={Quote} />
+      {/* Design Services — overview */}
+      <Route path={"/design-services"} component={DesignServices} />
+      {/* Design Services — sub-pages */}
+      <Route path={"/design-services/schematic"} component={SchematicDesign} />
+      <Route path={"/design-services/pcb-layout"} component={PcbLayout} />
+      <Route path={"/design-services/si"} component={SignalIntegrity} />
+      <Route path={"/design-services/pi"} component={PowerIntegrity} />
+      <Route path={"/design-services/emc"} component={EmcDesign} />
+      <Route path={"/design-services/dfm"} component={DfmReview} />
+      <Route path={"/design-services/components"} component={ComponentSelection} />
+      {/* 404 */}
       <Route path={"/404"} component={NotFound} />
       <Route component={NotFound} />
     </Switch>
