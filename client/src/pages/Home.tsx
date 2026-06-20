@@ -110,7 +110,7 @@ function useCountUp(target: number, duration = 2000, start = false) {
 }
 
 // ── Sub-components ──
-function StatCard({ num, label, suffix = "+" }: { num: number; label: string; suffix?: string }) {
+function StatCard({ num, label, suffix = "+", dark = false }: { num: number; label: string; suffix?: string; dark?: boolean }) {
   const [visible, setVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const count = useCountUp(num, 1800, visible);
@@ -121,8 +121,8 @@ function StatCard({ num, label, suffix = "+" }: { num: number; label: string; su
   }, []);
   return (
     <div ref={ref} className="text-center px-3">
-      <div className="text-3xl font-bold font-mono tracking-tight" style={{ color: C.blue }}>{count}{suffix}</div>
-      <div className="text-xs mt-1 tracking-wide" style={{ color: C.muted }}>{label}</div>
+      <div className="text-3xl font-bold font-mono tracking-tight" style={{ color: dark ? "#60A5FA" : C.blue }}>{count}{suffix}</div>
+      <div className="text-xs mt-1 tracking-wide" style={{ color: dark ? "rgba(255,255,255,0.55)" : C.muted }}>{label}</div>
     </div>
   );
 }
@@ -1068,43 +1068,93 @@ export default function Home() {
               <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(5,15,45,0.75) 0%, rgba(5,15,45,0.45) 55%, rgba(5,15,45,0.10) 100%)" }} />
             </div>
 
-            <div className="relative z-10 px-8 lg:px-16 py-20 max-w-4xl">
+            <div className="relative z-10 px-8 lg:px-16 py-20 max-w-5xl">
               <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
+                {/* Badge */}
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-8 h-px bg-white/60" />
                   <span className="text-xs tracking-[0.3em] uppercase font-mono text-white/70">PCBforth Technology</span>
                   <div className="w-2 h-2 rounded-full bg-white animate-pulse" />
                 </div>
-                <h1 className="text-5xl lg:text-6xl font-black text-white leading-tight mb-4"
-                  style={{ fontFamily: "'Orbitron', monospace" }}>
-                  {t("hero.title")}
+
+                {/* Main headline — split into two lines for visual weight */}
+                <h1 className="font-black text-white leading-[1.08] mb-5"
+                  style={{ fontFamily: "'Orbitron', monospace", fontSize: "clamp(2rem, 5vw, 3.5rem)" }}>
+                  {lang === "zh" ? (
+                    <>
+                      <span>一站式PCB制造</span>
+                      <br />
+                      <span style={{ color: "#60A5FA" }}>与组装合作伙伴</span>
+                    </>
+                  ) : (
+                    <>
+                      <span>One-Stop PCB</span>
+                      <br />
+                      <span style={{ color: "#60A5FA" }}>Manufacturing & Assembly</span>
+                    </>
+                  )}
                 </h1>
-                <p className="text-xl text-white/80 mb-10 leading-relaxed max-w-xl">{t("hero.subtitle")}</p>
-                <div className="flex flex-wrap gap-4 mb-14">
+
+                {/* Sub-headline — keyword pills */}
+                <div className="flex flex-wrap items-center gap-2 mb-8">
+                  {(lang === "zh"
+                    ? ["样板到量产", "快速交付", "IPC Class 2/3", "全球发货"]
+                    : ["Prototype to Mass Production", "Fast Turnaround", "IPC Class 2/3", "Global Delivery"]
+                  ).map((tag, i) => (
+                    <span key={i}
+                      className="text-xs font-semibold px-3 py-1 rounded-full"
+                      style={{
+                        background: i === 0 ? "rgba(21,101,232,0.7)" : "rgba(255,255,255,0.10)",
+                        border: "1px solid rgba(255,255,255,0.20)",
+                        color: "#FFFFFF",
+                        backdropFilter: "blur(4px)",
+                      }}>
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Dual CTA */}
+                <div className="flex flex-wrap gap-3 mb-14">
                   <a href="/quote"
-                    className="flex items-center gap-2 px-7 py-3.5 rounded-lg font-semibold text-white transition-all duration-200 active:scale-95 text-sm shadow-lg"
-                    style={{ background: C.blue }}
+                    className="flex items-center gap-2 px-7 py-3.5 rounded-lg font-bold text-white transition-all duration-200 active:scale-95 text-sm shadow-xl"
+                    style={{ background: C.blue, boxShadow: "0 4px 24px rgba(21,101,232,0.5)" }}
                     onMouseEnter={(e) => (e.currentTarget.style.background = C.blueDark)}
                     onMouseLeave={(e) => (e.currentTarget.style.background = C.blue)}>
-                    {t("hero.cta1")} <ArrowRight size={15} />
+                    ✅ {t("hero.cta1")} <ArrowRight size={15} />
                   </a>
-                  <button onClick={() => scrollToSection("cases")}
+                  <a href="/quote"
                     className="flex items-center gap-2 px-7 py-3.5 rounded-lg font-semibold transition-all duration-200 active:scale-95 text-sm"
-                    style={{ border: "1px solid rgba(255,255,255,0.4)", color: "#FFFFFF", background: "rgba(255,255,255,0.08)" }}
+                    style={{ border: "1.5px solid rgba(255,255,255,0.45)", color: "#FFFFFF", background: "rgba(255,255,255,0.08)", backdropFilter: "blur(4px)" }}
                     onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.18)")}
                     onMouseLeave={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.08)")}>
-                    {t("hero.cta2")}
-                  </button>
+                    ✅ {t("hero.cta2")}
+                  </a>
                 </div>
-                {/* Stats */}
-                <div className="flex flex-wrap gap-8">
-                  <StatCard num={500}  label={t("hero.stat1.label")} />
-                  <div className="w-px bg-white/20" />
-                  <StatCard num={15}   label={t("hero.stat2.label")} />
-                  <div className="w-px bg-white/20" />
-                  <StatCard num={50}   label={t("hero.stat3.label")} />
-                  <div className="w-px bg-white/20" />
-                  <StatCard num={1000} label={t("hero.stat4.label")} />
+
+                {/* Stats — 4 key metrics */}
+                <div className="flex flex-wrap gap-0">
+                  {[
+                    { numStr: "15+",   label: t("hero.stat1.label"), isNum: true,  num: 15 },
+                    { numStr: "5000+", label: t("hero.stat2.label"), isNum: true,  num: 5000 },
+                    { numStr: "72H",   label: t("hero.stat3.label"), isNum: false, num: 0 },
+                    { numStr: "98.7%", label: t("hero.stat4.label"), isNum: false, num: 0, noBreak: true },
+                  ].map((s, i) => (
+                    <div key={i} className="flex items-stretch">
+                      {i > 0 && <div className="w-px mx-6 bg-white/20 self-stretch" />}
+                      <div className="text-center">
+                        {s.isNum
+                          ? <StatCard num={s.num} label={s.label} suffix="+" dark />
+                          : (
+                            <div className="text-center px-3">
+                              <div className="text-3xl font-bold whitespace-nowrap" style={{ color: "#60A5FA", fontFamily: "'Orbitron', monospace", letterSpacing: "0" }}>{s.numStr}</div>
+                              <div className="text-xs mt-1 tracking-wide" style={{ color: "rgba(255,255,255,0.55)" }}>{s.label}</div>
+                            </div>
+                          )
+                        }
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </motion.div>
             </div>
