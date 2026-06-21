@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 
 const HERO_IMG       = "https://raw.githubusercontent.com/guyuhui009-bit/pcbforth/main/public/images/hero-office.webp";
-const PCB_BOARD_BG   = "/manus-storage/pcb-board-clean_3b15713b.jpg";
+const PCB_BOARD_BG   = "https://raw.githubusercontent.com/guyuhui009-bit/pcbforth/main/public/images/pcb-board-clean.jpg";
 // Service section images - each uniquely matched to its service
 const SCHEMATIC_IMG  = "https://raw.githubusercontent.com/guyuhui009-bit/pcbforth/main/public/images/schematic-design.webp";  // Engineer at Altium Designer dual-screen
 const PCB_LAYOUT_IMG = "https://raw.githubusercontent.com/guyuhui009-bit/pcbforth/main/public/images/pcb-layout.webp";    // Altium DDR4 PCB layout top view
@@ -159,7 +159,7 @@ const FAB_PRODUCTS = [
     titleEn: "Optical Module PCB",
     descZh: "专为400G/800G光模块设计的高密度互联PCB，采用低损耗高频材料，支持超高速差分信号传输，广泛应用于数据中心、5G前传和骨干网光通信系统。",
     descEn: "High-density interconnect PCB for 400G/800G optical modules. Low-loss high-frequency materials, ultra-high-speed differential signal transmission for data centers and 5G fronthaul.",
-    img: "/manus-storage/pcb-optical-module_6bad39d1.png",
+    img: "https://raw.githubusercontent.com/guyuhui009-bit/pcbforth/main/public/images/pcb-optical-module.png",
     featuresZh: ["超低插入损耗设计", "差分对等长布线", "精密阻抗控制±5%", "支持400G/800G速率", "低Dk/Df高频材料"],
     featuresEn: ["Ultra-low insertion loss", "Matched differential routing", "Impedance control ±5%", "400G/800G data rate", "Low Dk/Df materials"],
     specsZh: [{k:"层数",v:"8~16层"},{k:"最小线宽/间距",v:"2mil/2mil"},{k:"基材",v:"Rogers / Megtron"},{k:"表面处理",v:"ENIG / ENEPIG"},{k:"阻抗精度",v:"±5%"},{k:"板厚",v:"0.8~2.4mm"}],
@@ -170,7 +170,7 @@ const FAB_PRODUCTS = [
     titleEn: "5G TRX Board",
     descZh: "面向5G基站收发信机（TRX）的高频高速PCB，支持Sub-6GHz和毫米波频段，具备优异的信号完整性和热管理能力，满足5G大规模MIMO天线阵列需求。",
     descEn: "High-frequency PCB for 5G base station TRX. Supports Sub-6GHz and mmWave with excellent signal integrity and thermal management for massive MIMO arrays.",
-    img: "/manus-storage/pcb-5g-trx_2a3a780a.png",
+    img: "https://raw.githubusercontent.com/guyuhui009-bit/pcbforth/main/public/images/pcb-5g-trx.png",
     featuresZh: ["Sub-6GHz及毫米波支持", "大规模MIMO兼容", "低热阻散热设计", "高密度盲埋孔HDI", "严格EMC管控"],
     featuresEn: ["Sub-6GHz & mmWave", "Massive MIMO compatible", "Low thermal resistance", "HDI blind/buried via", "Strict EMC control"],
     specsZh: [{k:"层数",v:"12~20层"},{k:"最小线宽/间距",v:"2.5mil/2.5mil"},{k:"基材",v:"Rogers 4350B / FR4"},{k:"表面处理",v:"ENIG"},{k:"阻抗精度",v:"±8%"},{k:"最小钻孔",v:"0.1mm激光孔"}],
@@ -181,7 +181,7 @@ const FAB_PRODUCTS = [
     titleEn: "Microwave Stepped-Slot PCB",
     descZh: "采用PTFE/Rogers等低损耗微波基材，通过精密铣槽工艺实现阶梯结构，广泛用于相控阵雷达、卫星通信和毫米波测试系统，具备极低插入损耗和优异的高频一致性。",
     descEn: "PTFE/Rogers low-loss substrates with precision milled stepped structures. Used in phased-array radar, satellite comms, and mmWave test systems.",
-    img: "/manus-storage/pcb-microwave-stepped_47d74f97.png",
+    img: "https://raw.githubusercontent.com/guyuhui009-bit/pcbforth/main/public/images/pcb-microwave-stepped.png",
     featuresZh: ["精密CNC铣槽工艺", "PTFE/Rogers基材", "极低插入损耗", "优异高频一致性", "支持DC~100GHz"],
     featuresEn: ["Precision CNC milling", "PTFE/Rogers substrate", "Ultra-low insertion loss", "Excellent HF consistency", "DC~100GHz support"],
     specsZh: [{k:"层数",v:"2~8层"},{k:"基材",v:"PTFE / Rogers 5880"},{k:"最小线宽/间距",v:"3mil/3mil"},{k:"阶梯槽精度",v:"±0.05mm"},{k:"表面处理",v:"ENIG / 镀金"},{k:"板厚",v:"0.5~3.2mm"}],
@@ -192,7 +192,7 @@ const FAB_PRODUCTS = [
     titleEn: "Medical Device PCB",
     descZh: "满足IEC 60601医疗电气安全标准，具备高可靠性、高精度、超低功耗特性，支持FDA 510(k)、CE医疗认证要求，广泛应用于监护仪、手术机器人、体外诊断等高端医疗设备。",
     descEn: "Meets IEC 60601 standards with high reliability and ultra-low power. Supports FDA 510(k) and CE certification for patient monitors, surgical robots, and IVD equipment.",
-    img: "/manus-storage/pcb-medical-device_3c0a0390.png",
+    img: "https://raw.githubusercontent.com/guyuhui009-bit/pcbforth/main/public/images/pcb-medical-device.png",
     featuresZh: ["IEC 60601医疗认证", "超低功耗设计", "高可靠性材料", "FDA 510(k)支持", "严格清洁度管控"],
     featuresEn: ["IEC 60601 certified", "Ultra-low power design", "High-reliability materials", "FDA 510(k) support", "Strict cleanliness control"],
     specsZh: [{k:"层数",v:"4~16层"},{k:"最小线宽/间距",v:"3mil/3mil"},{k:"基材",v:"高Tg FR4 / Rogers"},{k:"表面处理",v:"ENIG / OSP"},{k:"阻抗精度",v:"±8%"},{k:"板厚",v:"0.8~3.2mm"}],
@@ -203,7 +203,7 @@ const FAB_PRODUCTS = [
     titleEn: "DAC/ADC Converter PCB",
     descZh: "高速数模转换（DAC/ADC）PCB对信号完整性要求极高，PCBforth采用精密阻抗控制、低噪声电源分割和差分对等长布线，确保ADC/DAC在GHz采样率下的高精度转换性能。",
     descEn: "High-speed DAC/ADC PCBs with precision impedance control, low-noise power partitioning, and matched differential routing for GHz sampling rates.",
-    img: "/manus-storage/pcb-dac-converter_60ed09dc.png",
+    img: "https://raw.githubusercontent.com/guyuhui009-bit/pcbforth/main/public/images/pcb-dac-converter.png",
     featuresZh: ["精密阻抗控制±5%", "低噪声电源分割", "差分对等长布线", "模拟/数字地分离", "支持GHz采样率"],
     featuresEn: ["Impedance control ±5%", "Low-noise power split", "Matched diff. routing", "Analog/digital GND split", "GHz sampling rate"],
     specsZh: [{k:"层数",v:"6~12层"},{k:"最小线宽/间距",v:"2.5mil/2.5mil"},{k:"基材",v:"高Tg FR4 / Megtron"},{k:"表面处理",v:"ENIG"},{k:"阻抗精度",v:"±5%"},{k:"板厚",v:"1.0~2.4mm"}],
@@ -214,7 +214,7 @@ const FAB_PRODUCTS = [
     titleEn: "Server Motherboard PCB",
     descZh: "服务器主板对高密度布线、电源完整性和散热管理要求极高，PCBforth支持16层以上HDI设计，具备DDR5/PCIe 5.0高速信号布线能力，满足云计算、AI推理服务器的严苛需求。",
     descEn: "High-density server motherboard PCB supporting 16+ layer HDI with DDR5/PCIe 5.0 routing for cloud computing and AI inference servers.",
-    img: "/manus-storage/pcb-server-board_6b36de6a.png",
+    img: "https://raw.githubusercontent.com/guyuhui009-bit/pcbforth/main/public/images/pcb-server-board.png",
     featuresZh: ["16层以上HDI设计", "DDR5/PCIe 5.0布线", "优异电源完整性", "高效散热管理", "背钻工艺支持"],
     featuresEn: ["16+ layer HDI", "DDR5/PCIe 5.0 routing", "Excellent power integrity", "Efficient thermal mgmt", "Back-drill support"],
     specsZh: [{k:"层数",v:"16~40层"},{k:"最小线宽/间距",v:"2mil/2mil"},{k:"基材",v:"Megtron 6 / 高Tg FR4"},{k:"表面处理",v:"ENIG / OSP"},{k:"阻抗精度",v:"±8%"},{k:"最小钻孔",v:"0.1mm激光孔"}],
@@ -229,7 +229,7 @@ const SEMI_PRODUCTS = [
     titleEn: "Load Board",
     descZh: "测试负载板是一种连接测试设备与被测器件的机械及电路接口，主要应用在半导体封装测试领域，承载DUT（被测器件）并实现信号传输与电源供给。",
     descEn: "A load board connects test equipment to the device under test (DUT), providing mechanical and electrical interfaces for semiconductor package testing, signal routing, and power delivery.",
-    img: "/manus-storage/semi-load-board_e30bd771.png",
+    img: "https://raw.githubusercontent.com/guyuhui009-bit/pcbforth/main/public/images/semi-load-board.png",
     featuresZh: ["高密度BGA封装支持", "精密阻抗控制", "低损耗高频材料", "严格尺寸公差±0.05mm", "支持高温老化测试"],
     featuresEn: ["High-density BGA support", "Precision impedance control", "Low-loss HF materials", "Tight tolerance ±0.05mm", "High-temp burn-in support"],
     specsZh: [{k:"层数",v:"8~20层"},{k:"最小线宽/间距",v:"2mil/2mil"},{k:"基材",v:"Rogers / 高Tg FR4"},{k:"表面处理",v:"ENIG / 硬金"},{k:"阻抗精度",v:"±5%"},{k:"板厚",v:"1.6~4.0mm"}],
@@ -240,7 +240,7 @@ const SEMI_PRODUCTS = [
     titleEn: "Probe Card",
     descZh: "探针卡在CP测试中用于连接测试机和Die上的Pad，通常作为Load Board的物理接口，要求极高的平整度、精密孔位和优异的高频传输特性。",
     descEn: "Probe cards connect test machines to die pads in CP testing, serving as the physical interface for load boards. Requires extreme flatness, precision hole placement, and excellent HF transmission.",
-    img: "/manus-storage/semi-probe-card_9d203d08.png",
+    img: "https://raw.githubusercontent.com/guyuhui009-bit/pcbforth/main/public/images/semi-probe-card.png",
     featuresZh: ["超高平整度控制", "精密孔位±0.025mm", "低介电损耗基材", "支持晶圆级测试", "高可靠性镀层"],
     featuresEn: ["Ultra-flat surface control", "Precision hole ±0.025mm", "Low dielectric loss", "Wafer-level test support", "High-reliability plating"],
     specsZh: [{k:"层数",v:"2~42层"},{k:"平整度",v:"≤0.05mm"},{k:"基材",v:"Rogers / PTFE"},{k:"最小孔径",v:"0.1mm"},{k:"表面处理",v:"ENIG / 硬金"},{k:"板厚",v:"1.6~6.5mm"}],
@@ -251,7 +251,7 @@ const SEMI_PRODUCTS = [
     titleEn: "BIB (Burn-In Board)",
     descZh: "BIB（Burn In Board，老化测试板），完成封装测试的IC在特定工况和时间内进行老化测试，筛选早期失效器件，提升产品可靠性，广泛用于存储器、CPU等高可靠性器件测试。",
     descEn: "Burn-In Boards subject packaged ICs to elevated temperature and voltage stress to screen early failures, improving product reliability for memory, CPU, and other high-reliability devices.",
-    img: "/manus-storage/semi-bib_952afa22.png",
+    img: "https://raw.githubusercontent.com/guyuhui009-bit/pcbforth/main/public/images/semi-bib.png",
     featuresZh: ["耐高温材料（≥200°C）", "高压绝缘设计", "大电流承载能力", "支持并行多芯片测试", "长寿命可靠性设计"],
     featuresEn: ["High-temp material ≥200°C", "High-voltage insulation", "High current capacity", "Parallel multi-chip test", "Long-life reliability design"],
     specsZh: [{k:"层数",v:"4~8层"},{k:"基材",v:"高Tg FR4 / 聚酰亚胺"},{k:"最高工作温度",v:"200°C"},{k:"表面处理",v:"ENIG / OSP"},{k:"最小线宽/间距",v:"3mil/3mil"},{k:"板厚",v:"1.6~3.2mm"}],
@@ -262,7 +262,7 @@ const SEMI_PRODUCTS = [
     titleEn: "Interposer",
     descZh: "Probe Card的信号通过Interposer中介层的转换，让Probe Head（探针头）的探针可以接收到信号，是探针卡系统中的关键信号转接器件，要求极高的信号完整性和精密加工精度。",
     descEn: "Interposers convert signals between probe cards and probe heads, serving as critical signal routing components in probe card systems with extreme signal integrity and precision machining requirements.",
-    img: "/manus-storage/semi-interposer_bc21fa1c.png",
+    img: "https://raw.githubusercontent.com/guyuhui009-bit/pcbforth/main/public/images/semi-interposer.png",
     featuresZh: ["超精密加工±0.01mm", "高信号完整性设计", "低串扰布线结构", "支持高频GHz信号", "微孔HDI工艺"],
     featuresEn: ["Ultra-precision ±0.01mm", "High signal integrity", "Low crosstalk routing", "GHz signal support", "Micro-via HDI process"],
     specsZh: [{k:"层数",v:"4~10层"},{k:"最小线宽/间距",v:"1.5mil/1.5mil"},{k:"基材",v:"Rogers / PTFE"},{k:"最小孔径",v:"0.075mm激光孔"},{k:"表面处理",v:"ENIG"},{k:"板厚",v:"0.4~1.6mm"}],
@@ -276,7 +276,7 @@ const FPC_PRODUCTS = [
     titleEn: "Rigid-Flex PCB",
     descZh: "刚挠结合板融合刚性板与挠性板优势，可实现模块化设计和三维安装，减少整个产品的重量，布线高密度化，广泛应用于航空航天、医疗设备、折叠屏手机等高端产品。",
     descEn: "Rigid-flex PCBs combine rigid and flexible board advantages, enabling modular design and 3D assembly, reducing weight and enabling high-density routing for aerospace, medical, and foldable devices.",
-    img: "/manus-storage/fpc-rigid-flex_e39d911f.jpg",
+    img: "https://raw.githubusercontent.com/guyuhui009-bit/pcbforth/main/public/images/fpc-rigid-flex.jpg",
     featuresZh: ["刚柔一体三维安装", "减重30%~50%", "高密度HDI布线", "支持2~20层设计", "耐弯折100万次"],
     featuresEn: ["3D rigid-flex assembly", "30%~50% weight reduction", "High-density HDI routing", "2~20 layer support", "1M+ flex cycle life"],
     specsZh: [{k:"层数",v:"2~20层"},{k:"最小柔性区宽度",v:"3mm"},{k:"最小线宽/间距",v:"3/3.5mil"},{k:"最小钻孔",v:"0.1mm激光孔"},{k:"表面处理",v:"ENIG / ENEPIG"},{k:"板厚孔径比",v:"16:1（通孔）"}],
@@ -287,7 +287,7 @@ const FPC_PRODUCTS = [
     titleEn: "Flexible PCB (FPC)",
     descZh: "挠性板轻薄柔软，可自由弯曲卷绕，缩小电子产品体积和重量，布线高密度化，广泛应用于智能穿戴、消费电子、汽车电子、医疗器械等需要空间紧凑设计的产品。",
     descEn: "Flexible PCBs are thin, lightweight, and bendable, enabling compact designs for wearables, consumer electronics, automotive, and medical devices requiring space-efficient flexible interconnects.",
-    img: "/manus-storage/fpc-flex_8ebda36d.jpg",
+    img: "https://raw.githubusercontent.com/guyuhui009-bit/pcbforth/main/public/images/fpc-flex.jpg",
     featuresZh: ["超薄0.05mm基材", "自由弯曲卷绕设计", "高密度细线路", "支持动态弯折应用", "轻量化减重设计"],
     featuresEn: ["Ultra-thin 0.05mm substrate", "Free-bend/roll design", "High-density fine traces", "Dynamic flex application", "Lightweight design"],
     specsZh: [{k:"层数",v:"1~8层"},{k:"基材厚度",v:"0.05~0.2mm"},{k:"最小线宽/间距",v:"2mil/2mil"},{k:"最小钻孔",v:"0.1mm激光孔"},{k:"表面处理",v:"ENIG / OSP / 镀金"},{k:"弯折半径",v:"≥0.5mm"}],
@@ -623,8 +623,8 @@ const SIM_TABS = [
     specsZh: [{k:"仿真工具",v:"Ansys SIwave / HyperLynx"},{k:"最高速率",v:"224G PAM4"},{k:"频率范围",v:"DC ~ 100GHz"},{k:"报告交付",v:"含整改建议"}],
     specsEn: [{k:"Tools",v:"Ansys SIwave / HyperLynx"},{k:"Max Rate",v:"224G PAM4"},{k:"Freq. Range",v:"DC ~ 100GHz"},{k:"Report",v:"With fix recommendations"}],
     images: [
-      { src: "/manus-storage/sim_highspeed_sparams_9aec77aa.png", captionZh: "S参数插入损耗/回波损耗分析", captionEn: "S-parameter Insertion/Return Loss Analysis" },
-      { src: "/manus-storage/sim_highspeed_eye_c336a20e.jpg", captionZh: "高速串行眼图仿真（PAM4）", captionEn: "High-Speed Eye Diagram Simulation (PAM4)" },
+      { src: "https://raw.githubusercontent.com/guyuhui009-bit/pcbforth/main/public/images/sim-highspeed-sparams.png", captionZh: "S参数插入损耗/回波损耗分析", captionEn: "S-parameter Insertion/Return Loss Analysis" },
+      { src: "https://raw.githubusercontent.com/guyuhui009-bit/pcbforth/main/public/images/sim-highspeed-eye.jpg", captionZh: "高速串行眼图仿真（PAM4）", captionEn: "High-Speed Eye Diagram Simulation (PAM4)" },
     ],
   },
   {
@@ -652,7 +652,7 @@ const SIM_TABS = [
     specsZh: [{k:"支持规格",v:"DDR3~DDR5 / LPDDR5"},{k:"最高速率",v:"DDR5-8400"},{k:"仿真工具",v:"HyperLynx / HSPICE"},{k:"报告",v:"时序裕量报告"}],
     specsEn: [{k:"Supported",v:"DDR3~DDR5 / LPDDR5"},{k:"Max Rate",v:"DDR5-8400"},{k:"Tools",v:"HyperLynx / HSPICE"},{k:"Report",v:"Timing margin report"}],
     images: [
-      { src: "/manus-storage/sim_ddr_timing_1cf98a53.jpg", captionZh: "DDR3时序仿真分析（建立/保持时间）", captionEn: "DDR3 Timing Simulation (Setup/Hold Time Analysis)" },
+      { src: "https://raw.githubusercontent.com/guyuhui009-bit/pcbforth/main/public/images/sim-ddr-timing.jpg", captionZh: "DDR3时序仿真分析（建立/保持时间）", captionEn: "DDR3 Timing Simulation (Setup/Hold Time Analysis)" },
     ],
   },
   {
@@ -680,8 +680,8 @@ const SIM_TABS = [
     specsZh: [{k:"仿真工具",v:"Ansys SIwave / PowerSI"},{k:"分析类型",v:"IR-drop / PDN / 热分析"},{k:"频率范围",v:"DC ~ 10GHz"},{k:"报告",v:"含优化方案"}],
     specsEn: [{k:"Tools",v:"Ansys SIwave / PowerSI"},{k:"Analysis",v:"IR-drop / PDN / Thermal"},{k:"Freq. Range",v:"DC ~ 10GHz"},{k:"Report",v:"With optimization plan"}],
     images: [
-      { src: "/manus-storage/sim_pi_irdrop_a69b6ed2.png", captionZh: "DC IR-Drop直流压降热力图仿真", captionEn: "DC IR-Drop Voltage Distribution Heatmap" },
-      { src: "/manus-storage/sim_pi_pdn_a24d46f8.png", captionZh: "PDN阻抗频率曲线分析", captionEn: "PDN Impedance vs. Frequency Curve" },
+      { src: "https://raw.githubusercontent.com/guyuhui009-bit/pcbforth/main/public/images/sim-pi-irdrop.png", captionZh: "DC IR-Drop直流压降热力图仿真", captionEn: "DC IR-Drop Voltage Distribution Heatmap" },
+      { src: "https://raw.githubusercontent.com/guyuhui009-bit/pcbforth/main/public/images/sim-pi-pdn.png", captionZh: "PDN阻抗频率曲线分析", captionEn: "PDN Impedance vs. Frequency Curve" },
     ],
   },
   {
@@ -709,7 +709,7 @@ const SIM_TABS = [
     specsZh: [{k:"仿真工具",v:"CST / ANSYS HFSS"},{k:"分析类型",v:"辐射/传导/ESD"},{k:"标准支持",v:"FCC / CE / CISPR"},{k:"报告",v:"含整改建议"}],
     specsEn: [{k:"Tools",v:"CST / ANSYS HFSS"},{k:"Analysis",v:"Radiated/Conducted/ESD"},{k:"Standards",v:"FCC / CE / CISPR"},{k:"Report",v:"With fix recommendations"}],
     images: [
-      { src: "/manus-storage/sim_emc_cst_edecd766.png", captionZh: "PCB辐射发射仿真（CST工具）", captionEn: "PCB Radiated Emission Simulation (CST Tool)" },
+      { src: "https://raw.githubusercontent.com/guyuhui009-bit/pcbforth/main/public/images/sim-emc-cst.png", captionZh: "PCB辐射发射仿真（CST工具）", captionEn: "PCB Radiated Emission Simulation (CST Tool)" },
     ],
   },
   {
@@ -737,7 +737,7 @@ const SIM_TABS = [
     specsZh: [{k:"仿真工具",v:"Ansys Icepak / FloTHERM"},{k:"分析类型",v:"稳态/瞬态热分析"},{k:"最高功率密度",v:"支持>100W/cm²"},{k:"报告",v:"温度云图+优化方案"}],
     specsEn: [{k:"Tools",v:"Ansys Icepak / FloTHERM"},{k:"Analysis",v:"Steady/Transient Thermal"},{k:"Max Power Density",v:">100W/cm² supported"},{k:"Report",v:"Temp. map + optimization"}],
     images: [
-      { src: "/manus-storage/sim_thermal_temp_1f8c5f64.png", captionZh: "PCB温度场仿真（Icepak热力分布云图）", captionEn: "PCB Temperature Field Simulation (Icepak Thermal Map)" },
+      { src: "https://raw.githubusercontent.com/guyuhui009-bit/pcbforth/main/public/images/sim-thermal-temp.png", captionZh: "PCB温度场仿真（Icepak热力分布云图）", captionEn: "PCB Temperature Field Simulation (Icepak Thermal Map)" },
     ],
   },
 ];
