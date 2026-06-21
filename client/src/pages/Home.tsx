@@ -11,6 +11,7 @@ import {
   Cpu, Layers, Package, Activity, Factory, Zap,
   Users, Award, Clock, CheckCircle, Phone, Mail, MapPin,
   ChevronRight, ChevronDown, Menu, Globe, ArrowRight, Star, Shield, Wrench, Pencil,
+  ClipboardCheck, Upload,
 } from "lucide-react";
 
 const HERO_IMG       = "https://raw.githubusercontent.com/guyuhui009-bit/pcbforth/main/public/images/hero-office.webp";
@@ -1165,13 +1166,14 @@ export default function Home() {
                 <div className="flex flex-wrap items-center gap-2 mb-8">
                   {["hero.tag1", "hero.tag2", "hero.tag3", "hero.tag4"].map((key, i) => (
                     <span key={i}
-                      className="text-xs font-semibold px-3 py-1.5 rounded-full"
+                      className="flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-full"
                       style={{
                         background: "rgba(21,101,232,0.55)",
                         border: "1px solid rgba(96,165,250,0.4)",
                         color: "#FFFFFF",
                         backdropFilter: "blur(4px)",
                       }}>
+                      <CheckCircle size={11} />
                       {t(key)}
                     </span>
                   ))}
@@ -1184,14 +1186,14 @@ export default function Home() {
                     style={{ background: C.blue, boxShadow: "0 4px 24px rgba(21,101,232,0.5)" }}
                     onMouseEnter={(e) => (e.currentTarget.style.background = C.blueDark)}
                     onMouseLeave={(e) => (e.currentTarget.style.background = C.blue)}>
-                    ✅ {t("hero.cta1")} <ArrowRight size={15} />
+                    <ClipboardCheck size={15} /> {t("hero.cta1")} <ArrowRight size={15} />
                   </a>
                   <a href="/quote"
                     className="flex items-center gap-2 px-7 py-3.5 rounded-lg font-semibold transition-all duration-200 active:scale-95 text-sm"
                     style={{ border: "1.5px solid rgba(255,255,255,0.45)", color: "#FFFFFF", background: "rgba(255,255,255,0.08)", backdropFilter: "blur(4px)" }}
                     onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.18)")}
                     onMouseLeave={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.08)")}>
-                    ✅ {t("hero.cta2")}
+                    <Upload size={15} /> {t("hero.cta2")}
                   </a>
                 </div>
 
