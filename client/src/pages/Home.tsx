@@ -13,14 +13,14 @@ import {
   ChevronRight, ChevronDown, Menu, Globe, ArrowRight, Star, Shield, Wrench, Pencil,
 } from "lucide-react";
 
-const HERO_IMG       = "https://d2xsxph8kpxj0f.cloudfront.net/310519663428091085/aYQJJtJvoY6MGcnCaXC5PY/hero-office-bQUscTaip2eHBcvkK4mirZ.webp";
+const HERO_IMG       = "https://raw.githubusercontent.com/guyuhui009-bit/pcbforth/main/public/images/hero-office.webp";
 const PCB_BOARD_BG   = "/manus-storage/pcb-board-clean_3b15713b.jpg";
 // Service section images - each uniquely matched to its service
-const SCHEMATIC_IMG  = "https://d2xsxph8kpxj0f.cloudfront.net/310519663428091085/aYQJJtJvoY6MGcnCaXC5PY/schematic-design-G9CEQ7yFoefsZrWtoNncXg.webp";  // Engineer at Altium Designer dual-screen
-const PCB_LAYOUT_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663428091085/aYQJJtJvoY6MGcnCaXC5PY/pcb-layout-N9hdCW8QzoGwNd22zSp5bU.webp";    // Altium DDR4 PCB layout top view
-const BOM_IMG        = "https://d2xsxph8kpxj0f.cloudfront.net/310519663428091085/aYQJJtJvoY6MGcnCaXC5PY/bom-components-LaoBZpakZdo2p3ZXy3DTrv.webp"; // TI/NXP/Infineon components tray
-const FAB_IMG        = "https://d2xsxph8kpxj0f.cloudfront.net/310519663428091085/aYQJJtJvoY6MGcnCaXC5PY/pcb-factory-4UzgDFEB7gCWz5ixUWGk4c.webp";   // Chinese PCB factory ISO9001 clean room
-const SMT_IMG        = "https://d2xsxph8kpxj0f.cloudfront.net/310519663428091085/aYQJJtJvoY6MGcnCaXC5PY/smt-assembly-Mjb5aCUn5NTrqvWSVEHNAq.webp";  // ASM SIPLACE SMT line
+const SCHEMATIC_IMG  = "https://raw.githubusercontent.com/guyuhui009-bit/pcbforth/main/public/images/schematic-design.webp";  // Engineer at Altium Designer dual-screen
+const PCB_LAYOUT_IMG = "https://raw.githubusercontent.com/guyuhui009-bit/pcbforth/main/public/images/pcb-layout.webp";    // Altium DDR4 PCB layout top view
+const BOM_IMG        = "https://raw.githubusercontent.com/guyuhui009-bit/pcbforth/main/public/images/bom-components.webp"; // TI/NXP/Infineon components tray
+const FAB_IMG        = "https://raw.githubusercontent.com/guyuhui009-bit/pcbforth/main/public/images/pcb-factory.webp";   // Chinese PCB factory ISO9001 clean room
+const SMT_IMG        = "https://raw.githubusercontent.com/guyuhui009-bit/pcbforth/main/public/images/smt-assembly.webp";  // ASM SIPLACE SMT line
 // Keep for backward compat / cases section
 const PCB_DESIGN_IMG = SCHEMATIC_IMG;
 const PCB_CLOSEUP_IMG= PCB_LAYOUT_IMG;
