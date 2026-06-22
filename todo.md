@@ -29,3 +29,15 @@
   - [x] Component Selection 子页（/design-services/components）
   - [x] 共享 ServicePageLayout 组件（Header 面包屑 + Hero + 服务说明 + 流程 + 规格表 + FAQ + CTA）
   - [x] App.tsx 注册所有 Design Services 路由
+
+## 首页全面改版（2026-06-22）
+
+- [x] P1: 重构 Hero 区 — 主标题改为 "Professional PCB Design & Hardware Engineering Services"，副标题 "From Concept to Production"，服务标签行，双 CTA 按钮
+- [x] P2: 新增 "Why PCBFORTH" 模块 — 4张优势卡片 + 能力标签列表
+- [x] P3: 新增 "How We Work" 9步流程模块
+- [x] P4: 新增 "Featured Projects" 案例模块 — 3个项目卡片含规格标签
+- [x] P5: 新增 "Engineering Capabilities" 能力展示 — 三列
+- [x] P6: 新增 "Tools We Use" 工具展示
+- [x] P7: 更新 index.html meta SEO 标签
+- [x] P8: 新增 "Free PCB Design Review" Lead Magnet 模块
+- [x] P9: 新增固定右下角联系浮窗（WhatsApp / Email / WeChat）+ "Response within 12 hours"

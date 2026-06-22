@@ -1227,34 +1227,34 @@ export default function Home() {
 
                 {/* Main headline */}
                 <h1 className="font-black text-white leading-[1.1] mb-3"
-                  style={{ fontFamily: "'Orbitron', monospace", fontSize: "clamp(1.6rem, 4vw, 2.9rem)" }}>
+                  style={{ fontFamily: "'Orbitron', monospace", fontSize: "clamp(1.4rem, 3.5vw, 2.6rem)" }}>
                   {lang === "zh" ? (
                     <>
-                      <span>将您的电子创意</span>
+                      <span>专业PCB设计与</span>
                       <br />
-                      <span style={{ color: "#60A5FA" }}>变成可量产产品</span>
+                      <span style={{ color: "#60A5FA" }}>硬件工程服务</span>
                     </>
                   ) : (
                     <>
-                      <span>Turn Your Electronic Ideas Into</span>
+                      <span>Professional PCB Design &</span>
                       <br />
-                      <span style={{ color: "#60A5FA" }}>Production-Ready Hardware</span>
+                      <span style={{ color: "#60A5FA" }}>Hardware Engineering Services</span>
                     </>
                   )}
                 </h1>
 
                 {/* Sub-headline line 1 */}
-                <p className="text-base text-white/80 mb-1 leading-relaxed">
+                <p className="text-sm text-white/70 mb-1 leading-relaxed tracking-wide">
                   {t("hero.subtitle")}
                 </p>
                 {/* Sub-headline line 2 */}
-                <p className="text-sm text-white/55 mb-7 leading-relaxed tracking-wide">
+                <p className="text-base font-semibold text-white/90 mb-7 leading-relaxed">
                   {t("hero.subtitle2")}
                 </p>
 
                 {/* Service tags */}
                 <div className="flex flex-wrap items-center gap-2 mb-8">
-                  {["hero.tag1", "hero.tag2", "hero.tag3", "hero.tag4"].map((key, i) => (
+                  {["hero.tag1", "hero.tag2", "hero.tag3", "hero.tag4", "hero.tag5"].map((key, i) => (
                     <span key={i}
                       className="flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-full"
                       style={{
@@ -1395,6 +1395,97 @@ export default function Home() {
             </div>
           </section>
 
+          {/* ── WHY PCBFORTH ── */}
+          <section className="relative py-16 px-8 lg:px-16" style={{ background: C.sectionAlt }}>
+            <div className="absolute top-0 left-8 right-8 h-px" style={{ background: `linear-gradient(to right, transparent, ${C.divider}, transparent)` }} />
+            <div className="max-w-5xl">
+              <SectionHeader
+                title={lang === "zh" ? "为什么选择 PCBforth" : "Why PCBFORTH"}
+                subtitle={lang === "zh" ? "我们是工程设计团队，不是工厂——为您提供从概念到量产的全局工程支持" : "We are an engineering design team, not a factory \u2014 providing full-cycle engineering support from concept to production."}
+              />
+              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-8">
+                {[
+                  {
+                    icon: <Users size={22} />,
+                    titleZh: "经验丰富的工程团队",
+                    titleEn: "Experienced Engineering Team",
+                    descZh: "资深硬件工程师主导，深耕多层PCB设计、高速布局、电源电子、工业控制、IoT设备等领域。",
+                    descEn: "Led by senior hardware engineers with deep expertise in multi-layer PCB, high-speed layout, power electronics, industrial control, and IoT devices.",
+                    color: C.blue,
+                  },
+                  {
+                    icon: <Factory size={22} />,
+                    titleZh: "独立于制造商",
+                    titleEn: "Manufacturing Independent",
+                    descZh: "根据您的项目需求选择最佳制造和SMT合作伙伴，不被单一工厂绑定，确保最优性价比。",
+                    descEn: "We select the best fabrication and assembly partners based on your project requirements \u2014 not tied to a single factory.",
+                    color: "#0EA5E9",
+                  },
+                  {
+                    icon: <Shield size={22} />,
+                    titleZh: "降低成本与风险",
+                    titleEn: "Cost Optimization",
+                    descZh: "在量产前优化BOM成本和制造风险，通过DFM审查和器件替代方案显著降低物料成本。",
+                    descEn: "Reduce BOM cost and manufacturing risks before production through DFM review and component alternative sourcing.",
+                    color: "#10B981",
+                  },
+                  {
+                    icon: <Clock size={22} />,
+                    titleZh: "快速交付",
+                    titleEn: "Fast Turnaround",
+                    descZh: "数天内完成样板级PCB设计，不是数周。我们理解时间就是金錢，快速响应每一个项目需求。",
+                    descEn: "Prototype-ready PCB design in days, not weeks. We understand time is money and respond quickly to every project need.",
+                    color: "#F59E0B",
+                  },
+                ].map((card, i) => (
+                  <motion.div key={i}
+                    initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }} transition={{ delay: i * 0.1 }}
+                    className="rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-200"
+                    style={{ background: C.cardBg, border: `1px solid ${C.cardBorder}` }}>
+                    <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style={{ background: `${card.color}18` }}>
+                      <span style={{ color: card.color }}>{card.icon}</span>
+                    </div>
+                    <h3 className="font-bold text-base mb-2" style={{ color: C.heading }}>
+                      {lang === "zh" ? card.titleZh : card.titleEn}
+                    </h3>
+                    <p className="text-sm leading-relaxed" style={{ color: C.muted }}>
+                      {lang === "zh" ? card.descZh : card.descEn}
+                    </p>
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* Capability tags */}
+              <div className="mt-8 p-5 rounded-2xl" style={{ background: C.cardBg, border: `1px solid ${C.cardBorder}` }}>
+                <div className="text-xs font-semibold tracking-widest uppercase mb-4" style={{ color: C.blue }}>
+                  {lang === "zh" ? "核心工程能力" : "Core Engineering Capabilities"}
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {[
+                    lang === "zh" ? "多层PCB设计" : "Multi-layer PCB Design",
+                    lang === "zh" ? "高速布局" : "High-Speed Layout",
+                    lang === "zh" ? "电源电子" : "Power Electronics",
+                    lang === "zh" ? "工业控制" : "Industrial Control",
+                    lang === "zh" ? "IoT设备" : "IoT Devices",
+                    lang === "zh" ? "RF/微波" : "RF / Microwave",
+                    lang === "zh" ? "信号完整性分析" : "Signal Integrity Analysis",
+                    lang === "zh" ? "电源完整性分析" : "Power Integrity Analysis",
+                    lang === "zh" ? "EMC设计" : "EMC Design",
+                    lang === "zh" ? "DFM审查" : "DFM Review",
+                    lang === "zh" ? "器件选型" : "Component Selection",
+                    lang === "zh" ? "HDI PCB" : "HDI PCB",
+                  ].map((tag, i) => (
+                    <span key={i} className="text-xs px-3 py-1.5 rounded-full font-medium"
+                      style={{ background: C.blueLight, color: C.blue, border: `1px solid ${C.cardBorder}` }}>
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+
           {/* ── SERVICE SECTIONS ── */}
           <ServiceSection id="schematic" title={t("schematic.title")} desc={t("schematic.desc")}
             img={SCHEMATIC_IMG} imgLeft={false}
@@ -1436,8 +1527,261 @@ export default function Home() {
               ? [{label:"最小封装",value:"0201 (0.6×0.3mm)"},{label:"贴片精度",value:"±25μm"},{label:"产线数量",value:"6条SMT产线"},{label:"日产能",value:"100万点/天"}]
               : [{label:"Min Package",value:"0201 (0.6×0.3mm)"},{label:"Placement Acc.",value:"±25μm"},{label:"SMT Lines",value:"6 production lines"},{label:"Daily Capacity",value:"1M placements/day"}]} />
 
+          {/* ── HOW WE WORK ── */}
+          <section className="relative py-16 px-8 lg:px-16" style={{ background: C.pageBg }}>
+            <div className="absolute top-0 left-8 right-8 h-px" style={{ background: `linear-gradient(to right, transparent, ${C.divider}, transparent)` }} />
+            <div className="max-w-5xl">
+              <SectionHeader
+                title={lang === "zh" ? "我们的工作流程" : "How We Work"}
+                subtitle={lang === "zh" ? "从需求分析到交付，每一步都有专业工程师把关" : "From requirements analysis to final delivery \u2014 every step managed by professional engineers."}
+              />
+              <div className="mt-10 grid sm:grid-cols-3 lg:grid-cols-9 gap-3">
+                {[
+                  { num: "01", zh: "需求分析", en: "Requirements Analysis" },
+                  { num: "02", zh: "原理图设计", en: "Schematic Design" },
+                  { num: "03", zh: "器件选型", en: "Component Selection" },
+                  { num: "04", zh: "PCB Layout", en: "PCB Layout" },
+                  { num: "05", zh: "仿真与审查", en: "Simulation & Review" },
+                  { num: "06", zh: "DFM检查", en: "DFM Check" },
+                  { num: "07", zh: "PCB制造支持", en: "Manufacturing Support" },
+                  { num: "08", zh: "SMT组装支持", en: "SMT Assembly Support" },
+                  { num: "09", zh: "交付包", en: "Delivery Package" },
+                ].map((step, i) => (
+                  <motion.div key={i}
+                    initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }} transition={{ delay: i * 0.07 }}
+                    className="relative flex flex-col items-center text-center">
+                    {/* Connector line */}
+                    {i < 8 && (
+                      <div className="hidden lg:block absolute top-5 left-[calc(50%+20px)] right-[-50%] h-px" style={{ background: C.divider }} />
+                    )}
+                    <div className="w-10 h-10 rounded-full flex items-center justify-center font-bold text-xs font-mono z-10 mb-2"
+                      style={{ background: i === 0 ? C.blue : C.blueLight, color: i === 0 ? "#fff" : C.blue, border: `2px solid ${i === 0 ? C.blue : C.cardBorder}` }}>
+                      {step.num}
+                    </div>
+                    <div className="text-xs font-semibold leading-tight" style={{ color: C.heading }}>
+                      {lang === "zh" ? step.zh : step.en}
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* ── ENGINEERING CAPABILITIES ── */}
+          <section className="relative py-16 px-8 lg:px-16" style={{ background: C.sectionAlt }}>
+            <div className="absolute top-0 left-8 right-8 h-px" style={{ background: `linear-gradient(to right, transparent, ${C.divider}, transparent)` }} />
+            <div className="max-w-5xl">
+              <SectionHeader
+                title={lang === "zh" ? "工程能力" : "Engineering Capabilities"}
+                subtitle={lang === "zh" ? "我们的工程团队具备广泛的硬件设计能力，涵盖各类项目需求" : "Our engineering team covers a broad range of hardware design capabilities for all project types."}
+              />
+              <div className="grid sm:grid-cols-3 gap-6 mt-8">
+                {[
+                  {
+                    titleZh: "PCB 设计",
+                    titleEn: "PCB Design",
+                    items: [
+                      lang === "zh" ? "✓ 2–20层 PCB" : "✓ 2–20 Layer PCB",
+                      lang === "zh" ? "✓ 高速设计" : "✓ High-Speed Design",
+                      lang === "zh" ? "✓ RF PCB" : "✓ RF PCB",
+                      lang === "zh" ? "✓ HDI PCB" : "✓ HDI PCB",
+                      lang === "zh" ? "✓ 阻抗控制" : "✓ Impedance Control",
+                    ],
+                  },
+                  {
+                    titleZh: "仿真分析",
+                    titleEn: "Simulation",
+                    items: [
+                      lang === "zh" ? "✓ 信号完整性" : "✓ Signal Integrity",
+                      lang === "zh" ? "✓ 电源完整性" : "✓ Power Integrity",
+                      lang === "zh" ? "✓ 热分析" : "✓ Thermal Analysis",
+                      lang === "zh" ? "✓ EMC 仿真" : "✓ EMC Simulation",
+                      lang === "zh" ? "✓ DDR 时序分析" : "✓ DDR Timing Analysis",
+                    ],
+                  },
+                  {
+                    titleZh: "硬件开发",
+                    titleEn: "Hardware Development",
+                    items: [
+                      lang === "zh" ? "✓ 原理图设计" : "✓ Schematic Design",
+                      lang === "zh" ? "✓ 器件选型" : "✓ Component Selection",
+                      lang === "zh" ? "✓ 设计审查" : "✓ Design Review",
+                      lang === "zh" ? "✓ DFM 优化" : "✓ DFM Optimization",
+                      lang === "zh" ? "✓ BOM 成本优化" : "✓ BOM Cost Optimization",
+                    ],
+                  },
+                ].map((col, i) => (
+                  <motion.div key={i}
+                    initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }} transition={{ delay: i * 0.1 }}
+                    className="rounded-2xl p-6" style={{ background: C.cardBg, border: `1px solid ${C.cardBorder}` }}>
+                    <h3 className="font-bold text-base mb-4" style={{ color: C.heading, fontFamily: "'Orbitron', monospace", fontSize: "0.85rem" }}>
+                      {lang === "zh" ? col.titleZh : col.titleEn}
+                    </h3>
+                    <ul className="space-y-2">
+                      {col.items.map((item, j) => (
+                        <li key={j} className="text-sm" style={{ color: C.body }}>{item}</li>
+                      ))}
+                    </ul>
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* Tools We Use */}
+              <div className="mt-8 p-6 rounded-2xl" style={{ background: C.cardBg, border: `1px solid ${C.cardBorder}` }}>
+                <div className="text-xs font-semibold tracking-widest uppercase mb-4" style={{ color: C.blue }}>
+                  {lang === "zh" ? "我们使用的工具" : "Tools We Use"}
+                </div>
+                <div className="flex flex-wrap gap-3">
+                  {[
+                    { name: "Altium Designer", color: "#A8001E" },
+                    { name: "KiCad",           color: "#314CB0" },
+                    { name: "Cadence OrCAD",   color: "#FF6600" },
+                    { name: "PADS",            color: "#005A9C" },
+                    { name: "LTspice",         color: "#CC0000" },
+                    { name: "HyperLynx",       color: "#0072C6" },
+                    { name: "Ansys SIwave",    color: "#FFB800" },
+                    { name: "CST Studio",      color: "#003087" },
+                  ].map((tool, i) => (
+                    <div key={i} className="flex items-center gap-2 px-4 py-2 rounded-lg"
+                      style={{ background: C.blueLight, border: `1px solid ${C.cardBorder}` }}>
+                      <div className="w-2 h-2 rounded-full" style={{ background: tool.color }} />
+                      <span className="text-sm font-semibold" style={{ color: C.heading }}>{tool.name}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+
           {/* ── CASES ── */}
           <CasesSection lang={lang} C={C} />
+
+          {/* ── FEATURED PROJECTS ── */}
+          <section className="relative py-16 px-8 lg:px-16" style={{ background: C.pageBg }}>
+            <div className="absolute top-0 left-8 right-8 h-px" style={{ background: `linear-gradient(to right, transparent, ${C.divider}, transparent)` }} />
+            <div className="max-w-5xl">
+              <SectionHeader
+                title={lang === "zh" ? "精选项目" : "Featured Projects"}
+                subtitle={lang === "zh" ? "我们帮助客户实现的典型硬件项目案例" : "Representative hardware projects we have delivered for our clients."}
+              />
+              <div className="grid sm:grid-cols-3 gap-6 mt-8">
+                {[
+                  {
+                    titleZh: "工业控制器 PCB",
+                    titleEn: "Industrial Controller PCB",
+                    descZh: "STM32主控的工业控制器，4層板设计，EMC优化处理，通过CE认证测试。",
+                    descEn: "STM32-based industrial controller with 4-layer board design and EMC optimization. Passed CE certification testing.",
+                    tags: ["4-Layer", "STM32", "EMC Optimized", "IPC Class 2"],
+                    color: C.blue,
+                  },
+                  {
+                    titleZh: "IoT 传感器模块",
+                    titleEn: "IoT Sensor Module",
+                    descZh: "超紧凑小尺寸布局，集成BLE+WiFi双模块，优化小型化与低功耗设计。",
+                    descEn: "Ultra-compact layout integrating BLE + WiFi dual modules with low-power design optimization.",
+                    tags: ["Ultra Compact", "BLE + WiFi", "Low Power", "2-Layer"],
+                    color: "#0EA5E9",
+                  },
+                  {
+                    titleZh: "电源管理板",
+                    titleEn: "Power Management Board",
+                    descZh: "高电流布线与热设计优化，支持大功率电源转换，符合IPC Class 3标准。",
+                    descEn: "High-current routing with thermal optimization for high-power conversion. Meets IPC Class 3 standards.",
+                    tags: ["High Current", "Thermal Optimized", "IPC Class 3", "6-Layer"],
+                    color: "#10B981",
+                  },
+                ].map((proj, i) => (
+                  <motion.div key={i}
+                    initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }} transition={{ delay: i * 0.1 }}
+                    className="rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-200"
+                    style={{ background: C.cardBg, border: `1px solid ${C.cardBorder}` }}>
+                    {/* Placeholder image area */}
+                    <div className="h-40 flex items-center justify-center relative"
+                      style={{ background: `linear-gradient(135deg, ${proj.color}18, ${proj.color}08)`, borderBottom: `1px solid ${C.cardBorder}` }}>
+                      <div className="text-center">
+                        <Cpu size={36} style={{ color: proj.color, opacity: 0.6 }} className="mx-auto mb-2" />
+                        <div className="text-xs font-mono" style={{ color: proj.color, opacity: 0.7 }}>PCB DESIGN</div>
+                      </div>
+                      <div className="absolute top-3 right-3 px-2 py-0.5 rounded-full text-[10px] font-bold"
+                        style={{ background: `${proj.color}22`, color: proj.color, border: `1px solid ${proj.color}44` }}>
+                        {lang === "zh" ? "已交付" : "Delivered"}
+                      </div>
+                    </div>
+                    <div className="p-5">
+                      <h3 className="font-bold text-sm mb-2" style={{ color: C.heading }}>
+                        {lang === "zh" ? proj.titleZh : proj.titleEn}
+                      </h3>
+                      <p className="text-xs leading-relaxed mb-4" style={{ color: C.muted }}>
+                        {lang === "zh" ? proj.descZh : proj.descEn}
+                      </p>
+                      <div className="flex flex-wrap gap-1.5">
+                        {proj.tags.map((tag, j) => (
+                          <span key={j} className="text-[10px] px-2 py-0.5 rounded-full font-semibold"
+                            style={{ background: `${proj.color}15`, color: proj.color, border: `1px solid ${proj.color}30` }}>
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* ── FREE PCB DESIGN REVIEW (LEAD MAGNET) ── */}
+          <section className="relative py-16 px-8 lg:px-16" style={{ background: `linear-gradient(135deg, ${C.sidebarBg} 0%, ${C.sidebarBgDark} 100%)` }}>
+            <div className="max-w-5xl">
+              <div className="flex flex-col lg:flex-row items-center gap-10">
+                <div className="flex-1">
+                  <div className="text-xs font-semibold tracking-widest uppercase mb-3" style={{ color: "#60A5FA" }}>
+                    {lang === "zh" ? "免费服务" : "FREE SERVICE"}
+                  </div>
+                  <h2 className="text-2xl lg:text-3xl font-black text-white mb-4" style={{ fontFamily: "'Orbitron', monospace", lineHeight: 1.2 }}>
+                    {lang === "zh" ? "免费 PCB 设计审查" : "Free PCB Design Review"}
+                  </h2>
+                  <p className="text-sm leading-relaxed mb-6" style={{ color: "rgba(255,255,255,0.75)" }}>
+                    {lang === "zh"
+                      ? "上传您的原理图或PCB布局文件，我们的工程师将在 24 小时内提供专业工程反馈，包括DFM建议、器件选型优化和EMC风险评估。"
+                      : "Upload your schematic or PCB layout and receive professional engineering feedback within 24 hours \u2014 including DFM recommendations, component selection optimization, and EMC risk assessment."}
+                  </p>
+                  <div className="flex flex-wrap gap-3">
+                    <a href="/quote"
+                      className="flex items-center gap-2 px-6 py-3 rounded-lg font-bold text-white text-sm transition-all duration-200 active:scale-95"
+                      style={{ background: C.blue, boxShadow: "0 4px 20px rgba(21,101,232,0.5)" }}
+                      onMouseEnter={(e) => (e.currentTarget.style.background = C.blueDark)}
+                      onMouseLeave={(e) => (e.currentTarget.style.background = C.blue)}>
+                      {lang === "zh" ? "获取免费审查" : "Get Free Review"} <ArrowRight size={15} />
+                    </a>
+                    <a href="mailto:review@pcbforth.com"
+                      className="flex items-center gap-2 px-6 py-3 rounded-lg font-semibold text-sm transition-all duration-200"
+                      style={{ border: "1.5px solid rgba(255,255,255,0.35)", color: "#FFFFFF", background: "rgba(255,255,255,0.08)" }}
+                      onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.18)")}
+                      onMouseLeave={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.08)")}>
+                      <Mail size={15} /> review@pcbforth.com
+                    </a>
+                  </div>
+                </div>
+                <div className="flex-shrink-0 grid grid-cols-1 gap-3 w-full lg:w-64">
+                  {[
+                    { icon: <CheckCircle size={16} />, zh: "DFM 可制造性建议", en: "DFM Manufacturability Advice" },
+                    { icon: <CheckCircle size={16} />, zh: "器件选型优化", en: "Component Selection Optimization" },
+                    { icon: <CheckCircle size={16} />, zh: "EMC 风险评估", en: "EMC Risk Assessment" },
+                    { icon: <CheckCircle size={16} />, zh: "24小时内回复", en: "Response within 24 hours" },
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-center gap-3 px-4 py-3 rounded-xl"
+                      style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.15)" }}>
+                      <span style={{ color: "#60A5FA" }}>{item.icon}</span>
+                      <span className="text-sm font-medium text-white">{lang === "zh" ? item.zh : item.en}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
 
           {/* ── CONTACT ── */}
           <section id="section-contact" className="relative py-16 px-8 lg:px-16" style={{ background: C.sectionAlt }}>
@@ -1550,6 +1894,37 @@ export default function Home() {
 
         </div>
       </div>
+
+      {/* ── FIXED CONTACT FLOAT (P9) ── */}
+      <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-2">
+        {/* Response badge */}
+        <div className="px-3 py-1.5 rounded-full text-xs font-semibold shadow-lg"
+          style={{ background: "#10B981", color: "#fff" }}>
+          ✓ {lang === "zh" ? "12小时内回复" : "Response within 12 hours"}
+        </div>
+        {/* Contact buttons */}
+        <div className="flex flex-col gap-2">
+          <a href="https://wa.me/8675588888888" target="_blank" rel="noopener noreferrer"
+            title="WhatsApp"
+            className="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-xl transition-transform hover:scale-110 active:scale-95"
+            style={{ background: "#25D366", boxShadow: "0 4px 16px rgba(37,211,102,0.4)" }}>
+            W
+          </a>
+          <a href="mailto:info@pcbforth.com"
+            title="Email"
+            className="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-xl transition-transform hover:scale-110 active:scale-95"
+            style={{ background: "#1565E8", boxShadow: "0 4px 16px rgba(21,101,232,0.4)" }}>
+            <Mail size={18} />
+          </a>
+          <a href="/quote"
+            title={lang === "zh" ? "快速报价" : "Quick Quote"}
+            className="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-xl transition-transform hover:scale-110 active:scale-95"
+            style={{ background: "#0D4DC4", boxShadow: "0 4px 16px rgba(13,77,196,0.4)" }}>
+            <ClipboardCheck size={18} />
+          </a>
+        </div>
+      </div>
+
     </div>
   );
 }
