@@ -552,6 +552,96 @@ function CaseCard({ title, desc, tags, img }: { title: string; desc: string; tag
   );
 }
 
+// ── Linkytech-style Cases Section with 3 tabs ──
+const GITHUB_RAW = "https://raw.githubusercontent.com/guyuhui009-bit/pcbforth/main/public/images/cases";
+
+const CASES_DATA = {
+  pcb: [
+    { img: `${GITHUB_RAW}/case1-1.png`, title: "高速数据采集板", titleEn: "High-Speed Data Acquisition Board", desc: "高速模拟信号采集，速度高达5G。", descEn: "High-speed analog signal acquisition, up to 5G sampling rate." },
+    { img: `${GITHUB_RAW}/case1-2.png`, title: "Purley服务器板", titleEn: "Purley Server Board", desc: "采用Intel Purley 处理器，涉及Intel高速设计要求。", descEn: "Intel Purley processor, meeting Intel high-speed design requirements." },
+    { img: `${GITHUB_RAW}/case1-3.png`, title: "FPGA开发板", titleEn: "FPGA Development Board", desc: "多层高密度FPGA布线，支持SerDes高速接口设计。", descEn: "Multi-layer high-density FPGA routing with SerDes high-speed interface design." },
+    { img: `${GITHUB_RAW}/case1-4.png`, title: "5G通信主板", titleEn: "5G Communication Mainboard", desc: "为全球知名通信设备商设计，涉及高速 SerDes接口、DDR5内存。", descEn: "Designed for a leading telecom OEM with high-speed SerDes and DDR5 memory interfaces." },
+    { img: `${GITHUB_RAW}/case1-5.png`, title: "工业控制板", titleEn: "Industrial Control Board", desc: "高可靠性工业控制PCB，通过CE/UL认证，广泛应用于自动化产线。", descEn: "High-reliability industrial control PCB, CE/UL certified, widely used in automation lines." },
+    { img: `${GITHUB_RAW}/case1-6.png`, title: "医疗设备主板", titleEn: "Medical Device Mainboard", desc: "便携式患者监护仪主板，满足IEC 60601医疗电气安全标准，通过FDA 510(k)认证。", descEn: "Portable patient monitor mainboard meeting IEC 60601 and FDA 510(k) certification." },
+    { img: `${GITHUB_RAW}/case1-7.png`, title: "超薄笔记本主板", titleEn: "Ultra-Thin Laptop Mainboard", desc: "极致小型化布局，板匰0.8mm，支持USB4、Thunderbolt 4高速接口。", descEn: "Extreme miniaturization, 0.8mm board thickness, USB4 and Thunderbolt 4 support." },
+    { img: `${GITHUB_RAW}/case1-8.png`, title: "新能源逆变器板", titleEn: "New Energy Inverter Board", desc: "高功率密度逆变器PCB，集成GaN功率器件，优化散热设计。", descEn: "High-power-density inverter PCB with GaN power devices and optimized thermal design." },
+  ],
+  si: [
+    { img: `${GITHUB_RAW}/case2-1.png`, title: "DDR3/4 时序与信号完整性仿真", titleEn: "DDR3/4 Timing & SI Simulation", desc: "评估DDR信号质量，优化信号拓扑结构，确保接收端信号质量与时序符合SPEC。", descEn: "Evaluate DDR signal quality, optimize topology, ensure receiver signal quality meets SPEC." },
+    { img: `${GITHUB_RAW}/case2-2.png`, title: "DDR 源端驱动和ODT选择仿真", titleEn: "DDR Driver & ODT Simulation", desc: "扫描仿真源端驱动和接收端ODT种类，验证信号抖动、过冲、回冲大小是否符合JEDEC规范。", descEn: "Scan driver and ODT types, verify signal ringing, overshoot, undershoot against JEDEC spec." },
+    { img: `${GITHUB_RAW}/case2-3.png`, title: "DDR 时序分析", titleEn: "DDR Timing Analysis", desc: "验证各组时序关系，量测信号时延，建立/保持时间大小。", descEn: "Verify timing relationships, measure signal delays, establish/hold time margins." },
+    { img: `${GITHUB_RAW}/case2-4.png`, title: "SerDes 高速信号仿真", titleEn: "SerDes High-Speed Signal Simulation", desc: "针对PCIe/USB3/SATA等SerDes接口进行信号完整性仿真，确保符合协议规范。", descEn: "SI simulation for PCIe/USB3/SATA SerDes interfaces to ensure protocol compliance." },
+    { img: `${GITHUB_RAW}/case2-5.png`, title: "PDN 电源分配网络仿真", titleEn: "PDN Power Distribution Simulation", desc: "分析电源分配网络阻抗，优化去耦电容布局，确保电源完整性。", descEn: "Analyze PDN impedance, optimize decoupling capacitor placement, ensure power integrity." },
+    { img: `${GITHUB_RAW}/case2-6.png`, title: "EMC 辐射仿真分析", titleEn: "EMC Radiation Simulation", desc: "通过仿真预测辐射发射热点，指导布局优化，降低EMC认证风险。", descEn: "Predict radiation hotspots via simulation, guide layout optimization, reduce EMC certification risk." },
+    { img: `${GITHUB_RAW}/case2-7.png`, title: "热仿真与散热分析", titleEn: "Thermal Simulation & Analysis", desc: "对功耗器件进行热仿真，优化散热布局，确保关键器件在安全温度内工作。", descEn: "Thermal simulation for power components, optimize heat dissipation layout, ensure safe operating temperature." },
+  ],
+  pcba: [
+    { img: `${GITHUB_RAW}/case3-1.png`, title: "显卡PCBA", titleEn: "Graphics Card PCBA", desc: "高密度显卡贴装，支持小封装0201器件，精密回流焊接工艺。", descEn: "High-density graphics card assembly, supporting 0201 components, precision reflow soldering." },
+    { img: `${GITHUB_RAW}/case3-2.png`, title: "路由器最小封装0201", titleEn: "Router Min Package 0201", desc: "路由器主板贴装，最小封装0201，高密度BGA返修能力。", descEn: "Router mainboard assembly with minimum 0201 package and high-density BGA rework capability." },
+    { img: `${GITHUB_RAW}/case3-3.png`, title: "数据处理板多个BGA", titleEn: "Data Processing Board Multi-BGA", desc: "多个BGA器件贴装，优化各组内等长匹配条件，确保时序要求。", descEn: "Multi-BGA assembly with optimized matched length routing to ensure timing requirements." },
+    { img: `${GITHUB_RAW}/case3-4.png`, title: "ATCA多个BGA大板", titleEn: "ATCA Multi-BGA Large Board", desc: "ATCA大板贴装，支持大尺寸多个BGA器件，精密烊接和全面X-Ray检测。", descEn: "ATCA large board assembly supporting multiple BGA components with precision soldering and full X-Ray inspection." },
+  ],
+};
+
+function CasesSection({ lang, C }: { lang: string; C: typeof import('./Home').default extends never ? never : Record<string, string> }) {
+  const [activeTab, setActiveTab] = useState<'pcb'|'si'|'pcba'>('pcb');
+  const tabs = [
+    { key: 'pcb' as const,  labelZh: 'PCB设计案例',  labelEn: 'PCB Design Cases' },
+    { key: 'si'  as const,  labelZh: 'SI仿真案例',  labelEn: 'SI Simulation Cases' },
+    { key: 'pcba' as const, labelZh: 'PCBA案例',      labelEn: 'PCBA Cases' },
+  ];
+  const cases = CASES_DATA[activeTab];
+  return (
+    <section id="section-cases" className="relative py-16 px-8 lg:px-16" style={{ background: C.pageBg }}>
+      <div className="absolute top-0 left-8 right-8 h-px" style={{ background: `linear-gradient(to right, transparent, ${C.divider}, transparent)` }} />
+      <div className="max-w-5xl">
+        <div className="flex items-center gap-3 mb-6">
+          <div className="w-1 h-7 rounded-full" style={{ background: `linear-gradient(to bottom, #0EA5E9, #1565E8)` }} />
+          <h2 className="text-2xl lg:text-3xl font-bold tracking-wide" style={{ color: C.heading, fontFamily: "'Orbitron', monospace" }}>
+            {lang === 'zh' ? '经典案例' : 'Case Studies'}
+          </h2>
+        </div>
+        <p className="text-sm mb-8 pl-4" style={{ color: C.muted }}>
+          {lang === 'zh' ? '我们服务过众多知名企业，涵盖通信、消费电子、工业控制、医疗设备等领域' : 'We have served many well-known enterprises across telecom, consumer electronics, industrial control, and medical device sectors.'}
+        </p>
+        {/* Tabs */}
+        <div className="flex gap-6 border-b mb-8" style={{ borderColor: C.divider }}>
+          {tabs.map(tab => (
+            <button key={tab.key} onClick={() => setActiveTab(tab.key)}
+              className="pb-3 text-sm font-semibold transition-all duration-200 relative"
+              style={{ color: activeTab === tab.key ? C.blue : C.muted, borderBottom: activeTab === tab.key ? `2px solid ${C.blue}` : '2px solid transparent', marginBottom: '-1px' }}>
+              {lang === 'zh' ? tab.labelZh : tab.labelEn}
+            </button>
+          ))}
+        </div>
+        {/* Case Grid */}
+        <div className="grid sm:grid-cols-2 gap-6">
+          {cases.map((c, i) => (
+            <motion.div key={`${activeTab}-${i}`} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: i * 0.05 }}
+              className="rounded-xl overflow-hidden group transition-all duration-300 hover:-translate-y-1"
+              style={{ background: C.cardBg, border: `1px solid ${C.cardBorder}`, boxShadow: '0 2px 12px rgba(21,101,232,0.07)' }}
+              onMouseEnter={(e) => (e.currentTarget.style.boxShadow = '0 8px 30px rgba(21,101,232,0.15)')}
+              onMouseLeave={(e) => (e.currentTarget.style.boxShadow = '0 2px 12px rgba(21,101,232,0.07)')}>
+              <div className="relative h-52 overflow-hidden bg-gray-100">
+                <img src={c.img} alt={lang === 'zh' ? c.title : c.titleEn} loading="lazy" decoding="async"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              </div>
+              <div className="p-5">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="w-2 h-2 rounded-sm" style={{ background: C.blue }} />
+                  <h3 className="font-semibold text-sm" style={{ color: C.heading }}>{lang === 'zh' ? c.title : c.titleEn}</h3>
+                </div>
+                <p className="text-xs leading-relaxed" style={{ color: C.muted }}>{lang === 'zh' ? c.desc : c.descEn}</p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function ContactItem({ icon, label, value }: { icon: React.ReactNode; label: string; value: string }) {
   return (
     <div className="flex items-start gap-4 p-4 rounded-xl" style={{ background: C.blueLight, border: `1px solid ${C.cardBorder}` }}>
@@ -1347,71 +1437,7 @@ export default function Home() {
               : [{label:"Min Package",value:"0201 (0.6×0.3mm)"},{label:"Placement Acc.",value:"±25μm"},{label:"SMT Lines",value:"6 production lines"},{label:"Daily Capacity",value:"1M placements/day"}]} />
 
           {/* ── CASES ── */}
-          <section id="section-cases" className="relative py-16 px-8 lg:px-16" style={{ background: C.pageBg }}>
-            <div className="absolute top-0 left-8 right-8 h-px" style={{ background: `linear-gradient(to right, transparent, ${C.divider}, transparent)` }} />
-            <div className="max-w-5xl">
-              <SectionHeader title={t("cases.title")} subtitle={t("cases.subtitle")} />
-              <div className="grid sm:grid-cols-2 gap-5 mt-8">
-                <CaseCard title={t("cases.case1.title")} desc={t("cases.case1.desc")} img={PCB_DESIGN_IMG}
-                  tags={[t("cases.case1.tag1"),t("cases.case1.tag2"),t("cases.case1.tag3")]} />
-                <CaseCard title={t("cases.case2.title")} desc={t("cases.case2.desc")} img={PCB_CLOSEUP_IMG}
-                  tags={[t("cases.case2.tag1"),t("cases.case2.tag2"),t("cases.case2.tag3")]} />
-                <CaseCard title={t("cases.case3.title")} desc={t("cases.case3.desc")} img={SMT_IMG}
-                  tags={[t("cases.case3.tag1"),t("cases.case3.tag2"),t("cases.case3.tag3")]} />
-                <CaseCard title={t("cases.case4.title")} desc={t("cases.case4.desc")} img={HERO_IMG}
-                  tags={[t("cases.case4.tag1"),t("cases.case4.tag2"),t("cases.case4.tag3")]} />
-              </div>
-
-              {/* Industries */}
-              <div className="mt-10">
-                <div className="text-xs uppercase tracking-widest mb-4 font-semibold" style={{ color: C.blue }}>
-                  {lang === "zh" ? "应用领域" : "Industries Served"}
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {(lang==="zh"
-                    ? ["5G通信","消费电子","工业控制","医疗设备","汽车电子","航空航天","新能源","智能家居"]
-                    : ["5G Telecom","Consumer Electronics","Industrial Control","Medical Devices","Automotive","Aerospace","New Energy","Smart Home"]
-                  ).map((ind) => (
-                    <span key={ind} className="px-3 py-1.5 text-xs rounded-full font-medium transition-all cursor-default"
-                      style={{ background: C.blueLight, border: `1px solid ${C.cardBorder}`, color: C.blue }}>
-                      {ind}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              {/* Partners */}
-              <div className="mt-8">
-                <div className="text-xs uppercase tracking-widest mb-4 font-semibold" style={{ color: C.blue }}>
-                  {lang === "zh" ? "合作伙伴" : "Partners"}
-                </div>
-                <div className="flex flex-wrap gap-3">
-                  {[
-                    { name: "Huawei",    color: "#CF0A2C", bg: "#fff5f5" },
-                    { name: "Lenovo",    color: "#E2231A", bg: "#fff5f5" },
-                    { name: "Foxconn",   color: "#003087", bg: "#f0f4ff" },
-                    { name: "BYD",       color: "#003087", bg: "#f0f4ff" },
-                    { name: "DJI",       color: "#1A1A1A", bg: "#f8f8f8" },
-                    { name: "Hikvision", color: "#E30613", bg: "#fff5f5" },
-                    { name: "OPPO",      color: "#1D8348", bg: "#f0fff4" },
-                    { name: "Xiaomi",    color: "#FF6900", bg: "#fff8f0" },
-                  ].map((p) => (
-                    <div key={p.name}
-                      className="flex items-center justify-center rounded-xl transition-all duration-200 hover:-translate-y-0.5 select-none"
-                      style={{ background: p.bg, border: `1px solid ${C.cardBorder}`,
-                        boxShadow: "0 1px 6px rgba(21,101,232,0.07)",
-                        width: "108px", height: "52px", padding: "8px 12px" }}
-                      onMouseEnter={(e) => (e.currentTarget.style.boxShadow = "0 4px 16px rgba(21,101,232,0.15)")}
-                      onMouseLeave={(e) => (e.currentTarget.style.boxShadow = "0 1px 6px rgba(21,101,232,0.07)")}>
-                      <span style={{ color: p.color, fontWeight: 700, fontSize: "13px", letterSpacing: "0.02em", fontFamily: "Arial, sans-serif" }}>
-                        {p.name}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </section>
+          <CasesSection lang={lang} C={C} />
 
           {/* ── CONTACT ── */}
           <section id="section-contact" className="relative py-16 px-8 lg:px-16" style={{ background: C.sectionAlt }}>
