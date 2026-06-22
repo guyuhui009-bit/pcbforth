@@ -1,5 +1,6 @@
-// PCBforth — Design Services Overview Page
-// Blue-white theme matching Home.tsx design tokens
+// PCBforth — Design Services Overview
+// Inspired by Linkytech PCB Design page layout
+// Hero with real PCB background image + 4 advantage cards + capability list + service grid + CTA
 
 import { useState } from "react";
 import { motion } from "framer-motion";
@@ -7,25 +8,25 @@ import { useLocation } from "wouter";
 import {
   Activity, Layers, Zap, Cpu, Shield, CheckCircle, Package,
   ArrowRight, ChevronRight, Globe, Phone, Mail,
+  Users, Award, Star, Wrench,
 } from "lucide-react";
 
-// ── Design tokens (same as Home.tsx) ──
+const HERO_BG = "/manus-storage/pcb-design-hero_8ddb0a66.jpg";
+
+// ── Design tokens ──
 const C = {
-  sidebarBg:      "#1A3A6B",
   sidebarBgDark:  "#122A52",
   sidebarBorder:  "rgba(255,255,255,0.12)",
-  sidebarText:    "#B8D4F8",
-  pageBg:         "#F0F6FF",
+  pageBg:         "#FFFFFF",
   cardBg:         "#FFFFFF",
-  cardBorder:     "#D0E4FF",
-  sectionAlt:     "#EBF3FF",
+  cardBorder:     "#E8EFF8",
+  sectionAlt:     "#F5F8FF",
   heading:        "#0D2A5E",
-  body:           "#2C4A7A",
+  body:           "#3A5070",
   muted:          "#6B8CB8",
   blue:           "#1565E8",
   blueDark:       "#0D4DC4",
   blueLight:      "#EBF3FF",
-  cyan:           "#0EA5E9",
   divider:        "#C8DEFF",
 };
 
@@ -46,10 +47,87 @@ function PcbLogo({ size = 36 }: { size?: number }) {
   );
 }
 
+// ── 4 Core Advantages (Linkytech-style) ──
+const advantages = [
+  {
+    icon: <Users size={40} strokeWidth={1.5} />,
+    titleZh: "最专业的设计团队",
+    titleEn: "Most Professional Design Team",
+    pointsZh: [
+      "72 人的设计团队",
+      "平均工作经验 6 年以上",
+      "10 年以上的设计人员占 22%",
+      "81.16% 大学本科学历",
+      "18.84% 大专学历",
+    ],
+    pointsEn: [
+      "72-person design team",
+      "Average 6+ years of experience",
+      "22% with 10+ years experience",
+      "81.16% hold bachelor's degrees",
+      "18.84% hold associate degrees",
+    ],
+  },
+  {
+    icon: <Award size={40} strokeWidth={1.5} />,
+    titleZh: "领先的设计经验",
+    titleEn: "Leading Design Experience",
+    pointsZh: [
+      "国内外技术先进知名通信公司设计经验",
+      "大型芯片公司的设计指导要求",
+      "精通 40G 高速设计要求",
+      "精通大电流高压的设计要求",
+      "精通 EMC 的设计要求",
+    ],
+    pointsEn: [
+      "Experience with leading global telecom companies",
+      "Guided by major chip company design standards",
+      "Proficient in 40G high-speed design",
+      "Expertise in high-current high-voltage design",
+      "Proficient in EMC design requirements",
+    ],
+  },
+  {
+    icon: <Star size={40} strokeWidth={1.5} />,
+    titleZh: "高品质设计质量体系",
+    titleEn: "High-Quality Design System",
+    pointsZh: [
+      "严格的质量体系流程",
+      "严格的评审制度",
+      "零出错率的品质要求",
+    ],
+    pointsEn: [
+      "Rigorous quality management process",
+      "Strict design review system",
+      "Zero-defect quality standard",
+    ],
+  },
+  {
+    icon: <Wrench size={40} strokeWidth={1.5} />,
+    titleZh: "高难度设计",
+    titleEn: "High-Complexity Design",
+    pointsZh: [
+      "最大设计规模 90000 pin",
+      "HDI / Any layer PCB 设计",
+      "3D PCB 设计",
+      "RF 设计",
+      "56G 高速设计",
+    ],
+    pointsEn: [
+      "Max design scale: 90,000 pins",
+      "HDI / Any layer PCB design",
+      "3D PCB design",
+      "RF design",
+      "56G high-speed design",
+    ],
+  },
+];
+
+// ── 7 Service Cards ──
 const services = [
   {
     path: "/design-services/schematic",
-    icon: <Activity size={28} />,
+    icon: <Activity size={26} />,
     color: "#1565E8",
     bgColor: "#EBF3FF",
     titleZh: "原理图设计",
@@ -61,7 +139,7 @@ const services = [
   },
   {
     path: "/design-services/pcb-layout",
-    icon: <Layers size={28} />,
+    icon: <Layers size={26} />,
     color: "#0891B2",
     bgColor: "#E0F7FA",
     titleZh: "PCB Layout",
@@ -73,7 +151,7 @@ const services = [
   },
   {
     path: "/design-services/si",
-    icon: <Zap size={28} />,
+    icon: <Zap size={26} />,
     color: "#7C3AED",
     bgColor: "#F3EEFF",
     titleZh: "信号完整性分析",
@@ -85,7 +163,7 @@ const services = [
   },
   {
     path: "/design-services/pi",
-    icon: <Cpu size={28} />,
+    icon: <Cpu size={26} />,
     color: "#D97706",
     bgColor: "#FFF8E1",
     titleZh: "电源完整性分析",
@@ -97,7 +175,7 @@ const services = [
   },
   {
     path: "/design-services/emc",
-    icon: <Shield size={28} />,
+    icon: <Shield size={26} />,
     color: "#DC2626",
     bgColor: "#FEF2F2",
     titleZh: "EMC 设计",
@@ -109,19 +187,19 @@ const services = [
   },
   {
     path: "/design-services/dfm",
-    icon: <CheckCircle size={28} />,
+    icon: <CheckCircle size={26} />,
     color: "#059669",
     bgColor: "#ECFDF5",
     titleZh: "DFM 审查",
     titleEn: "DFM Review",
     descZh: "制造可行性分析，识别可能导致生产问题的设计缺陷，提供焊盘尺寸、丝印间距、孔径等优化建议，降低首板返工率。",
-    descEn: "Manufacturing feasibility analysis identifying design defects that cause production issues. Recommendations on pad size, silkscreen, drill, and more.",
+    descEn: "Manufacturing feasibility analysis identifying design defects. Recommendations on pad size, silkscreen, drill, and more.",
     tagsZh: ["制造可行性", "焊盘优化", "孔径检查", "首板良率"],
     tagsEn: ["Manufacturability", "Pad Optimization", "Drill Check", "First-Pass Yield"],
   },
   {
     path: "/design-services/components",
-    icon: <Package size={28} />,
+    icon: <Package size={26} />,
     color: "#0891B2",
     bgColor: "#E0F7FA",
     titleZh: "元器件选型",
@@ -133,31 +211,14 @@ const services = [
   },
 ];
 
-const differentiators = [
-  {
-    zh: "工程师团队，不是工厂",
-    en: "Engineers, Not a Factory",
-    descZh: "PCBforth 核心团队由资深硬件工程师组成，具备 Ansys SIwave、HyperLynx、CST 等专业仿真工具使用经验，而非仅提供制造报价。",
-    descEn: "PCBforth's core team consists of senior hardware engineers with hands-on experience in Ansys SIwave, HyperLynx, CST, and other professional simulation tools.",
-  },
-  {
-    zh: "设计与制造一体化",
-    en: "Design-to-Manufacturing Integration",
-    descZh: "设计团队与制造工厂深度协作，DFM 审查在设计阶段即完成，避免制板后返工，首板良率显著高于行业平均水平。",
-    descEn: "Design team works closely with the manufacturing floor. DFM review is completed at the design stage, avoiding post-fabrication rework.",
-  },
-  {
-    zh: "全流程责任制",
-    en: "Full-Cycle Accountability",
-    descZh: "从需求分析、原理图、Layout、仿真验证到制板、SMT，同一团队负责全流程，避免多供应商协调导致的信息断层。",
-    descEn: "From requirements analysis, schematic, layout, simulation verification to fabrication and SMT — one team owns the full cycle.",
-  },
-  {
-    zh: "高速高频专项能力",
-    en: "High-Speed / High-Frequency Expertise",
-    descZh: "在 224G PAM4、DDR5、5G 毫米波、光模块等高速高频领域具备丰富实战经验，能解决 PCBWay/JLCPCB 无法覆盖的复杂工程问题。",
-    descEn: "Extensive hands-on experience in 224G PAM4, DDR5, 5G mmWave, and optical modules — solving complex engineering challenges beyond standard PCB factories.",
-  },
+// ── Design Process Steps ──
+const processSteps = [
+  { numZh: "01", numEn: "01", titleZh: "需求沟通", titleEn: "Requirements", descZh: "了解产品功能、性能指标、应用场景及预算约束", descEn: "Understand product function, performance specs, application, and budget" },
+  { numZh: "02", numEn: "02", titleZh: "方案评估", titleEn: "Feasibility", descZh: "技术可行性分析、器件选型建议、风险识别", descEn: "Technical feasibility analysis, component selection, risk identification" },
+  { numZh: "03", numEn: "03", titleZh: "原理图设计", titleEn: "Schematic", descZh: "完整原理图绘制、DRC 检查、评审确认", descEn: "Full schematic drawing, DRC check, design review" },
+  { numZh: "04", numEn: "04", titleZh: "PCB Layout", titleEn: "PCB Layout", descZh: "布局布线、阻抗控制、DFM 同步审查", descEn: "Placement, routing, impedance control, simultaneous DFM review" },
+  { numZh: "05", numEn: "05", titleZh: "仿真验证", titleEn: "Simulation", descZh: "SI/PI/EMC 仿真分析，出具整改报告", descEn: "SI/PI/EMC simulation analysis with remediation report" },
+  { numZh: "06", numEn: "06", titleZh: "交付制板", titleEn: "Delivery", descZh: "Gerber 文件交付，对接制造与 SMT 生产", descEn: "Gerber file delivery, handoff to fabrication and SMT production" },
 ];
 
 export default function DesignServices() {
@@ -202,86 +263,107 @@ export default function DesignServices() {
         </div>
       </header>
 
-      {/* ── Hero ── */}
-      <section className="relative py-20 px-8 lg:px-16 overflow-hidden"
-        style={{ background: `linear-gradient(135deg, ${C.sidebarBgDark} 0%, #1A3A6B 60%, #1E4080 100%)` }}>
-        <div className="absolute inset-0 opacity-10">
-          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" strokeWidth="0.5"/>
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#grid)" />
-          </svg>
-        </div>
-        <div className="relative z-10 max-w-4xl">
-          <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
-            <div className="flex items-center gap-3 mb-5">
-              <div className="w-8 h-px bg-white/50" />
-              <span className="text-xs tracking-[0.3em] uppercase font-mono text-white/60">PCBforth Design Services</span>
-            </div>
-            <h1 className="text-4xl lg:text-5xl font-black text-white leading-tight mb-5"
-              style={{ fontFamily: "'Orbitron', monospace" }}>
-              {lang === "zh" ? "专业 PCB 工程设计服务" : "Professional PCB\nEngineering Services"}
+      {/* ── Hero — Full-width PCB background image (Linkytech style) ── */}
+      <section className="relative h-72 lg:h-96 overflow-hidden">
+        <img
+          src={HERO_BG}
+          alt="PCB Design"
+          className="absolute inset-0 w-full h-full object-cover object-center"
+        />
+        {/* Dark overlay */}
+        <div className="absolute inset-0" style={{ background: "rgba(10,20,50,0.62)" }} />
+        {/* Content */}
+        <div className="relative z-10 h-full flex flex-col justify-center px-10 lg:px-20">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
+            <h1 className="text-3xl lg:text-5xl font-black text-white mb-4 leading-tight"
+              style={{ fontFamily: "'Orbitron', monospace", textShadow: "0 2px 16px rgba(0,0,0,0.5)" }}>
+              {lang === "zh" ? "PCBforth 专业设计团队" : "PCBforth Technology"}
             </h1>
-            <p className="text-lg text-white/75 mb-4 leading-relaxed max-w-2xl">
+            <p className="text-base lg:text-lg text-white/85 max-w-2xl leading-relaxed">
               {lang === "zh"
-                ? "PCBforth 不只是 PCB 工厂。我们的工程师团队提供从原理图设计、PCB Layout 到 SI/PI/EMC 仿真的全链路设计服务，帮助您的产品在制板前解决所有工程问题。"
-                : "PCBforth is more than a PCB factory. Our engineering team provides full-cycle design services — from schematic and PCB layout to SI/PI/EMC simulation — solving all engineering challenges before fabrication."}
+                ? "按时交付、达到客户要求的品质，是 PCBforth 工程团队始终坚守的使命。"
+                : "Determined to deliver products to our customers on time, to the required quality is a mission we at PCBforth are committed to."}
             </p>
-            <p className="text-sm text-white/55 mb-10 max-w-xl">
-              {lang === "zh"
-                ? "这是我们与 PCBWay / JLCPCB 的核心差异：我们是工程合作伙伴，而非单纯的制造商。"
-                : "This is our core differentiation from PCBWay / JLCPCB: we are your engineering partner, not just a manufacturer."}
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <button onClick={() => navigate("/quote")}
-                className="flex items-center gap-2 px-7 py-3.5 rounded-lg font-semibold text-white text-sm shadow-lg transition-all active:scale-95"
-                style={{ background: C.blue }}>
-                {lang === "zh" ? "获取工程评估" : "Get Engineering Review"} <ArrowRight size={15} />
-              </button>
-              <button onClick={() => navigate("/")}
-                className="flex items-center gap-2 px-7 py-3.5 rounded-lg font-semibold text-sm transition-all"
-                style={{ border: "1px solid rgba(255,255,255,0.35)", color: "#FFFFFF", background: "rgba(255,255,255,0.08)" }}>
-                {lang === "zh" ? "返回首页" : "Back to Home"}
-              </button>
-            </div>
           </motion.div>
         </div>
       </section>
 
-      {/* ── Why PCBforth vs PCBWay/JLCPCB ── */}
-      <section className="py-14 px-8 lg:px-16" style={{ background: C.pageBg }}>
-        <div className="max-w-5xl mx-auto">
-          <div className="mb-10 text-center">
-            <div className="text-xs uppercase tracking-widest font-semibold mb-2" style={{ color: C.blue }}>
-              {lang === "zh" ? "核心差异化" : "Core Differentiation"}
+      {/* ── Section Title: PCB Design ── */}
+      <section className="py-12 px-8 lg:px-16 text-center" style={{ background: C.pageBg }}>
+        <div className="flex items-center justify-center gap-4 mb-2">
+          <div className="h-px w-16" style={{ background: C.divider }} />
+          <h2 className="text-2xl lg:text-3xl font-bold" style={{ color: C.heading, fontFamily: "'Orbitron', monospace" }}>
+            {lang === "zh" ? "PCB 设计" : "PCB Design"}
+          </h2>
+          <div className="h-px w-16" style={{ background: C.divider }} />
+        </div>
+        <p className="text-sm mt-3 max-w-xl mx-auto leading-relaxed" style={{ color: C.muted }}>
+          {lang === "zh"
+            ? "从原理图到制板，PCBforth 提供全流程工程设计支持，覆盖高速、高频、高密度各类复杂设计需求。"
+            : "From schematic to fabrication, PCBforth provides full-cycle engineering design support covering high-speed, high-frequency, and high-density complex design requirements."}
+        </p>
+      </section>
+
+      {/* ── 4 Advantage Cards (Linkytech-style icon + title + bullet list) ── */}
+      <section className="pb-16 px-8 lg:px-16" style={{ background: C.pageBg }}>
+        <div className="max-w-6xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {advantages.map((adv, i) => (
+            <motion.div key={i}
+              initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }} transition={{ duration: 0.45, delay: i * 0.1 }}
+              className="flex flex-col items-center text-center px-4 py-8 rounded-xl transition-all duration-300 hover:shadow-lg"
+              style={{ background: C.cardBg, border: `1px solid ${C.cardBorder}` }}>
+              {/* Icon */}
+              <div className="mb-5" style={{ color: C.blue }}>
+                {adv.icon}
+              </div>
+              {/* Title */}
+              <h3 className="font-bold text-base mb-4" style={{ color: C.heading }}>
+                {lang === "zh" ? adv.titleZh : adv.titleEn}
+              </h3>
+              {/* Bullet list */}
+              <ul className="space-y-1.5 text-left w-full">
+                {(lang === "zh" ? adv.pointsZh : adv.pointsEn).map((pt, j) => (
+                  <li key={j} className="flex items-start gap-2 text-sm" style={{ color: C.body }}>
+                    <span className="mt-1 shrink-0 w-1.5 h-1.5 rounded-full" style={{ background: C.blue }} />
+                    {pt}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── Design Process ── */}
+      <section className="py-14 px-8 lg:px-16" style={{ background: C.sectionAlt }}>
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-10">
+            <div className="flex items-center justify-center gap-4 mb-2">
+              <div className="h-px w-12" style={{ background: C.divider }} />
+              <h2 className="text-xl lg:text-2xl font-bold" style={{ color: C.heading, fontFamily: "'Orbitron', monospace" }}>
+                {lang === "zh" ? "设计流程" : "Design Process"}
+              </h2>
+              <div className="h-px w-12" style={{ background: C.divider }} />
             </div>
-            <h2 className="text-2xl lg:text-3xl font-bold" style={{ color: C.heading, fontFamily: "'Orbitron', monospace" }}>
-              {lang === "zh" ? "为什么选择 PCBforth 设计服务？" : "Why PCBforth Design Services?"}
-            </h2>
           </div>
-          <div className="grid sm:grid-cols-2 gap-5">
-            {differentiators.map((d, i) => (
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {processSteps.map((step, i) => (
               <motion.div key={i}
                 initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }} transition={{ duration: 0.45, delay: i * 0.08 }}
-                className="p-6 rounded-xl"
-                style={{ background: C.cardBg, border: `1px solid ${C.cardBorder}`, boxShadow: "0 2px 12px rgba(21,101,232,0.06)" }}>
-                <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold text-white shrink-0"
-                    style={{ background: C.blue }}>
-                    {i + 1}
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-sm mb-2" style={{ color: C.heading }}>
-                      {lang === "zh" ? d.zh : d.en}
-                    </h3>
-                    <p className="text-xs leading-relaxed" style={{ color: C.body }}>
-                      {lang === "zh" ? d.descZh : d.descEn}
-                    </p>
-                  </div>
+                viewport={{ once: true }} transition={{ duration: 0.4, delay: (i % 3) * 0.08 }}
+                className="flex gap-4 p-5 rounded-xl"
+                style={{ background: C.cardBg, border: `1px solid ${C.cardBorder}` }}>
+                <div className="text-3xl font-black shrink-0 leading-none" style={{ color: C.divider, fontFamily: "monospace" }}>
+                  {lang === "zh" ? step.numZh : step.numEn}
+                </div>
+                <div>
+                  <h4 className="font-bold text-sm mb-1" style={{ color: C.heading }}>
+                    {lang === "zh" ? step.titleZh : step.titleEn}
+                  </h4>
+                  <p className="text-xs leading-relaxed" style={{ color: C.muted }}>
+                    {lang === "zh" ? step.descZh : step.descEn}
+                  </p>
                 </div>
               </motion.div>
             ))}
@@ -289,38 +371,39 @@ export default function DesignServices() {
         </div>
       </section>
 
-      {/* ── Service Cards Grid ── */}
-      <section className="py-14 px-8 lg:px-16" style={{ background: C.sectionAlt }}>
-        <div className="max-w-5xl mx-auto">
-          <div className="mb-10">
-            <div className="text-xs uppercase tracking-widest font-semibold mb-2" style={{ color: C.blue }}>
-              {lang === "zh" ? "服务项目" : "Our Services"}
+      {/* ── 7 Service Cards Grid ── */}
+      <section className="py-14 px-8 lg:px-16" style={{ background: C.pageBg }}>
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-10">
+            <div className="flex items-center justify-center gap-4 mb-2">
+              <div className="h-px w-12" style={{ background: C.divider }} />
+              <h2 className="text-xl lg:text-2xl font-bold" style={{ color: C.heading, fontFamily: "'Orbitron', monospace" }}>
+                {lang === "zh" ? "7 项专业设计服务" : "7 Professional Design Services"}
+              </h2>
+              <div className="h-px w-12" style={{ background: C.divider }} />
             </div>
-            <h2 className="text-2xl lg:text-3xl font-bold" style={{ color: C.heading, fontFamily: "'Orbitron', monospace" }}>
-              {lang === "zh" ? "7 项专业设计服务" : "7 Professional Design Services"}
-            </h2>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
             {services.map((svc, i) => (
               <motion.div key={svc.path}
                 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }} transition={{ duration: 0.45, delay: (i % 3) * 0.08 }}
+                viewport={{ once: true }} transition={{ duration: 0.4, delay: (i % 4) * 0.07 }}
                 onClick={() => navigate(svc.path)}
-                className="group cursor-pointer rounded-xl p-6 transition-all duration-300 hover:-translate-y-1"
-                style={{ background: C.cardBg, border: `1px solid ${C.cardBorder}`, boxShadow: "0 2px 12px rgba(21,101,232,0.06)" }}
-                onMouseEnter={(e) => (e.currentTarget.style.boxShadow = "0 8px 30px rgba(21,101,232,0.15)")}
-                onMouseLeave={(e) => (e.currentTarget.style.boxShadow = "0 2px 12px rgba(21,101,232,0.06)")}>
-                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-transform group-hover:scale-110"
+                className="group cursor-pointer rounded-xl p-5 transition-all duration-300 hover:-translate-y-1"
+                style={{ background: C.cardBg, border: `1px solid ${C.cardBorder}`, boxShadow: "0 2px 8px rgba(21,101,232,0.04)" }}
+                onMouseEnter={(e) => (e.currentTarget.style.boxShadow = "0 8px 28px rgba(21,101,232,0.13)")}
+                onMouseLeave={(e) => (e.currentTarget.style.boxShadow = "0 2px 8px rgba(21,101,232,0.04)")}>
+                <div className="w-11 h-11 rounded-xl flex items-center justify-center mb-3 transition-transform group-hover:scale-110"
                   style={{ background: svc.bgColor, color: svc.color }}>
                   {svc.icon}
                 </div>
-                <h3 className="font-bold text-base mb-2" style={{ color: C.heading }}>
+                <h3 className="font-bold text-sm mb-2" style={{ color: C.heading }}>
                   {lang === "zh" ? svc.titleZh : svc.titleEn}
                 </h3>
-                <p className="text-xs leading-relaxed mb-4 line-clamp-3" style={{ color: C.body }}>
+                <p className="text-xs leading-relaxed mb-3 line-clamp-3" style={{ color: C.body }}>
                   {lang === "zh" ? svc.descZh : svc.descEn}
                 </p>
-                <div className="flex flex-wrap gap-1.5 mb-4">
+                <div className="flex flex-wrap gap-1 mb-3">
                   {(lang === "zh" ? svc.tagsZh : svc.tagsEn).map((tag) => (
                     <span key={tag} className="text-[10px] px-2 py-0.5 rounded-full font-medium"
                       style={{ background: svc.bgColor, color: svc.color }}>
@@ -328,9 +411,9 @@ export default function DesignServices() {
                     </span>
                   ))}
                 </div>
-                <div className="flex items-center gap-1 text-xs font-semibold transition-colors group-hover:gap-2"
+                <div className="flex items-center gap-1 text-xs font-semibold transition-all group-hover:gap-2"
                   style={{ color: svc.color }}>
-                  {lang === "zh" ? "了解详情" : "Learn More"} <ChevronRight size={13} />
+                  {lang === "zh" ? "了解详情" : "Learn More"} <ChevronRight size={12} />
                 </div>
               </motion.div>
             ))}
@@ -366,7 +449,7 @@ export default function DesignServices() {
 
       {/* ── Footer ── */}
       <footer className="py-6 px-8 lg:px-16" style={{ background: "#0D1E3A", borderTop: `1px solid ${C.sidebarBorder}` }}>
-        <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="flex items-center gap-2">
             <PcbLogo size={24} />
             <span className="text-xs font-bold tracking-widest text-white" style={{ fontFamily: "'Orbitron', monospace" }}>PCBforth</span>
