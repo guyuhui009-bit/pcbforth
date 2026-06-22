@@ -1290,8 +1290,8 @@ export default function Home() {
                 {/* Stats — 4 key metrics */}
                 <div className="flex flex-wrap gap-0">
                   {[
-                    { numStr: "15+",   label: t("hero.stat1.label"), isNum: true,  num: 15 },
-                    { numStr: "5000+", label: t("hero.stat2.label"), isNum: true,  num: 5000 },
+                    { numStr: "15+",   label: t("hero.stat1.label"), isNum: false, num: 0 },
+                    { numStr: "5000+", label: t("hero.stat2.label"), isNum: false, num: 0 },
                     { numStr: "72H",   label: t("hero.stat3.label"), isNum: false, num: 0 },
                     { numStr: "98.7%", label: t("hero.stat4.label"), isNum: false, num: 0, noBreak: true },
                   ].map((s, i) => (
