@@ -87,3 +87,56 @@ export const quoteFiles = mysqlTable("quote_files", {
 
 export type QuoteFile = typeof quoteFiles.$inferSelect;
 export type InsertQuoteFile = typeof quoteFiles.$inferInsert;
+
+/**
+ * Community PCB project showcase.
+ * Users can upload their PCB designs for others to view, like, and comment.
+ */
+export const pcbProjects = mysqlTable("pcb_projects", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull(),              // FK → users.id
+
+  title: varchar("title", { length: 256 }).notNull(),
+  description: text("description"),
+  tags: text("tags"),                           // JSON array of tag strings
+  imageUrl: text("imageUrl").notNull(),         // /manus-storage/{key}
+  imageKey: varchar("imageKey", { length: 512 }).notNull(),
+
+  layers: int("layers"),                        // number of PCB layers
+  software: varchar("software", { length: 128 }), // e.g. Altium Designer
+  category: varchar("category", { length: 64 }), // e.g. IoT, Power, Industrial
+
+  likesCount: int("likesCount").default(0).notNull(),
+  commentsCount: int("commentsCount").default(0).notNull(),
+
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type PcbProject = typeof pcbProjects.$inferSelect;
+export type InsertPcbProject = typeof pcbProjects.$inferInsert;
+
+/**
+ * Likes on community PCB projects (one per user per project).
+ */
+export const pcbLikes = mysqlTable("pcb_likes", {
+  id: int("id").autoincrement().primaryKey(),
+  projectId: int("projectId").notNull(),
+  userId: int("userId").notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type PcbLike = typeof pcbLikes.$inferSelect;
+
+/**
+ * Comments on community PCB projects.
+ */
+export const pcbComments = mysqlTable("pcb_comments", {
+  id: int("id").autoincrement().primaryKey(),
+  projectId: int("projectId").notNull(),
+  userId: int("userId").notNull(),
+  content: text("content").notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type PcbComment = typeof pcbComments.$inferSelect;

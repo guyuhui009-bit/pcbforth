@@ -3,6 +3,7 @@ import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, router } from "./_core/trpc";
 import { quoteRouter } from "./routers/quote";
+import { communityRouter } from "./routers/community";
 
 export const appRouter = router({
   system: systemRouter,
@@ -19,6 +20,9 @@ export const appRouter = router({
 
   // Quote / RFQ feature
   quote: quoteRouter,
+
+  // Community PCB showcase
+  community: communityRouter,
 });
 
 export type AppRouter = typeof appRouter;

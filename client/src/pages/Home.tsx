@@ -3,6 +3,8 @@
 // Fonts: Orbitron (tech titles) + Noto Sans SC (Chinese body)
 
 import { useState, useEffect, useRef } from "react";
+import { trpc } from "@/lib/trpc";
+import { Heart, MessageCircle } from "lucide-react";
 import { motion } from "framer-motion";
 import { useLang } from "@/contexts/LanguageContext";
 import PcbBackground from "@/components/PcbBackground";
@@ -149,6 +151,98 @@ function SectionHeader({ title, subtitle }: { title: string; subtitle?: string }
         </h2>
       </div>
       {subtitle && <p className="text-sm leading-relaxed pl-4 max-w-2xl" style={{ color: C.muted }}>{subtitle}</p>}
+    </div>
+  );
+}
+
+// ── Community Preview (for Home page) ──
+function CommunityPreview({ lang }: { lang: string }) {
+  const { data, isLoading } = trpc.community.list.useQuery({ limit: 3, offset: 0 });
+  const projects = data?.projects ?? [];
+
+  return (
+    <div>
+      {isLoading ? (
+        <div className="grid sm:grid-cols-3 gap-6 mt-8">
+          {[0, 1, 2].map(i => (
+            <div key={i} className="rounded-2xl overflow-hidden animate-pulse" style={{ background: C.cardBg, border: `1px solid ${C.cardBorder}` }}>
+              <div className="h-44" style={{ background: C.blueLight }} />
+              <div className="p-4 space-y-2">
+                <div className="h-4 rounded" style={{ background: C.blueLight }} />
+                <div className="h-3 w-2/3 rounded" style={{ background: C.blueLight }} />
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : projects.length === 0 ? (
+        <div className="mt-8 rounded-2xl py-14 text-center" style={{ background: C.blueLight, border: `2px dashed ${C.cardBorder}` }}>
+          <div className="text-4xl mb-3">📷</div>
+          <div className="font-bold text-sm mb-1" style={{ color: C.heading }}>
+            {lang === "zh" ? "社区尚无作品" : "No designs yet"}
+          </div>
+          <div className="text-xs mb-4" style={{ color: C.muted }}>
+            {lang === "zh" ? "登录后分享您的第一个PCB设计作品" : "Sign in and share your first PCB design"}
+          </div>
+          <a href="/community" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-bold text-white text-sm"
+            style={{ background: C.blue }}>
+            {lang === "zh" ? "进入社区" : "Go to Community"}
+          </a>
+        </div>
+      ) : (
+        <>
+          <div className="grid sm:grid-cols-3 gap-6 mt-8">
+            {projects.map((proj) => {
+              const tags: string[] = proj.tags ? JSON.parse(proj.tags) : [];
+              return (
+                <motion.a key={proj.id} href="/community"
+                  initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-200 block"
+                  style={{ background: C.cardBg, border: `1px solid ${C.cardBorder}` }}>
+                  <div className="relative overflow-hidden" style={{ height: 176, background: "#0a1628" }}>
+                    <img src={proj.imageUrl} alt={proj.title} className="w-full h-full object-cover" />
+                    {proj.category && (
+                      <div className="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-bold"
+                        style={{ background: "rgba(21,101,232,0.85)", color: "#fff" }}>
+                        {proj.category}
+                      </div>
+                    )}
+                  </div>
+                  <div className="p-4">
+                    <h3 className="font-bold text-sm mb-1 line-clamp-1" style={{ color: C.heading }}>{proj.title}</h3>
+                    <div className="text-xs mb-2" style={{ color: C.muted }}>{proj.userName ?? "Anonymous"}</div>
+                    {tags.length > 0 && (
+                      <div className="flex flex-wrap gap-1 mb-3">
+                        {tags.slice(0, 3).map((tag, j) => (
+                          <span key={j} className="text-[10px] px-2 py-0.5 rounded-full"
+                            style={{ background: C.blueLight, color: C.blue, border: `1px solid ${C.cardBorder}` }}>
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                    <div className="flex items-center gap-3 pt-2" style={{ borderTop: `1px solid ${C.divider}` }}>
+                      <span className="flex items-center gap-1 text-xs" style={{ color: C.muted }}>
+                        <Heart size={12} /> {proj.likesCount}
+                      </span>
+                      <span className="flex items-center gap-1 text-xs" style={{ color: C.muted }}>
+                        <MessageCircle size={12} /> {proj.commentsCount}
+                      </span>
+                    </div>
+                  </div>
+                </motion.a>
+              );
+            })}
+          </div>
+          <div className="mt-8 text-center">
+            <a href="/community"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-bold text-sm transition-all duration-200"
+              style={{ background: C.blueLight, color: C.blue, border: `1px solid ${C.cardBorder}` }}>
+              {lang === "zh" ? "查看全部作品" : "View All Designs"} <ChevronRight size={15} />
+            </a>
+          </div>
+        </>
+      )}
     </div>
   );
 }
@@ -1158,6 +1252,18 @@ export default function Home() {
           </div>
         </nav>
 
+        {/* Community link */}
+        <div className="px-3 pb-2">
+          <a href="/community"
+            className="flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-xs font-semibold transition-all duration-150"
+            style={{ color: C.sidebarText, background: "rgba(255,255,255,0.06)" }}
+            onMouseEnter={(e) => (e.currentTarget.style.background = C.sidebarActive)}
+            onMouseLeave={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.06)")}>
+            <Users size={14} />
+            {lang === "zh" ? "设计社区" : "Community"}
+          </a>
+        </div>
+
         {/* Bottom contact + Quote CTA */}
         <div className="px-5 py-4 space-y-2.5" style={{ borderTop: `1px solid ${C.sidebarBorder}`, background: C.sidebarBgDark }}>
           {/* Quote CTA button */}
@@ -1658,77 +1764,15 @@ export default function Home() {
           {/* ── CASES ── */}
           <CasesSection lang={lang} C={C} />
 
-          {/* ── FEATURED PROJECTS ── */}
+          {/* ── COMMUNITY SHOWCASE ENTRY ── */}
           <section className="relative py-16 px-8 lg:px-16" style={{ background: C.pageBg }}>
             <div className="absolute top-0 left-8 right-8 h-px" style={{ background: `linear-gradient(to right, transparent, ${C.divider}, transparent)` }} />
             <div className="max-w-5xl">
               <SectionHeader
-                title={lang === "zh" ? "精选项目" : "Featured Projects"}
-                subtitle={lang === "zh" ? "我们帮助客户实现的典型硬件项目案例" : "Representative hardware projects we have delivered for our clients."}
+                title={lang === "zh" ? "设计作品社区" : "PCB Design Community"}
+                subtitle={lang === "zh" ? "工程师分享真实PCB设计作品，互相交流与学习" : "Engineers sharing real PCB designs — browse, like, and discuss."}
               />
-              <div className="grid sm:grid-cols-3 gap-6 mt-8">
-                {[
-                  {
-                    titleZh: "工业控制器 PCB",
-                    titleEn: "Industrial Controller PCB",
-                    descZh: "STM32主控的工业控制器，4層板设计，EMC优化处理，通过CE认证测试。",
-                    descEn: "STM32-based industrial controller with 4-layer board design and EMC optimization. Passed CE certification testing.",
-                    tags: ["4-Layer", "STM32", "EMC Optimized", "IPC Class 2"],
-                    color: C.blue,
-                  },
-                  {
-                    titleZh: "IoT 传感器模块",
-                    titleEn: "IoT Sensor Module",
-                    descZh: "超紧凑小尺寸布局，集成BLE+WiFi双模块，优化小型化与低功耗设计。",
-                    descEn: "Ultra-compact layout integrating BLE + WiFi dual modules with low-power design optimization.",
-                    tags: ["Ultra Compact", "BLE + WiFi", "Low Power", "2-Layer"],
-                    color: "#0EA5E9",
-                  },
-                  {
-                    titleZh: "电源管理板",
-                    titleEn: "Power Management Board",
-                    descZh: "高电流布线与热设计优化，支持大功率电源转换，符合IPC Class 3标准。",
-                    descEn: "High-current routing with thermal optimization for high-power conversion. Meets IPC Class 3 standards.",
-                    tags: ["High Current", "Thermal Optimized", "IPC Class 3", "6-Layer"],
-                    color: "#10B981",
-                  },
-                ].map((proj, i) => (
-                  <motion.div key={i}
-                    initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }} transition={{ delay: i * 0.1 }}
-                    className="rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-200"
-                    style={{ background: C.cardBg, border: `1px solid ${C.cardBorder}` }}>
-                    {/* Placeholder image area */}
-                    <div className="h-40 flex items-center justify-center relative"
-                      style={{ background: `linear-gradient(135deg, ${proj.color}18, ${proj.color}08)`, borderBottom: `1px solid ${C.cardBorder}` }}>
-                      <div className="text-center">
-                        <Cpu size={36} style={{ color: proj.color, opacity: 0.6 }} className="mx-auto mb-2" />
-                        <div className="text-xs font-mono" style={{ color: proj.color, opacity: 0.7 }}>PCB DESIGN</div>
-                      </div>
-                      <div className="absolute top-3 right-3 px-2 py-0.5 rounded-full text-[10px] font-bold"
-                        style={{ background: `${proj.color}22`, color: proj.color, border: `1px solid ${proj.color}44` }}>
-                        {lang === "zh" ? "已交付" : "Delivered"}
-                      </div>
-                    </div>
-                    <div className="p-5">
-                      <h3 className="font-bold text-sm mb-2" style={{ color: C.heading }}>
-                        {lang === "zh" ? proj.titleZh : proj.titleEn}
-                      </h3>
-                      <p className="text-xs leading-relaxed mb-4" style={{ color: C.muted }}>
-                        {lang === "zh" ? proj.descZh : proj.descEn}
-                      </p>
-                      <div className="flex flex-wrap gap-1.5">
-                        {proj.tags.map((tag, j) => (
-                          <span key={j} className="text-[10px] px-2 py-0.5 rounded-full font-semibold"
-                            style={{ background: `${proj.color}15`, color: proj.color, border: `1px solid ${proj.color}30` }}>
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
+              <CommunityPreview lang={lang} />
             </div>
           </section>
 

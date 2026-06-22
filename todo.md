@@ -41,3 +41,17 @@
 - [x] P7: 更新 index.html meta SEO 标签
 - [x] P8: 新增 "Free PCB Design Review" Lead Magnet 模块
 - [x] P9: 新增固定右下角联系浮窗（WhatsApp / Email / WeChat）+ "Response within 12 hours"
+
+## PCB 作品社区展示平台（2026-06-23）
+
+- [x] 数据库 schema：pcb_projects 表（id, userId, title, description, tags, imageUrl, imageKey, layers, software, createdAt）
+- [x] 数据库 schema：pcb_likes 表（id, projectId, userId, createdAt）
+- [x] 数据库 schema：pcb_comments 表（id, projectId, userId, content, createdAt）
+- [x] 运行 pnpm db:push 推送迁移
+- [x] tRPC 接口：projects.list（分页）、projects.create（上传图片+信息）、projects.like/unlike、projects.getComments、projects.addComment
+- [x] 前端页面 /community：作品瀑布流/网格展示
+- [x] 前端：上传表单（图片上传 + 标题/描述/标签/层数/软件）
+- [x] 前端：点赞按钮（乐观更新）
+- [x] 前端：评论列表与评论输入框
+- [x] 首页精选项目区替换为社区入口（展示最新 3 条 + 查看全部按钮）
+- [x] 导航栏新增 Community 菜单项

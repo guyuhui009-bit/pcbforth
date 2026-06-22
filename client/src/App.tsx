@@ -15,6 +15,7 @@ import PowerIntegrity from "./pages/design-services/PowerIntegrity";
 import EmcDesign from "./pages/design-services/EmcDesign";
 import DfmReview from "./pages/design-services/DfmReview";
 import ComponentSelection from "./pages/design-services/ComponentSelection";
+import Community from "./pages/Community";
 
 function Router() {
   return (
@@ -33,6 +34,8 @@ function Router() {
       <Route path={"/design-services/emc"} component={EmcDesign} />
       <Route path={"/design-services/dfm"} component={DfmReview} />
       <Route path={"/design-services/components"} component={ComponentSelection} />
+      {/* Community Showcase */}
+      <Route path={"/community"} component={Community} />
       {/* 404 */}
       <Route path={"/404"} component={NotFound} />
       <Route component={NotFound} />
