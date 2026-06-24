@@ -21,6 +21,19 @@ const Community          = lazy(() => import("./pages/Community"));
 const NotFound           = lazy(() => import("./pages/NotFound"));
 const FreeSample         = lazy(() => import("./pages/FreeSample"));
 
+// CRM Admin pages
+const AdminCrmLayout     = lazy(() => import("./components/AdminCrmLayout"));
+const CrmDashboard       = lazy(() => import("./pages/admin/CrmDashboard"));
+const Customers          = lazy(() => import("./pages/admin/Customers"));
+const CustomerDetail     = lazy(() => import("./pages/admin/CustomerDetail"));
+const Leads              = lazy(() => import("./pages/admin/Leads"));
+const Rfqs               = lazy(() => import("./pages/admin/Rfqs"));
+const RfqDetail          = lazy(() => import("./pages/admin/RfqDetail"));
+const Quotes             = lazy(() => import("./pages/admin/Quotes"));
+const Projects           = lazy(() => import("./pages/admin/Projects"));
+const ProjectDetail      = lazy(() => import("./pages/admin/ProjectDetail"));
+const Invoices           = lazy(() => import("./pages/admin/Invoices"));
+
 function Router() {
   return (
     <Suspense fallback={<div style={{ minHeight: "100vh", background: "#0D1B3E" }} />}>
@@ -42,6 +55,18 @@ function Router() {
         <Route path={"/design-services/components"} component={ComponentSelection} />
         {/* Community Showcase */}
         <Route path={"/community"} component={Community} />
+        {/* CRM Admin */}
+        <Route path="/admin/crm" component={() => <AdminCrmLayout><CrmDashboard /></AdminCrmLayout>} />
+        <Route path="/admin/crm/customers" component={() => <AdminCrmLayout><Customers /></AdminCrmLayout>} />
+        <Route path="/admin/crm/customers/:id" component={() => <AdminCrmLayout><CustomerDetail /></AdminCrmLayout>} />
+        <Route path="/admin/crm/leads" component={() => <AdminCrmLayout><Leads /></AdminCrmLayout>} />
+        <Route path="/admin/crm/rfqs" component={() => <AdminCrmLayout><Rfqs /></AdminCrmLayout>} />
+        <Route path="/admin/crm/rfqs/:id" component={() => <AdminCrmLayout><RfqDetail /></AdminCrmLayout>} />
+        <Route path="/admin/crm/quotes" component={() => <AdminCrmLayout><Quotes /></AdminCrmLayout>} />
+        <Route path="/admin/crm/projects" component={() => <AdminCrmLayout><Projects /></AdminCrmLayout>} />
+        <Route path="/admin/crm/projects/:id" component={() => <AdminCrmLayout><ProjectDetail /></AdminCrmLayout>} />
+        <Route path="/admin/crm/invoices" component={() => <AdminCrmLayout><Invoices /></AdminCrmLayout>} />
+
         {/* 404 */}
         <Route path={"/404"} component={NotFound} />
         <Route component={NotFound} />

@@ -92,3 +92,32 @@
 - [x] 文件上传、尺寸填写、补充说明、联系信息模块
 - [x] 首页绿色按钮跳转链接更新为 /free-sample
 - [x] 注册路由到 App.tsx
+
+## CRM 后端系统（2026-06-25）
+
+- [x] 数据库 Schema：Customer、Contact、Lead、RFQ、RFQ_File、Quote、Project、Project_File、Project_Log、Invoice、Activity 共11张 CRM 表
+- [x] 运行 pnpm db:push 推送迁移
+- [x] server/crm-db.ts：所有 CRM 查询辅助函数（list/count/get/create/update）
+- [x] server/routers/crm.ts：完整 CRM tRPC 路由
+  - [x] crm.submitRfq（公开接口，前端表单提交，自动创建/关联 Customer + Contact + Lead + RFQ）
+  - [x] crm.stats（管理员统计总览）
+  - [x] crm.customers.list / get（管理员）
+  - [x] crm.leads.list（管理员）
+  - [x] crm.rfqs.list / get / updateStatus（管理员）
+  - [x] crm.quotes.create / list（管理员）
+  - [x] crm.projects.list / get / update / addLog（管理员）
+  - [x] crm.invoices.list（管理员）
+- [x] /quote 和 /free-sample 前端表单接入 crm.submitRfq 接口
+- [x] 管理后台页面（/admin/crm/*）
+  - [x] AdminCrmLayout 侧边栏布局（Overview / Customers / Leads / RFQs / Quotes / Projects / Invoices）
+  - [x] CrmDashboard 总览页（统计卡片 + 最近 RFQ + 最近 Lead）
+  - [x] Customers 列表页（搜索 + 分页）
+  - [x] CustomerDetail 详情页（联系人 + 线索 + 活动记录）
+  - [x] Leads 列表页（状态筛选 + 分页）
+  - [x] Rfqs 列表页（状态筛选 + 分页）
+  - [x] RfqDetail 详情页（PCB 规格 + 附件 + 报价管理）
+  - [x] Quotes 列表页
+  - [x] Projects 列表页（状态筛选 + 分页）
+  - [x] ProjectDetail 详情页（活动日志 + 文件 + 编辑）
+  - [x] Invoices 列表页（状态筛选 + 分页）
+- [x] vitest 单元测试（15 个测试全部通过）

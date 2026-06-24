@@ -15,6 +15,13 @@
       "when": 1782154887259,
       "tag": "0001_fresh_the_enforcers",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1782326242846,
+      "tag": "0002_cheerful_bastion",
+      "breakpoints": true
     }
   ]
 }

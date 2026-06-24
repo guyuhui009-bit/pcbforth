@@ -119,7 +119,7 @@ export default function Quote() {
 
   // tRPC mutations
   const uploadFileMutation = trpc.quote.uploadFile.useMutation();
-  const submitMutation = trpc.quote.submit.useMutation();
+  const submitMutation = trpc.crm.submitRfq.useMutation();
 
   // ── File handling ────────────────────────────────────────────────────────
   const processFiles = useCallback(async (files: FileList | File[]) => {
@@ -217,6 +217,7 @@ export default function Quote() {
         contactEmail: form.contactEmail,
         contactPhone: form.contactPhone || undefined,
         company: form.company || undefined,
+        rfqType: "standard_quote",
         pcbType: form.pcbType,
         layers: form.layers ? parseInt(form.layers) : undefined,
         quantity: form.quantity ? parseInt(form.quantity) : undefined,
@@ -238,7 +239,7 @@ export default function Quote() {
       });
 
       setSubmitted(true);
-      setSubmittedId(result.quoteId);
+      setSubmittedId(result.rfqId);
     } catch (err: any) {
       toast.error(err?.message ?? (lang === "zh" ? "提交失败，请重试" : "Submission failed, please try again"));
     }

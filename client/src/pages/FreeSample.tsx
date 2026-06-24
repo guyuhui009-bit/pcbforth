@@ -101,7 +101,7 @@ export default function FreeSample() {
 
   // tRPC mutations
   const uploadFileMutation = trpc.quote.uploadFile.useMutation();
-  const submitMutation = trpc.quote.submit.useMutation();
+  const submitMutation = trpc.crm.submitRfq.useMutation();
 
   // ── File handling ────────────────────────────────────────────────────────
   const processFiles = useCallback(async (files: FileList | File[]) => {
@@ -199,6 +199,7 @@ export default function FreeSample() {
         contactEmail: form.contactEmail,
         contactPhone: form.contactPhone || undefined,
         company: form.company || undefined,
+        rfqType: "free_sample",
         pcbType: FIXED.pcbType,
         layers: parseInt(layers),
         quantity: FIXED.quantity,
@@ -220,7 +221,7 @@ export default function FreeSample() {
       });
 
       setSubmitted(true);
-      setSubmittedId(result.quoteId);
+      setSubmittedId(result.rfqId);
     } catch (err: any) {
       toast.error(err?.message ?? (lang === "zh" ? "提交失败，请重试" : "Submission failed, please try again"));
     }

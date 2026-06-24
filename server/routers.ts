@@ -4,6 +4,7 @@ import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, router } from "./_core/trpc";
 import { quoteRouter } from "./routers/quote";
 import { communityRouter } from "./routers/community";
+import { crmRouter } from "./routers/crm";
 
 export const appRouter = router({
   system: systemRouter,
@@ -23,6 +24,9 @@ export const appRouter = router({
 
   // Community PCB showcase
   community: communityRouter,
+
+  // CRM: Customer / Lead / RFQ / Quote / Project / Invoice
+  crm: crmRouter,
 });
 
 export type AppRouter = typeof appRouter;
