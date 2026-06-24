@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 80">
+  <rect x="0" y="0" width="240" height="80" fill="white"/>
+  <!-- MI square icon -->
+  <rect x="10" y="18" width="44" height="44" rx="10" fill="#FF6900"/>
+  <text x="32" y="49" font-family="Arial,sans-serif" font-size="20" font-weight="bold" fill="white" text-anchor="middle">mi</text>
+  <text x="66" y="52" font-family="Arial,sans-serif" font-size="28" font-weight="bold" fill="#FF6900" letter-spacing="0">Xiaomi</text>
+</svg>

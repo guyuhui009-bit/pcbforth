@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 80">
+  <!-- BYD badge shape -->
+  <rect x="10" y="15" width="220" height="50" rx="4" fill="#003087"/>
+  <rect x="13" y="18" width="214" height="44" rx="3" fill="none" stroke="#C8A84B" stroke-width="2"/>
+  <text x="120" y="50" font-family="Arial,sans-serif" font-size="32" font-weight="bold" fill="white" text-anchor="middle" letter-spacing="4">BYD</text>
+</svg>
