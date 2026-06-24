@@ -30,6 +30,8 @@ const translations: Record<string, Record<Lang, string>> = {
   "hero.cta1": { zh: "免费工程咨询", en: "Get Free Engineering Consultation" },
   "hero.cta2": { zh: "PCB设计报价", en: "Request PCB Design Quote" },
   "hero.cta3": { zh: "PCB制板报价", en: "Request PCB Fab Quote" },
+  "hero.cta.free": { zh: "免费打样申请", en: "Claim Free Prototype" },
+  "hero.cta.quote": { zh: "PCB需求报价", en: "Get PCB Quote" },
   "hero.tag1": { zh: "原理图设计", en: "Schematic Design" },
   "hero.tag2": { zh: "PCB Layout", en: "PCB Layout" },
   "hero.tag3": { zh: "元器件选型", en: "Component Selection" },

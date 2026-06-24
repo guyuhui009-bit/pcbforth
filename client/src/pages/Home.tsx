@@ -1405,28 +1405,24 @@ export default function Home() {
                   ))}
                 </div>
 
-                {/* Dual CTA */}
+                {/* Two CTA buttons */}
                 <div className="flex flex-wrap gap-3 mb-4">
+                  {/* Button 1: Free Prototype (green) */}
                   <a href="/quote"
-                    className="flex items-center gap-2 px-7 py-3.5 rounded-lg font-bold text-white transition-all duration-200 active:scale-95 text-sm shadow-xl"
-                    style={{ background: C.blue, boxShadow: "0 4px 24px rgba(21,101,232,0.5)" }}
-                    onMouseEnter={(e) => (e.currentTarget.style.background = C.blueDark)}
-                    onMouseLeave={(e) => (e.currentTarget.style.background = C.blue)}>
-                    <ClipboardCheck size={15} /> {t("hero.cta1")} <ArrowRight size={15} />
-                  </a>
-                  <a href="/quote"
-                    className="flex items-center gap-2 px-7 py-3.5 rounded-lg font-bold text-white transition-all duration-200 active:scale-95 text-sm shadow-lg"
+                    className="flex items-center gap-2 px-8 py-3.5 rounded-lg font-bold text-white transition-all duration-200 active:scale-95 text-sm shadow-lg"
                     style={{ background: "#059669", boxShadow: "0 4px 20px rgba(5,150,105,0.45)" }}
                     onMouseEnter={(e) => (e.currentTarget.style.background = "#047857")}
                     onMouseLeave={(e) => (e.currentTarget.style.background = "#059669")}>
-                    <Factory size={15} /> {t("hero.cta3")}
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                    {t("hero.cta.free")}
                   </a>
+                  {/* Button 2: PCB Quote (blue) */}
                   <a href="/quote"
-                    className="flex items-center gap-2 px-7 py-3.5 rounded-lg font-semibold transition-all duration-200 active:scale-95 text-sm"
-                    style={{ border: "1.5px solid rgba(255,255,255,0.45)", color: "#FFFFFF", background: "rgba(255,255,255,0.08)", backdropFilter: "blur(4px)" }}
-                    onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.18)")}
-                    onMouseLeave={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.08)")}>
-                    <Upload size={15} /> {t("hero.cta2")}
+                    className="flex items-center gap-2 px-8 py-3.5 rounded-lg font-bold text-white transition-all duration-200 active:scale-95 text-sm shadow-xl"
+                    style={{ background: C.blue, boxShadow: "0 4px 24px rgba(21,101,232,0.5)" }}
+                    onMouseEnter={(e) => (e.currentTarget.style.background = C.blueDark)}
+                    onMouseLeave={(e) => (e.currentTarget.style.background = C.blue)}>
+                    <ClipboardCheck size={15} /> {t("hero.cta.quote")} <ArrowRight size={15} />
                   </a>
                 </div>
 
