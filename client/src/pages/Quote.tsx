@@ -466,65 +466,7 @@ export default function Quote() {
               </div>
             </div>
 
-            {/* ── Section 3: Contact info ─────────────────────────────────── */}
-            <div className="rounded-2xl overflow-hidden shadow-sm"
-              style={{ background: C.cardBg, border: `1px solid ${C.cardBorder}` }}>
-              <div className="px-6 py-4 flex items-center gap-3"
-                style={{ background: C.blueLight, borderBottom: `1px solid ${C.cardBorder}` }}>
-                <Phone size={16} style={{ color: C.blue }} />
-                <h2 className="font-bold text-sm" style={{ color: C.heading }}>
-                  {lang === "zh" ? "联系信息" : "Contact Information"}
-                </h2>
-              </div>
-              <div className="p-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-xs font-semibold mb-1.5" style={{ color: C.body }}>
-                    {lang === "zh" ? "姓名 *" : "Name *"}
-                  </label>
-                  <input type="text" required value={form.contactName}
-                    onChange={e => setForm(p => ({ ...p, contactName: e.target.value }))}
-                    placeholder={lang === "zh" ? "您的姓名" : "Your name"}
-                    className={inputCls} style={inputStyle}
-                    onFocus={e => Object.assign(e.target.style, focusStyle)}
-                    onBlur={e => Object.assign(e.target.style, { borderColor: C.cardBorder })} />
-                </div>
-                <div>
-                  <label className="block text-xs font-semibold mb-1.5" style={{ color: C.body }}>
-                    {lang === "zh" ? "邮箱 *" : "Email *"}
-                  </label>
-                  <input type="email" required value={form.contactEmail}
-                    onChange={e => setForm(p => ({ ...p, contactEmail: e.target.value }))}
-                    placeholder={lang === "zh" ? "用于接收报价" : "For receiving quote"}
-                    className={inputCls} style={inputStyle}
-                    onFocus={e => Object.assign(e.target.style, focusStyle)}
-                    onBlur={e => Object.assign(e.target.style, { borderColor: C.cardBorder })} />
-                </div>
-                <div>
-                  <label className="block text-xs font-semibold mb-1.5" style={{ color: C.body }}>
-                    {lang === "zh" ? "电话" : "Phone"}
-                  </label>
-                  <input type="tel" value={form.contactPhone}
-                    onChange={e => setForm(p => ({ ...p, contactPhone: e.target.value }))}
-                    placeholder={lang === "zh" ? "+86 或 国际号码" : "+86 or international"}
-                    className={inputCls} style={inputStyle}
-                    onFocus={e => Object.assign(e.target.style, focusStyle)}
-                    onBlur={e => Object.assign(e.target.style, { borderColor: C.cardBorder })} />
-                </div>
-                <div>
-                  <label className="block text-xs font-semibold mb-1.5" style={{ color: C.body }}>
-                    {lang === "zh" ? "公司名称" : "Company"}
-                  </label>
-                  <input type="text" value={form.company}
-                    onChange={e => setForm(p => ({ ...p, company: e.target.value }))}
-                    placeholder={lang === "zh" ? "您所在的公司" : "Your company"}
-                    className={inputCls} style={inputStyle}
-                    onFocus={e => Object.assign(e.target.style, focusStyle)}
-                    onBlur={e => Object.assign(e.target.style, { borderColor: C.cardBorder })} />
-                </div>
-              </div>
-            </div>
-
-            {/* ── Section 4: PCB specs ────────────────────────────────────── */}
+            {/* ── Section 3: PCB specs ────────────────────────────────────── */}
             <div className="rounded-2xl overflow-hidden shadow-sm"
               style={{ background: C.cardBg, border: `1px solid ${C.cardBorder}` }}>
               <div className="px-6 py-4 flex items-center gap-3"
@@ -606,7 +548,7 @@ export default function Quote() {
               </div>
             </div>
 
-            {/* ── Section 5: Notes ────────────────────────────────────────── */}
+            {/* ── Section 4: Notes ────────────────────────────────────────── */}
             <div className="rounded-2xl overflow-hidden shadow-sm"
               style={{ background: C.cardBg, border: `1px solid ${C.cardBorder}` }}>
               <div className="px-6 py-4 flex items-center gap-3"
@@ -625,6 +567,64 @@ export default function Quote() {
                   className={`${inputCls} resize-none`} style={inputStyle}
                   onFocus={e => Object.assign(e.target.style, focusStyle)}
                   onBlur={e => Object.assign(e.target.style, { borderColor: C.cardBorder })} />
+              </div>
+            </div>
+
+            {/* ── Section 5: Contact info ─────────────────────────────────── */}
+            <div className="rounded-2xl overflow-hidden shadow-sm"
+              style={{ background: C.cardBg, border: `1px solid ${C.cardBorder}` }}>
+              <div className="px-6 py-4 flex items-center gap-3"
+                style={{ background: C.blueLight, borderBottom: `1px solid ${C.cardBorder}` }}>
+                <Phone size={16} style={{ color: C.blue }} />
+                <h2 className="font-bold text-sm" style={{ color: C.heading }}>
+                  {lang === "zh" ? "联系信息" : "Contact Information"}
+                </h2>
+              </div>
+              <div className="p-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-semibold mb-1.5" style={{ color: C.body }}>
+                    {lang === "zh" ? "姓名 *" : "Name *"}
+                  </label>
+                  <input type="text" required value={form.contactName}
+                    onChange={e => setForm(p => ({ ...p, contactName: e.target.value }))}
+                    placeholder={lang === "zh" ? "您的姓名" : "Your name"}
+                    className={inputCls} style={inputStyle}
+                    onFocus={e => Object.assign(e.target.style, focusStyle)}
+                    onBlur={e => Object.assign(e.target.style, { borderColor: C.cardBorder })} />
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold mb-1.5" style={{ color: C.body }}>
+                    {lang === "zh" ? "邮箱 *" : "Email *"}
+                  </label>
+                  <input type="email" required value={form.contactEmail}
+                    onChange={e => setForm(p => ({ ...p, contactEmail: e.target.value }))}
+                    placeholder={lang === "zh" ? "用于接收报价" : "For receiving quote"}
+                    className={inputCls} style={inputStyle}
+                    onFocus={e => Object.assign(e.target.style, focusStyle)}
+                    onBlur={e => Object.assign(e.target.style, { borderColor: C.cardBorder })} />
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold mb-1.5" style={{ color: C.body }}>
+                    {lang === "zh" ? "电话" : "Phone"}
+                  </label>
+                  <input type="tel" value={form.contactPhone}
+                    onChange={e => setForm(p => ({ ...p, contactPhone: e.target.value }))}
+                    placeholder={lang === "zh" ? "+86 或 国际号码" : "+86 or international"}
+                    className={inputCls} style={inputStyle}
+                    onFocus={e => Object.assign(e.target.style, focusStyle)}
+                    onBlur={e => Object.assign(e.target.style, { borderColor: C.cardBorder })} />
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold mb-1.5" style={{ color: C.body }}>
+                    {lang === "zh" ? "公司名称" : "Company"}
+                  </label>
+                  <input type="text" value={form.company}
+                    onChange={e => setForm(p => ({ ...p, company: e.target.value }))}
+                    placeholder={lang === "zh" ? "您所在的公司" : "Your company"}
+                    className={inputCls} style={inputStyle}
+                    onFocus={e => Object.assign(e.target.style, focusStyle)}
+                    onBlur={e => Object.assign(e.target.style, { borderColor: C.cardBorder })} />
+                </div>
               </div>
             </div>
 
