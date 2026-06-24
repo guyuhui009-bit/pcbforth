@@ -29,6 +29,7 @@ const translations: Record<string, Record<Lang, string>> = {
   "hero.badge": { zh: "PCBforth Technology", en: "PCBforth Technology" },
   "hero.cta1": { zh: "免费工程咨询", en: "Get Free Engineering Consultation" },
   "hero.cta2": { zh: "PCB设计报价", en: "Request PCB Design Quote" },
+  "hero.cta3": { zh: "PCB制板报价", en: "Request PCB Fab Quote" },
   "hero.tag1": { zh: "原理图设计", en: "Schematic Design" },
   "hero.tag2": { zh: "PCB Layout", en: "PCB Layout" },
   "hero.tag3": { zh: "元器件选型", en: "Component Selection" },

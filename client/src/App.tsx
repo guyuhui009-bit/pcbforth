@@ -1,45 +1,50 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import NotFound from "@/pages/NotFound";
+import { lazy, Suspense } from "react";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { LanguageProvider } from "./contexts/LanguageContext";
-import Home from "./pages/Home";
-import Quote from "./pages/Quote";
-import DesignServices from "./pages/DesignServices";
-import SchematicDesign from "./pages/design-services/SchematicDesign";
-import PcbLayout from "./pages/design-services/PcbLayout";
-import SignalIntegrity from "./pages/design-services/SignalIntegrity";
-import PowerIntegrity from "./pages/design-services/PowerIntegrity";
-import EmcDesign from "./pages/design-services/EmcDesign";
-import DfmReview from "./pages/design-services/DfmReview";
-import ComponentSelection from "./pages/design-services/ComponentSelection";
-import Community from "./pages/Community";
+
+// Lazy-loaded routes — all 11 pages
+const Home               = lazy(() => import("./pages/Home"));
+const Quote              = lazy(() => import("./pages/Quote"));
+const DesignServices     = lazy(() => import("./pages/DesignServices"));
+const SchematicDesign    = lazy(() => import("./pages/design-services/SchematicDesign"));
+const PcbLayout          = lazy(() => import("./pages/design-services/PcbLayout"));
+const SignalIntegrity    = lazy(() => import("./pages/design-services/SignalIntegrity"));
+const PowerIntegrity     = lazy(() => import("./pages/design-services/PowerIntegrity"));
+const EmcDesign          = lazy(() => import("./pages/design-services/EmcDesign"));
+const DfmReview          = lazy(() => import("./pages/design-services/DfmReview"));
+const ComponentSelection = lazy(() => import("./pages/design-services/ComponentSelection"));
+const Community          = lazy(() => import("./pages/Community"));
+const NotFound           = lazy(() => import("./pages/NotFound"));
 
 function Router() {
   return (
-    <Switch>
-      {/* Home */}
-      <Route path={"/"} component={Home} />
-      {/* Quote */}
-      <Route path={"/quote"} component={Quote} />
-      {/* Design Services — overview */}
-      <Route path={"/design-services"} component={DesignServices} />
-      {/* Design Services — sub-pages */}
-      <Route path={"/design-services/schematic"} component={SchematicDesign} />
-      <Route path={"/design-services/pcb-layout"} component={PcbLayout} />
-      <Route path={"/design-services/si"} component={SignalIntegrity} />
-      <Route path={"/design-services/pi"} component={PowerIntegrity} />
-      <Route path={"/design-services/emc"} component={EmcDesign} />
-      <Route path={"/design-services/dfm"} component={DfmReview} />
-      <Route path={"/design-services/components"} component={ComponentSelection} />
-      {/* Community Showcase */}
-      <Route path={"/community"} component={Community} />
-      {/* 404 */}
-      <Route path={"/404"} component={NotFound} />
-      <Route component={NotFound} />
-    </Switch>
+    <Suspense fallback={<div style={{ minHeight: "100vh", background: "#0D1B3E" }} />}>
+      <Switch>
+        {/* Home */}
+        <Route path={"/"} component={Home} />
+        {/* Quote */}
+        <Route path={"/quote"} component={Quote} />
+        {/* Design Services — overview */}
+        <Route path={"/design-services"} component={DesignServices} />
+        {/* Design Services — sub-pages */}
+        <Route path={"/design-services/schematic"} component={SchematicDesign} />
+        <Route path={"/design-services/pcb-layout"} component={PcbLayout} />
+        <Route path={"/design-services/si"} component={SignalIntegrity} />
+        <Route path={"/design-services/pi"} component={PowerIntegrity} />
+        <Route path={"/design-services/emc"} component={EmcDesign} />
+        <Route path={"/design-services/dfm"} component={DfmReview} />
+        <Route path={"/design-services/components"} component={ComponentSelection} />
+        {/* Community Showcase */}
+        <Route path={"/community"} component={Community} />
+        {/* 404 */}
+        <Route path={"/404"} component={NotFound} />
+        <Route component={NotFound} />
+      </Switch>
+    </Suspense>
   );
 }
 

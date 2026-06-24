@@ -55,3 +55,22 @@
 - [x] 前端：评论列表与评论输入框
 - [x] 首页精选项目区替换为社区入口（展示最新 3 条 + 查看全部按钮）
 - [x] 导航栏新增 Community 菜单项
+
+## 图片更新与代码优化（2026-06-24）
+
+- [x] Phase 1: index.html 优化（favicon SVG inline、SEO tags、preload、JSON-LD、移除 Umami）
+- [x] Phase 2: 代码架构改进（theme.ts、PcbLogo.tsx、useCountUp.ts、OptimizedImage.tsx、App.tsx React.lazy）
+- [x] Phase 3: 案例图片更新 — 8张新图复制到 public/images/cases/
+  - [x] case1-1 → highspeed-adc-board.webp（高速数据采集板）
+  - [x] case1-2 → purley-server.webp（Purley服务器板）
+  - [x] case1-3 → fpga-board.webp（FPGA开发板）
+  - [x] case1-5 → industrial-board.jpg（工业控制板）
+  - [x] case1-6 → medical-board.jpg（医疗设备主板）
+  - [x] case1-7 → desktop-pc-1.jpg + hoverImg: desktop-pc-2.jpg（超薄笔记本主板，悬停切图）
+  - [x] PCB_LAYOUT_IMG → /images/pcb-layout-new.jpg
+- [x] Hero 第三个 CTA 按钮 "Request PCB Fab Quote"（绿色 #059669）
+- [x] 案例卡片交互升级：
+  - [x] 点击图片弹出灯箱（Lightbox 组件，支持 ESC 关闭）
+  - [x] 悬停放大镜提示 overlay
+  - [x] 双图卡片显示"悬停切图/Hover to switch"标签
+  - [x] 移除旧版 CaseCard 重复函数定义

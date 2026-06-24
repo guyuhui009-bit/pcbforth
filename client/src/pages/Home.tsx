@@ -20,7 +20,7 @@ const HERO_IMG       = "https://raw.githubusercontent.com/guyuhui009-bit/pcbfort
 const PCB_BOARD_BG   = "https://raw.githubusercontent.com/guyuhui009-bit/pcbforth/main/public/images/pcb-board-clean.jpg";
 // Service section images - each uniquely matched to its service
 const SCHEMATIC_IMG  = "https://raw.githubusercontent.com/guyuhui009-bit/pcbforth/main/public/images/schematic-design.webp";  // Engineer at Altium Designer dual-screen
-const PCB_LAYOUT_IMG = "https://raw.githubusercontent.com/guyuhui009-bit/pcbforth/main/public/images/pcb-layout.webp";    // Altium DDR4 PCB layout top view
+const PCB_LAYOUT_IMG = "/manus-storage/pcb-layout-new_a89a07bb.jpg";    // PCB layout design image (manus-storage)
 const BOM_IMG        = "https://raw.githubusercontent.com/guyuhui009-bit/pcbforth/main/public/images/bom-components.webp"; // TI/NXP/Infineon components tray
 const FAB_IMG        = "https://raw.githubusercontent.com/guyuhui009-bit/pcbforth/main/public/images/pcb-factory.webp";   // Chinese PCB factory ISO9001 clean room
 const SMT_IMG        = "https://raw.githubusercontent.com/guyuhui009-bit/pcbforth/main/public/images/smt-assembly.webp";  // ASM SIPLACE SMT line
@@ -620,44 +620,18 @@ function ServiceSection({ id, title, desc, img, caps, imgLeft, specs }: {
   );
 }
 
-function CaseCard({ title, desc, tags, img }: { title: string; desc: string; tags: string[]; img: string }) {
-  return (
-    <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }} transition={{ duration: 0.5 }}
-      className="rounded-xl overflow-hidden transition-all duration-300 group hover:-translate-y-1"
-      style={{ background: C.cardBg, border: `1px solid ${C.cardBorder}`, boxShadow: "0 2px 12px rgba(21,101,232,0.07)" }}
-      onMouseEnter={(e) => (e.currentTarget.style.boxShadow = "0 8px 30px rgba(21,101,232,0.15)")}
-      onMouseLeave={(e) => (e.currentTarget.style.boxShadow = "0 2px 12px rgba(21,101,232,0.07)")}>
-      <div className="relative h-44 overflow-hidden">
-        <img src={img} alt={title} loading="lazy" decoding="async" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
-        <div className="absolute bottom-3 left-4 flex flex-wrap gap-1.5">
-          {tags.map((tag) => (
-            <span key={tag} className="text-xs px-2 py-0.5 rounded-full text-white font-medium"
-              style={{ background: "rgba(21,101,232,0.75)", backdropFilter: "blur(4px)" }}>{tag}</span>
-          ))}
-        </div>
-      </div>
-      <div className="p-4">
-        <h3 className="font-semibold mb-2 text-sm leading-snug" style={{ color: C.heading }}>{title}</h3>
-        <p className="text-xs leading-relaxed line-clamp-3" style={{ color: C.muted }}>{desc}</p>
-      </div>
-    </motion.div>
-  );
-}
-
 // ── Linkytech-style Cases Section with 3 tabs ──
 const GITHUB_RAW = "https://raw.githubusercontent.com/guyuhui009-bit/pcbforth/main/public/images/cases";
 
 const CASES_DATA = {
   pcb: [
-    { img: `${GITHUB_RAW}/case1-1.png`, title: "高速数据采集板", titleEn: "High-Speed Data Acquisition Board", desc: "高速模拟信号采集，速度高达5G。", descEn: "High-speed analog signal acquisition, up to 5G sampling rate." },
-    { img: `${GITHUB_RAW}/case1-2.png`, title: "Purley服务器板", titleEn: "Purley Server Board", desc: "采用Intel Purley 处理器，涉及Intel高速设计要求。", descEn: "Intel Purley processor, meeting Intel high-speed design requirements." },
-    { img: `${GITHUB_RAW}/case1-3.png`, title: "FPGA开发板", titleEn: "FPGA Development Board", desc: "多层高密度FPGA布线，支持SerDes高速接口设计。", descEn: "Multi-layer high-density FPGA routing with SerDes high-speed interface design." },
+    { img: "/images/cases/highspeed-adc-board.webp", title: "高速数据采集板", titleEn: "High-Speed Data Acquisition Board", desc: "高速模拟信号采集，速度高达5G。", descEn: "High-speed analog signal acquisition, up to 5G sampling rate." },
+    { img: "/images/cases/purley-server.webp", title: "Purley服务器板", titleEn: "Purley Server Board", desc: "采用Intel Purley 处理器，涉及Intel高速设计要求。", descEn: "Intel Purley processor, meeting Intel high-speed design requirements." },
+    { img: "/images/cases/fpga-board.webp", title: "FPGA开发板", titleEn: "FPGA Development Board", desc: "多层高密度FPGA布线，支持SerDes高速接口设计。", descEn: "Multi-layer high-density FPGA routing with SerDes high-speed interface design." },
     { img: `${GITHUB_RAW}/case1-4.png`, title: "5G通信主板", titleEn: "5G Communication Mainboard", desc: "为全球知名通信设备商设计，涉及高速 SerDes接口、DDR5内存。", descEn: "Designed for a leading telecom OEM with high-speed SerDes and DDR5 memory interfaces." },
-    { img: `${GITHUB_RAW}/case1-5.png`, title: "工业控制板", titleEn: "Industrial Control Board", desc: "高可靠性工业控制PCB，通过CE/UL认证，广泛应用于自动化产线。", descEn: "High-reliability industrial control PCB, CE/UL certified, widely used in automation lines." },
-    { img: `${GITHUB_RAW}/case1-6.png`, title: "医疗设备主板", titleEn: "Medical Device Mainboard", desc: "便携式患者监护仪主板，满足IEC 60601医疗电气安全标准，通过FDA 510(k)认证。", descEn: "Portable patient monitor mainboard meeting IEC 60601 and FDA 510(k) certification." },
-    { img: `${GITHUB_RAW}/case1-7.png`, title: "超薄笔记本主板", titleEn: "Ultra-Thin Laptop Mainboard", desc: "极致小型化布局，板匰0.8mm，支持USB4、Thunderbolt 4高速接口。", descEn: "Extreme miniaturization, 0.8mm board thickness, USB4 and Thunderbolt 4 support." },
+    { img: "/manus-storage/industrial-board_345365b4.jpg", title: "工业控制板", titleEn: "Industrial Control Board", desc: "高可靠性工业控制PCB，通过CE/UL认证，广泛应用于自动化产线。", descEn: "High-reliability industrial control PCB, CE/UL certified, widely used in automation lines." },
+    { img: "/images/cases/medical-board.jpg", title: "医疗设备主板", titleEn: "Medical Device Mainboard", desc: "便携式患者监护仪主板，满足IEC 60601医疗电气安全标准，通过FDA 510(k)认证。", descEn: "Portable patient monitor mainboard meeting IEC 60601 and FDA 510(k) certification." },
+    { img: "/images/cases/desktop-pc-1.jpg", hoverImg: "/images/cases/desktop-pc-2.jpg", title: "超薄笔记本主板", titleEn: "Ultra-Thin Laptop Mainboard", desc: "极致小型化布局，板厚0.8mm，支持USB4、Thunderbolt 4高速接口。", descEn: "Extreme miniaturization, 0.8mm board thickness, USB4 and Thunderbolt 4 support." },
     { img: `${GITHUB_RAW}/case1-8.png`, title: "新能源逆变器板", titleEn: "New Energy Inverter Board", desc: "高功率密度逆变器PCB，集成GaN功率器件，优化散热设计。", descEn: "High-power-density inverter PCB with GaN power devices and optimized thermal design." },
   ],
   si: [
@@ -676,6 +650,80 @@ const CASES_DATA = {
     { img: `${GITHUB_RAW}/case3-4.png`, title: "ATCA多个BGA大板", titleEn: "ATCA Multi-BGA Large Board", desc: "ATCA大板贴装，支持大尺寸多个BGA器件，精密烊接和全面X-Ray检测。", descEn: "ATCA large board assembly supporting multiple BGA components with precision soldering and full X-Ray inspection." },
   ],
 };
+
+// ── Lightbox component ──
+function Lightbox({ src, alt, onClose }: { src: string; alt: string; onClose: () => void }) {
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose(); };
+    document.addEventListener('keydown', handler);
+    return () => document.removeEventListener('keydown', handler);
+  }, [onClose]);
+  return (
+    <div className="fixed inset-0 z-[9999] flex items-center justify-center"
+      style={{ background: 'rgba(0,0,0,0.85)', backdropFilter: 'blur(6px)' }}
+      onClick={onClose}>
+      <div className="relative max-w-5xl max-h-[90vh] mx-4" onClick={(e) => e.stopPropagation()}>
+        <img src={src} alt={alt} className="max-w-full max-h-[85vh] rounded-xl object-contain shadow-2xl" />
+        <button onClick={onClose}
+          className="absolute -top-3 -right-3 w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-lg transition-all duration-200 hover:scale-110"
+          style={{ background: 'rgba(255,255,255,0.2)', border: '1.5px solid rgba(255,255,255,0.4)' }}>&#x2715;</button>
+        <p className="text-center text-white/60 text-xs mt-3">{alt}</p>
+      </div>
+    </div>
+  );
+}
+
+// ── Case Card with hover-image + lightbox ──
+function CaseCard({ c, lang, C, tabKey, idx }: {
+  c: { img: string; hoverImg?: string; title: string; titleEn: string; desc: string; descEn: string };
+  lang: string; C: Record<string, string>; tabKey: string; idx: number;
+}) {
+  const [hovered, setHovered] = useState(false);
+  const [lightboxSrc, setLightboxSrc] = useState<string | null>(null);
+  const displayImg = (c.hoverImg && hovered) ? c.hoverImg : c.img;
+  const altText = lang === 'zh' ? c.title : c.titleEn;
+  return (
+    <>
+      {lightboxSrc && <Lightbox src={lightboxSrc} alt={altText} onClose={() => setLightboxSrc(null)} />}
+      <motion.div key={`${tabKey}-${idx}`} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4, delay: idx * 0.05 }}
+        className="rounded-xl overflow-hidden group transition-all duration-300 hover:-translate-y-1 cursor-pointer"
+        style={{ background: C.cardBg, border: `1px solid ${C.cardBorder}`, boxShadow: '0 2px 12px rgba(21,101,232,0.07)' }}
+        onMouseEnter={(e) => { setHovered(true); (e.currentTarget as HTMLElement).style.boxShadow = '0 8px 30px rgba(21,101,232,0.15)'; }}
+        onMouseLeave={(e) => { setHovered(false); (e.currentTarget as HTMLElement).style.boxShadow = '0 2px 12px rgba(21,101,232,0.07)'; }}
+        onClick={() => setLightboxSrc(displayImg)}>
+        <div className="relative h-52 overflow-hidden bg-gray-100">
+          <img src={displayImg} alt={altText} loading="lazy" decoding="async"
+            className="w-full h-full object-cover group-hover:scale-105 transition-all duration-500" />
+          {/* Magnify hint overlay */}
+          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            style={{ background: 'rgba(21,101,232,0.18)' }}>
+            <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ background: 'rgba(255,255,255,0.85)' }}>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1565E8" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                <line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/>
+              </svg>
+            </div>
+          </div>
+          {/* Dual-image indicator */}
+          {c.hoverImg && (
+            <div className="absolute bottom-2 right-2 px-2 py-0.5 rounded text-xs font-medium"
+              style={{ background: 'rgba(21,101,232,0.75)', color: '#fff', backdropFilter: 'blur(4px)' }}>
+              {lang === 'zh' ? '悬停切图' : 'Hover to switch'}
+            </div>
+          )}
+        </div>
+        <div className="p-5">
+          <div className="flex items-center gap-2 mb-2">
+            <span className="w-2 h-2 rounded-sm" style={{ background: C.blue }} />
+            <h3 className="font-semibold text-sm" style={{ color: C.heading }}>{altText}</h3>
+          </div>
+          <p className="text-xs leading-relaxed" style={{ color: C.muted }}>{lang === 'zh' ? c.desc : c.descEn}</p>
+        </div>
+      </motion.div>
+    </>
+  );
+}
 
 function CasesSection({ lang, C }: { lang: string; C: typeof import('./Home').default extends never ? never : Record<string, string> }) {
   const [activeTab, setActiveTab] = useState<'pcb'|'si'|'pcba'>('pcb');
@@ -711,24 +759,7 @@ function CasesSection({ lang, C }: { lang: string; C: typeof import('./Home').de
         {/* Case Grid */}
         <div className="grid sm:grid-cols-2 gap-6">
           {cases.map((c, i) => (
-            <motion.div key={`${activeTab}-${i}`} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: i * 0.05 }}
-              className="rounded-xl overflow-hidden group transition-all duration-300 hover:-translate-y-1"
-              style={{ background: C.cardBg, border: `1px solid ${C.cardBorder}`, boxShadow: '0 2px 12px rgba(21,101,232,0.07)' }}
-              onMouseEnter={(e) => (e.currentTarget.style.boxShadow = '0 8px 30px rgba(21,101,232,0.15)')}
-              onMouseLeave={(e) => (e.currentTarget.style.boxShadow = '0 2px 12px rgba(21,101,232,0.07)')}>
-              <div className="relative h-52 overflow-hidden bg-gray-100">
-                <img src={c.img} alt={lang === 'zh' ? c.title : c.titleEn} loading="lazy" decoding="async"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-              </div>
-              <div className="p-5">
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="w-2 h-2 rounded-sm" style={{ background: C.blue }} />
-                  <h3 className="font-semibold text-sm" style={{ color: C.heading }}>{lang === 'zh' ? c.title : c.titleEn}</h3>
-                </div>
-                <p className="text-xs leading-relaxed" style={{ color: C.muted }}>{lang === 'zh' ? c.desc : c.descEn}</p>
-              </div>
-            </motion.div>
+            <CaseCard key={`${activeTab}-${i}`} c={c} lang={lang} C={C} tabKey={activeTab} idx={i} />
           ))}
         </div>
       </div>
@@ -1390,6 +1421,13 @@ export default function Home() {
                     onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.18)")}
                     onMouseLeave={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.08)")}>
                     <Upload size={15} /> {t("hero.cta2")}
+                  </a>
+                  <a href="/quote"
+                    className="flex items-center gap-2 px-7 py-3.5 rounded-lg font-bold text-white transition-all duration-200 active:scale-95 text-sm shadow-lg"
+                    style={{ background: "#059669", boxShadow: "0 4px 20px rgba(5,150,105,0.45)" }}
+                    onMouseEnter={(e) => (e.currentTarget.style.background = "#047857")}
+                    onMouseLeave={(e) => (e.currentTarget.style.background = "#059669")}>
+                    <Factory size={15} /> {t("hero.cta3")}
                   </a>
                 </div>
 
