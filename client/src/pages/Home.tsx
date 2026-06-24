@@ -1721,7 +1721,7 @@ export default function Home() {
                     titleZh: "PCB 设计",
                     titleEn: "PCB Design",
                     items: [
-                      lang === "zh" ? "✓ 2–20层 PCB" : "✓ 2–20 Layer PCB",
+                      lang === "zh" ? "✓ 2–40层+ PCB" : "✓ 2–40+ Layer PCB",
                       lang === "zh" ? "✓ 高速设计" : "✓ High-Speed Design",
                       lang === "zh" ? "✓ RF PCB" : "✓ RF PCB",
                       lang === "zh" ? "✓ HDI PCB" : "✓ HDI PCB",
