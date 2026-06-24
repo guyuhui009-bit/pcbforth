@@ -629,11 +629,9 @@ const CASES_DATA = {
     { img: "/manus-storage/highspeed-adc-board_274bb725.webp", title: "高速数据采集板", titleEn: "High-Speed Data Acquisition Board", desc: "高速模拟信号采集，速度高达5G。", descEn: "High-speed analog signal acquisition, up to 5G sampling rate." },
     { img: "/manus-storage/purley-server_fca61a7b.webp", title: "Purley服务器板", titleEn: "Purley Server Board", desc: "采用Intel Purley 处理器，涉及Intel高速设计要求。", descEn: "Intel Purley processor, meeting Intel high-speed design requirements." },
     { img: "/manus-storage/fpga-board_6b0dca4c.webp", title: "FPGA开发板", titleEn: "FPGA Development Board", desc: "多层高密度FPGA布线，支持SerDes高速接口设计。", descEn: "Multi-layer high-density FPGA routing with SerDes high-speed interface design." },
-    { img: `${LOCAL_CASES}_26fb7c8f.webp`, title: "5G通信主板", titleEn: "5G Communication Mainboard", desc: "为全球知名通信设备商设计，涉及高速 SerDes接口、DDR5内存。", descEn: "Designed for a leading telecom OEM with high-speed SerDes and DDR5 memory interfaces." },
     { img: "/manus-storage/industrial-board_345365b4.jpg", title: "工业控制板", titleEn: "Industrial Control Board", desc: "高可靠性工业控制PCB，通过CE/UL认证，广泛应用于自动化产线。", descEn: "High-reliability industrial control PCB, CE/UL certified, widely used in automation lines." },
     { img: "/manus-storage/medical-board_6514e803.webp", title: "医疗设备主板", titleEn: "Medical Device Mainboard", desc: "便携式患者监护仪主板，满足IEC 60601医疗电气安全标准，通过FDA 510(k)认证。", descEn: "Portable patient monitor mainboard meeting IEC 60601 and FDA 510(k) certification." },
     { img: "/manus-storage/desktop-pc-1_4b8e0740.jpg", hoverImg: "/manus-storage/desktop-pc-2_12658cac.webp", title: "超薄笔记本主板", titleEn: "Ultra-Thin Laptop Mainboard", desc: "极致小型化布局，板厚0.8mm，支持USB4、Thunderbolt 4高速接口。", descEn: "Extreme miniaturization, 0.8mm board thickness, USB4 and Thunderbolt 4 support." },
-    { img: `${LOCAL_CASES}_d0ee05d0.webp`, title: "新能源逆变器板", titleEn: "New Energy Inverter Board", desc: "高功率密度逆变器PCB，集成GaN功率器件，优化散热设计。", descEn: "High-power-density inverter PCB with GaN power devices and optimized thermal design." },
   ],
   si: [
     { img: `${LOCAL_CASES}_9ad12033.webp`, title: "DDR3/4 时序与信号完整性仿真", titleEn: "DDR3/4 Timing & SI Simulation", desc: "评估DDR信号质量，优化信号拓扑结构，确保接收端信号质量与时序符合SPEC。", descEn: "Evaluate DDR signal quality, optimize topology, ensure receiver signal quality meets SPEC." },
