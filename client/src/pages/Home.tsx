@@ -1488,6 +1488,74 @@ export default function Home() {
 
 
 
+          {/* ── PROMO BANNER ── */}
+          <section id="section-promo" className="relative py-0" style={{ background: C.pageBg }}>
+            <div className="px-8 lg:px-16 py-6">
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="relative overflow-hidden rounded-2xl"
+                style={{
+                  background: "linear-gradient(135deg, #0D2A5E 0%, #1565E8 50%, #0EA5E9 100%)",
+                  boxShadow: "0 8px 40px rgba(21,101,232,0.35)",
+                }}
+              >
+                {/* Decorative circuit pattern */}
+                <div className="absolute inset-0 opacity-10" style={{
+                  backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='white' stroke-width='1'%3E%3Crect x='10' y='10' width='12' height='12' rx='2'/%3E%3Crect x='38' y='10' width='12' height='12' rx='2'/%3E%3Crect x='10' y='38' width='12' height='12' rx='2'/%3E%3Crect x='38' y='38' width='12' height='12' rx='2'/%3E%3Cline x1='22' y1='16' x2='38' y2='16'/%3E%3Cline x1='22' y1='44' x2='38' y2='44'/%3E%3Cline x1='16' y1='22' x2='16' y2='38'/%3E%3Cline x1='44' y1='22' x2='44' y2='38'/%3E%3C/g%3E%3C/svg%3E")`,
+                  backgroundSize: "60px 60px",
+                }} />
+
+                <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-6 px-8 py-7">
+                  {/* Left: badge + title + desc */}
+                  <div className="flex flex-col gap-3 text-center lg:text-left">
+                    <div className="flex items-center gap-2 justify-center lg:justify-start">
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase"
+                        style={{ background: "rgba(255,255,255,0.18)", color: "#FDE68A", border: "1px solid rgba(253,230,138,0.4)" }}>
+                        <span className="w-1.5 h-1.5 rounded-full bg-yellow-300 animate-pulse" />
+                        {t("promo.badge")}
+                      </span>
+                    </div>
+                    <div>
+                      <h3 className="text-2xl lg:text-3xl font-black text-white tracking-tight" style={{ fontFamily: "'Orbitron', monospace" }}>
+                        {t("promo.title")}
+                      </h3>
+                      <p className="mt-1 text-lg font-bold" style={{ color: "#FDE68A" }}>
+                        {t("promo.highlight")}
+                      </p>
+                    </div>
+                    <p className="text-sm" style={{ color: "rgba(255,255,255,0.75)" }}>
+                      {t("promo.desc")}
+                    </p>
+                  </div>
+
+                  {/* Right: CTA */}
+                  <div className="flex flex-col items-center gap-2 shrink-0">
+                    <a
+                      href="/quote"
+                      className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-black text-base transition-all duration-200 active:scale-95 shadow-xl"
+                      style={{
+                        background: "#FDE68A",
+                        color: "#0D2A5E",
+                        boxShadow: "0 4px 24px rgba(253,230,138,0.5)",
+                      }}
+                      onMouseEnter={(e) => { e.currentTarget.style.background = "#FCD34D"; e.currentTarget.style.transform = "scale(1.04)"; }}
+                      onMouseLeave={(e) => { e.currentTarget.style.background = "#FDE68A"; e.currentTarget.style.transform = "scale(1)"; }}
+                    >
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                      {t("promo.cta")}
+                    </a>
+                    <span className="text-xs" style={{ color: "rgba(255,255,255,0.55)" }}>
+                      {t("promo.note")}
+                    </span>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          </section>
+
           {/* ── ABOUT ── */}
           <section id="section-about" className="relative py-16 px-8 lg:px-16" style={{ background: C.pageBg }}>
             <div className="absolute top-0 left-8 right-8 h-px" style={{ background: `linear-gradient(to right, transparent, ${C.divider}, transparent)` }} />

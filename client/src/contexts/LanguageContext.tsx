@@ -43,6 +43,13 @@ const translations: Record<string, Record<Lang, string>> = {
   "hero.stat3.label": { zh: "样板交期", en: "Prototype Lead Time" },
   "hero.stat4.num": { zh: "98.7%", en: "98.7%" },
   "hero.stat4.label": { zh: "准时交付率", en: "On-time Delivery" },
+  // Promo Banner
+  "promo.badge": { zh: "限时活动", en: "Limited Offer" },
+  "promo.title": { zh: "2-4层 PCB · 5pcs 免费打样", en: "2–4 Layer PCB · 5pcs Free Prototype" },
+  "promo.highlight": { zh: "只需支付物流费", en: "Pay Shipping Only" },
+  "promo.desc": { zh: "标准工艺 · 72H快速交期 · 品质保障", en: "Standard Process · 72H Lead Time · Quality Guaranteed" },
+  "promo.cta": { zh: "立即申请免费打样", en: "Claim Free Prototype" },
+  "promo.note": { zh: "每月限量名额 · 新客户优先", en: "Monthly quota limited · New customers first" },
   // About
   "about.title": { zh: "关于PCBforth", en: "About PCBforth" },
   "about.desc1": { zh: "PCBforth是一家专注于PCB全流程服务的高科技企业，拥有超过15年的行业经验。我们从产品系统角度全局考虑，通过对产品原理图、PCB、结构进行详细分析，从源头上解决产品的EMC问题，确保为企业提供快速、高效、低成本、可量产的整改方案。", en: "PCBforth is a high-tech enterprise focused on full-cycle PCB services with over 15 years of industry experience. We take a holistic product-system perspective, conducting detailed analysis of schematics, PCB layouts, and structures to resolve EMC issues at the source." },
