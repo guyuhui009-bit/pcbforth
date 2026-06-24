@@ -433,7 +433,40 @@ export default function Quote() {
               </div>
             </div>
 
-            {/* ── Section 2: Contact info ─────────────────────────────────── */}
+            {/* ── Section 2: Services needed ──────────────────────────────── */}
+            <div className="rounded-2xl overflow-hidden shadow-sm"
+              style={{ background: C.cardBg, border: `1px solid ${C.cardBorder}` }}>
+              <div className="px-6 py-4 flex items-center gap-3"
+                style={{ background: C.blueLight, borderBottom: `1px solid ${C.cardBorder}` }}>
+                <Factory size={16} style={{ color: C.blue }} />
+                <h2 className="font-bold text-sm" style={{ color: C.heading }}>
+                  {lang === "zh" ? "所需服务（可多选）" : "Services Required (multi-select)"}
+                </h2>
+              </div>
+              <div className="p-6">
+                <div className="flex flex-wrap gap-2">
+                  {SERVICE_OPTIONS.map(s => {
+                    const active = selectedServices.includes(s.value);
+                    return (
+                      <button key={s.value} type="button"
+                        onClick={() => setSelectedServices(prev =>
+                          active ? prev.filter(x => x !== s.value) : [...prev, s.value]
+                        )}
+                        className="px-4 py-2 rounded-lg text-xs font-semibold transition-all duration-200"
+                        style={{
+                          background: active ? C.blue : C.blueLight,
+                          color: active ? "#FFFFFF" : C.body,
+                          border: `1px solid ${active ? C.blue : C.cardBorder}`,
+                        }}>
+                        {lang === "zh" ? s.labelZh : s.labelEn}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+
+            {/* ── Section 3: Contact info ─────────────────────────────────── */}
             <div className="rounded-2xl overflow-hidden shadow-sm"
               style={{ background: C.cardBg, border: `1px solid ${C.cardBorder}` }}>
               <div className="px-6 py-4 flex items-center gap-3"
@@ -491,7 +524,7 @@ export default function Quote() {
               </div>
             </div>
 
-            {/* ── Section 3: PCB specs ────────────────────────────────────── */}
+            {/* ── Section 4: PCB specs ────────────────────────────────────── */}
             <div className="rounded-2xl overflow-hidden shadow-sm"
               style={{ background: C.cardBg, border: `1px solid ${C.cardBorder}` }}>
               <div className="px-6 py-4 flex items-center gap-3"
@@ -569,39 +602,6 @@ export default function Quote() {
                       </select>
                     </div>
                   ))}
-                </div>
-              </div>
-            </div>
-
-            {/* ── Section 4: Services needed ──────────────────────────────── */}
-            <div className="rounded-2xl overflow-hidden shadow-sm"
-              style={{ background: C.cardBg, border: `1px solid ${C.cardBorder}` }}>
-              <div className="px-6 py-4 flex items-center gap-3"
-                style={{ background: C.blueLight, borderBottom: `1px solid ${C.cardBorder}` }}>
-                <Factory size={16} style={{ color: C.blue }} />
-                <h2 className="font-bold text-sm" style={{ color: C.heading }}>
-                  {lang === "zh" ? "所需服务（可多选）" : "Services Required (multi-select)"}
-                </h2>
-              </div>
-              <div className="p-6">
-                <div className="flex flex-wrap gap-2">
-                  {SERVICE_OPTIONS.map(s => {
-                    const active = selectedServices.includes(s.value);
-                    return (
-                      <button key={s.value} type="button"
-                        onClick={() => setSelectedServices(prev =>
-                          active ? prev.filter(x => x !== s.value) : [...prev, s.value]
-                        )}
-                        className="px-4 py-2 rounded-lg text-xs font-semibold transition-all duration-200"
-                        style={{
-                          background: active ? C.blue : C.blueLight,
-                          color: active ? "#FFFFFF" : C.body,
-                          border: `1px solid ${active ? C.blue : C.cardBorder}`,
-                        }}>
-                        {lang === "zh" ? s.labelZh : s.labelEn}
-                      </button>
-                    );
-                  })}
                 </div>
               </div>
             </div>
