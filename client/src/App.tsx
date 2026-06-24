@@ -19,6 +19,7 @@ const DfmReview          = lazy(() => import("./pages/design-services/DfmReview"
 const ComponentSelection = lazy(() => import("./pages/design-services/ComponentSelection"));
 const Community          = lazy(() => import("./pages/Community"));
 const NotFound           = lazy(() => import("./pages/NotFound"));
+const FreeSample         = lazy(() => import("./pages/FreeSample"));
 
 function Router() {
   return (
@@ -28,6 +29,7 @@ function Router() {
         <Route path={"/"} component={Home} />
         {/* Quote */}
         <Route path={"/quote"} component={Quote} />
+        <Route path={"/free-sample"} component={FreeSample} />
         {/* Design Services — overview */}
         <Route path={"/design-services"} component={DesignServices} />
         {/* Design Services — sub-pages */}

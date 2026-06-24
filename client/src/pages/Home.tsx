@@ -1408,7 +1408,7 @@ export default function Home() {
                 {/* Two CTA buttons */}
                 <div className="flex flex-wrap gap-3 mb-14">
                   {/* Button 1: Free Prototype (green) */}
-                  <a href="/quote"
+                  <a href="/free-sample"
                     className="flex items-center gap-2 px-8 py-3.5 rounded-lg font-bold text-white transition-all duration-200 active:scale-95 text-sm shadow-lg"
                     style={{ background: "#059669", boxShadow: "0 4px 20px rgba(5,150,105,0.45)" }}
                     onMouseEnter={(e) => (e.currentTarget.style.background = "#047857")}

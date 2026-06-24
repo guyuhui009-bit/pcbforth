@@ -83,3 +83,12 @@
 - [x] 更新 index.html preload 路径为 WebP
 - [x] desktop-pc-1.jpg 保留 JPG（转 WebP 后反而变大）
 - [x] fpga-board.webp 缩小分辨率至 1200px 后压缩至 211KB
+
+## 免费打样专属页面（2026-06-25）
+
+- [x] 创建 /free-sample 专属申请页面（FreeSample.tsx）
+- [x] 默认规格：PCB制板、无铅HASL、FR4、1.6mm板厚、5pcs、铜厚1oz
+- [x] 层数仅可选 2层 或 4层
+- [x] 文件上传、尺寸填写、补充说明、联系信息模块
+- [x] 首页绿色按钮跳转链接更新为 /free-sample
+- [x] 注册路由到 App.tsx
