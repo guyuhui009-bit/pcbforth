@@ -74,3 +74,12 @@
   - [x] 悬停放大镜提示 overlay
   - [x] 双图卡片显示"悬停切图/Hover to switch"标签
   - [x] 移除旧版 CaseCard 重复函数定义
+
+## 图片压缩优化（2026-06-24）
+
+- [x] 批量将 PNG/JPG 转换为 WebP 格式（quality=82, method=6）
+- [x] 图片总体积从 7.7MB 降至 4.6MB，节省约 40%
+- [x] 更新 Home.tsx 中所有 GitHub raw URL 为本地 WebP 路径（20处）
+- [x] 更新 index.html preload 路径为 WebP
+- [x] desktop-pc-1.jpg 保留 JPG（转 WebP 后反而变大）
+- [x] fpga-board.webp 缩小分辨率至 1200px 后压缩至 211KB
