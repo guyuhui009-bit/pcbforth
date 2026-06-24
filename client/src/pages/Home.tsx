@@ -1415,18 +1415,18 @@ export default function Home() {
                     <ClipboardCheck size={15} /> {t("hero.cta1")} <ArrowRight size={15} />
                   </a>
                   <a href="/quote"
-                    className="flex items-center gap-2 px-7 py-3.5 rounded-lg font-semibold transition-all duration-200 active:scale-95 text-sm"
-                    style={{ border: "1.5px solid rgba(255,255,255,0.45)", color: "#FFFFFF", background: "rgba(255,255,255,0.08)", backdropFilter: "blur(4px)" }}
-                    onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.18)")}
-                    onMouseLeave={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.08)")}>
-                    <Upload size={15} /> {t("hero.cta2")}
-                  </a>
-                  <a href="/quote"
                     className="flex items-center gap-2 px-7 py-3.5 rounded-lg font-bold text-white transition-all duration-200 active:scale-95 text-sm shadow-lg"
                     style={{ background: "#059669", boxShadow: "0 4px 20px rgba(5,150,105,0.45)" }}
                     onMouseEnter={(e) => (e.currentTarget.style.background = "#047857")}
                     onMouseLeave={(e) => (e.currentTarget.style.background = "#059669")}>
                     <Factory size={15} /> {t("hero.cta3")}
+                  </a>
+                  <a href="/quote"
+                    className="flex items-center gap-2 px-7 py-3.5 rounded-lg font-semibold transition-all duration-200 active:scale-95 text-sm"
+                    style={{ border: "1.5px solid rgba(255,255,255,0.45)", color: "#FFFFFF", background: "rgba(255,255,255,0.08)", backdropFilter: "blur(4px)" }}
+                    onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.18)")}
+                    onMouseLeave={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.08)")}>
+                    <Upload size={15} /> {t("hero.cta2")}
                   </a>
                 </div>
 
