@@ -78,7 +78,7 @@ export default function FreeSample() {
   const [submittedId, setSubmittedId] = useState<number | null>(null);
 
   // Form state — defaults locked for free sample
-  const [layers, setLayers] = useState<"2" | "4">("2");
+  const layers = "2"; // 免费打样仅支持 2 层
   const [form, setForm] = useState({
     contactName: "",
     contactEmail: "",
@@ -451,25 +451,19 @@ export default function FreeSample() {
               </div>
               <div className="p-6 space-y-6">
 
-                {/* Layer selection — only 2 or 4 */}
+                {/* Layer — fixed to 2 only */}
                 <div>
                   <label className="block text-xs font-semibold mb-2" style={{ color: C.body }}>
-                    {lang === "zh" ? "层数（可选 2层 或 4层）" : "Layers (2 or 4 only)"}
+                    {lang === "zh" ? "层数" : "Layers"}
                   </label>
-                  <div className="flex gap-3">
-                    {(["2", "4"] as const).map(l => (
-                      <button key={l} type="button"
-                        onClick={() => setLayers(l)}
-                        className="flex items-center justify-center w-24 h-12 rounded-xl font-bold text-base transition-all duration-200"
-                        style={{
-                          background: layers === l ? C.blue : C.blueLight,
-                          color: layers === l ? "#FFFFFF" : C.body,
-                          border: `2px solid ${layers === l ? C.blue : C.cardBorder}`,
-                          boxShadow: layers === l ? `0 4px 12px ${C.blue}40` : "none",
-                        }}>
-                        {l}{lang === "zh" ? "层" : "L"}
-                      </button>
-                    ))}
+                  <div className="flex items-center gap-3">
+                    <div className="flex items-center justify-center w-24 h-12 rounded-xl font-bold text-base"
+                      style={{ background: C.blue, color: "#FFFFFF", border: `2px solid ${C.blue}`, boxShadow: `0 4px 12px ${C.blue}40` }}>
+                      2{lang === "zh" ? "层" : "L"}
+                    </div>
+                    <span className="text-xs" style={{ color: C.muted }}>
+                      {lang === "zh" ? "免费打样仅支持 2 层板" : "Free prototype is limited to 2-layer boards"}
+                    </span>
                   </div>
                 </div>
 
