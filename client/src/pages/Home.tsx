@@ -1406,7 +1406,7 @@ export default function Home() {
                 </div>
 
                 {/* Two CTA buttons */}
-                <div className="flex flex-wrap gap-3 mb-4">
+                <div className="flex flex-wrap gap-3 mb-14">
                   {/* Button 1: Free Prototype (green) */}
                   <a href="/quote"
                     className="flex items-center gap-2 px-8 py-3.5 rounded-lg font-bold text-white transition-all duration-200 active:scale-95 text-sm shadow-lg"
@@ -1426,59 +1426,7 @@ export default function Home() {
                   </a>
                 </div>
 
-                {/* ── Free Prototype Promo Banner (inside Hero) ── */}
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5, duration: 0.45 }}
-                  className="relative overflow-hidden rounded-xl"
-                  style={{
-                    background: "linear-gradient(90deg, rgba(13,42,94,0.85) 0%, rgba(21,101,232,0.75) 60%, rgba(14,165,233,0.7) 100%)",
-                    border: "1px solid rgba(255,255,255,0.18)",
-                    backdropFilter: "blur(8px)",
-                  }}
-                >
-                  {/* Circuit pattern overlay */}
-                  <div className="absolute inset-0 opacity-10" style={{
-                    backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='white' stroke-width='0.8'%3E%3Crect x='6' y='6' width='8' height='8' rx='1.5'/%3E%3Crect x='26' y='6' width='8' height='8' rx='1.5'/%3E%3Crect x='6' y='26' width='8' height='8' rx='1.5'/%3E%3Crect x='26' y='26' width='8' height='8' rx='1.5'/%3E%3Cline x1='14' y1='10' x2='26' y2='10'/%3E%3Cline x1='14' y1='30' x2='26' y2='30'/%3E%3Cline x1='10' y1='14' x2='10' y2='26'/%3E%3Cline x1='30' y1='14' x2='30' y2='26'/%3E%3C/g%3E%3C/svg%3E")`,
-                    backgroundSize: "40px 40px",
-                  }} />
-                  <div className="relative z-10 flex flex-col sm:flex-row items-center justify-between gap-3 px-5 py-3.5">
-                    {/* Left */}
-                    <div className="flex items-center gap-3">
-                      <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-bold tracking-widest uppercase shrink-0"
-                        style={{ background: "rgba(253,230,138,0.2)", color: "#FDE68A", border: "1px solid rgba(253,230,138,0.4)" }}>
-                        <span className="w-1.5 h-1.5 rounded-full bg-yellow-300 animate-pulse" />
-                        {t("promo.badge")}
-                      </span>
-                      <div>
-                        <span className="text-white font-black text-base" style={{ fontFamily: "'Orbitron', monospace" }}>
-                          {t("promo.title")}
-                        </span>
-                        <span className="ml-2 font-bold text-sm" style={{ color: "#FDE68A" }}>
-                          {t("promo.highlight")}
-                        </span>
-                      </div>
-                    </div>
-                    {/* Right: CTA */}
-                    <a
-                      href="/quote"
-                      className="inline-flex items-center gap-2 px-5 py-2 rounded-lg font-black text-sm transition-all duration-200 active:scale-95 shrink-0"
-                      style={{
-                        background: "#FDE68A",
-                        color: "#0D2A5E",
-                        boxShadow: "0 2px 16px rgba(253,230,138,0.45)",
-                      }}
-                      onMouseEnter={(e) => { e.currentTarget.style.background = "#FCD34D"; e.currentTarget.style.transform = "scale(1.04)"; }}
-                      onMouseLeave={(e) => { e.currentTarget.style.background = "#FDE68A"; e.currentTarget.style.transform = "scale(1)"; }}
-                    >
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-                      {t("promo.cta")}
-                    </a>
-                  </div>
-                </motion.div>
-
-                {/* Stats — 4 key metrics — with top margin */}
+                {/* Stats — 4 key metrics */}
                 <div className="flex flex-wrap gap-0">
                   {[
                     { numStr: "15+",   label: t("hero.stat1.label"), isNum: false, num: 0 },
