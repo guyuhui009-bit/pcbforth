@@ -1802,8 +1802,8 @@ export default function Home() {
             <div className="absolute top-0 left-8 right-8 h-px" style={{ background: `linear-gradient(to right, transparent, ${C.divider}, transparent)` }} />
             <div className="max-w-5xl">
               <SectionHeader
-                title={lang === "zh" ? "设计作品社区" : "PCB Design Community"}
-                subtitle={lang === "zh" ? "工程师分享真实PCB设计作品，互相交流与学习" : "Engineers sharing real PCB designs — browse, like, and discuss."}
+                title={lang === "zh" ? "产品展示区" : "Product Showcase"}
+                subtitle={lang === "zh" ? "精选PCB产品与工程案例，展示我们的制造与设计实力" : "Featured PCB products and engineering cases showcasing our manufacturing & design capabilities."}
               />
               <CommunityPreview lang={lang} />
             </div>
