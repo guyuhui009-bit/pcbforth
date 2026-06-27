@@ -570,13 +570,15 @@ function ServiceSection({ id, title, desc, img, caps, imgLeft, specs }: {
   specs?: { label: string; value: string }[];
 }) {
   const isAlt = ["layout", "simulation", "smt"].includes(id);
+  // fabrication uses a wider image ratio (3/5 image, 2/5 text)
+  const isFab = id === "fabrication";
   return (
     <section id={`section-${id}`} className="relative py-16 px-8 lg:px-16"
       style={{ background: isAlt ? C.sectionAlt : C.pageBg }}>
       <div className="absolute top-0 left-8 right-8 h-px" style={{ background: `linear-gradient(to right, transparent, ${C.divider}, transparent)` }} />
-      <div className="max-w-5xl">
+      <div className={isFab ? "max-w-7xl" : "max-w-5xl"}>
         <SectionHeader title={title} />
-        <div className="grid lg:grid-cols-2 gap-10 mt-8">
+        <div className={`grid gap-10 mt-8 ${isFab ? "lg:grid-cols-[2fr_3fr]" : "lg:grid-cols-2"}`}>
           {imgLeft && (
             <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }} transition={{ duration: 0.6 }}
@@ -609,8 +611,10 @@ function ServiceSection({ id, title, desc, img, caps, imgLeft, specs }: {
           {!imgLeft && (
             <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }} transition={{ duration: 0.6 }}
-              className="relative rounded-2xl overflow-hidden h-64 lg:h-auto min-h-[260px] shadow-lg">
-              <img src={img} alt={title} loading="lazy" decoding="async" className="w-full h-full object-cover" />
+              className={`relative rounded-2xl overflow-hidden shadow-lg ${isFab ? "min-h-[340px] lg:h-auto" : "h-64 lg:h-auto min-h-[260px]"}`}>
+              <img src={img} alt={title} loading="lazy" decoding="async"
+                className="w-full h-full object-cover"
+                style={isFab ? { objectPosition: "center center", objectFit: "contain", background: "#111" } : undefined} />
               <div className="absolute inset-0 rounded-2xl pointer-events-none" style={{ border: `1px solid ${C.cardBorder}` }} />
             </motion.div>
           )}
