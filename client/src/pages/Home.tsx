@@ -576,7 +576,7 @@ function ServiceSection({ id, title, desc, img, caps, imgLeft, specs }: {
     <section id={`section-${id}`} className="relative py-16 px-8 lg:px-16"
       style={{ background: isAlt ? C.sectionAlt : C.pageBg }}>
       <div className="absolute top-0 left-8 right-8 h-px" style={{ background: `linear-gradient(to right, transparent, ${C.divider}, transparent)` }} />
-      <div className={isFab ? "max-w-7xl" : "max-w-5xl"}>
+      <div className="max-w-5xl">
         <SectionHeader title={title} />
         <div className={`grid gap-10 mt-8 items-start ${isFab ? "lg:grid-cols-[2fr_3fr]" : "lg:grid-cols-2"}`}>
           {imgLeft && (
@@ -1489,9 +1489,9 @@ export default function Home() {
 
 
           {/* ── ABOUT ── */}
-          <section id="section-about" className="relative pt-16 pb-10 px-8 lg:px-20" style={{ background: C.pageBg }}>
+          <section id="section-about" className="relative pt-16 pb-10 px-8 lg:px-16" style={{ background: C.pageBg }}>
             <div className="absolute top-0 left-8 right-8 h-px" style={{ background: `linear-gradient(to right, transparent, ${C.divider}, transparent)` }} />
-            <div className="max-w-6xl">
+            <div className="max-w-5xl">
               <SectionHeader title={t("about.title")} />
               <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mt-8">
                   <p className="leading-loose mb-5 text-base max-w-4xl" style={{ color: C.body }}>{t("about.desc1")}</p>
