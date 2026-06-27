@@ -1489,8 +1489,7 @@ export default function Home() {
             <div className="absolute top-0 left-8 right-8 h-px" style={{ background: `linear-gradient(to right, transparent, ${C.divider}, transparent)` }} />
             <div className="max-w-5xl">
               <SectionHeader title={t("about.title")} />
-              <div className="grid lg:grid-cols-2 gap-10 mt-8">
-                <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
+              <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mt-8 max-w-3xl">
                   <p className="leading-relaxed mb-4 text-sm" style={{ color: C.body }}>{t("about.desc1")}</p>
                   <p className="leading-relaxed text-sm" style={{ color: C.body }}>{t("about.desc2")}</p>
                   <div className="grid grid-cols-2 gap-3 mt-6">
@@ -1525,12 +1524,6 @@ export default function Home() {
                     </div>
                   </div>
                 </motion.div>
-                <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
-                  className="relative rounded-2xl overflow-hidden h-72 lg:h-auto min-h-[280px] shadow-lg">
-                  <img src={PCB_DESIGN_IMG} alt="PCB Design" loading="lazy" decoding="async" className="w-full h-full object-cover" />
-                  <div className="absolute inset-0 rounded-2xl pointer-events-none" style={{ border: `1px solid ${C.cardBorder}` }} />
-                </motion.div>
-              </div>
             </div>
           </section>
 
