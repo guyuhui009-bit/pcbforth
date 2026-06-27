@@ -1489,7 +1489,7 @@ export default function Home() {
 
 
           {/* ── ABOUT ── */}
-          <section id="section-about" className="relative py-20 px-8 lg:px-20" style={{ background: C.pageBg }}>
+          <section id="section-about" className="relative pt-16 pb-10 px-8 lg:px-20" style={{ background: C.pageBg }}>
             <div className="absolute top-0 left-8 right-8 h-px" style={{ background: `linear-gradient(to right, transparent, ${C.divider}, transparent)` }} />
             <div className="max-w-6xl">
               <SectionHeader title={t("about.title")} />
@@ -1532,7 +1532,7 @@ export default function Home() {
           </section>
 
           {/* ── WHY PCBFORTH ── */}
-          <section className="relative py-16 px-8 lg:px-16" style={{ background: C.sectionAlt }}>
+          <section className="relative pt-10 pb-16 px-8 lg:px-16" style={{ background: C.sectionAlt }}>
             <div className="absolute top-0 left-8 right-8 h-px" style={{ background: `linear-gradient(to right, transparent, ${C.divider}, transparent)` }} />
             <div className="max-w-5xl">
               <SectionHeader
