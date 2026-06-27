@@ -578,7 +578,7 @@ function ServiceSection({ id, title, desc, img, caps, imgLeft, specs }: {
       <div className="absolute top-0 left-8 right-8 h-px" style={{ background: `linear-gradient(to right, transparent, ${C.divider}, transparent)` }} />
       <div className={isFab ? "max-w-7xl" : "max-w-5xl"}>
         <SectionHeader title={title} />
-        <div className={`grid gap-10 mt-8 ${isFab ? "lg:grid-cols-[2fr_3fr]" : "lg:grid-cols-2"}`}>
+        <div className={`grid gap-10 mt-8 items-start ${isFab ? "lg:grid-cols-[2fr_3fr]" : "lg:grid-cols-2"}`}>
           {imgLeft && (
             <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }} transition={{ duration: 0.6 }}
