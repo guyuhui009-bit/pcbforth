@@ -22,7 +22,7 @@ const PCB_BOARD_BG   = "/manus-storage/pcb-board-clean_d0418efd.webp";
 const SCHEMATIC_IMG  = "/manus-storage/schematic-design_7a529f76.webp";  // Engineer at Altium Designer dual-screen
 const PCB_LAYOUT_IMG = "/manus-storage/pcb-layout-new_a89a07bb.jpg";    // PCB layout design image (manus-storage)
 const BOM_IMG        = "/manus-storage/bom-components_84ef3017.webp"; // TI/NXP/Infineon components tray
-const FAB_IMG        = "/manus-storage/pcb-factory_f5af8ff9.webp";   // Chinese PCB factory ISO9001 clean room
+const FAB_IMG        = "/manus-storage/pcb-fab-equipment_816f527d.webp";  // PCB production line equipment: Lamination, VCP, Drilling, LDI, AOI, Legend Printing
 const SMT_IMG        = "/manus-storage/smt-assembly_6cba567b.webp";  // ASM SIPLACE SMT line
 // Keep for backward compat / cases section
 const PCB_DESIGN_IMG = SCHEMATIC_IMG;
