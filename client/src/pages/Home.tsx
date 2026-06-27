@@ -582,8 +582,8 @@ function ServiceSection({ id, title, desc, img, caps, imgLeft, specs }: {
           {imgLeft && (
             <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }} transition={{ duration: 0.6 }}
-              className="relative rounded-2xl overflow-hidden h-64 lg:h-auto min-h-[260px] shadow-lg">
-              <img src={img} alt={title} loading="lazy" decoding="async" className="w-full h-full object-cover" />
+              className="relative rounded-2xl overflow-hidden aspect-video shadow-lg">
+              <img src={img} alt={title} loading="lazy" decoding="async" className="w-full h-full object-cover" style={{ objectPosition: "center center" }} />
               <div className="absolute inset-0 rounded-2xl pointer-events-none" style={{ border: `1px solid ${C.cardBorder}` }} />
             </motion.div>
           )}
