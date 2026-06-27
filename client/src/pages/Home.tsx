@@ -1370,15 +1370,15 @@ export default function Home() {
                   style={{ fontFamily: "'Orbitron', monospace", fontSize: "clamp(1.4rem, 3.5vw, 2.6rem)" }}>
                   {lang === "zh" ? (
                     <>
-                      <span>专业PCB设计与</span>
+                      <span>专业PCB设计</span>
                       <br />
-                      <span style={{ color: "#60A5FA" }}>硬件工程服务</span>
+                      <span style={{ color: "#60A5FA" }}>与制造</span>
                     </>
                   ) : (
                     <>
-                      <span>Professional PCB Design &</span>
+                      <span>Professional PCB Design</span>
                       <br />
-                      <span style={{ color: "#60A5FA" }}>Hardware Engineering Services</span>
+                      <span style={{ color: "#60A5FA" }}>&amp; Manufacturing</span>
                     </>
                   )}
                 </h1>
