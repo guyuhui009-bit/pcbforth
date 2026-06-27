@@ -1485,14 +1485,14 @@ export default function Home() {
 
 
           {/* ── ABOUT ── */}
-          <section id="section-about" className="relative py-16 px-8 lg:px-16" style={{ background: C.pageBg }}>
+          <section id="section-about" className="relative py-20 px-8 lg:px-20" style={{ background: C.pageBg }}>
             <div className="absolute top-0 left-8 right-8 h-px" style={{ background: `linear-gradient(to right, transparent, ${C.divider}, transparent)` }} />
-            <div className="max-w-5xl">
+            <div className="max-w-6xl">
               <SectionHeader title={t("about.title")} />
-              <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mt-8 max-w-3xl">
-                  <p className="leading-relaxed mb-4 text-sm" style={{ color: C.body }}>{t("about.desc1")}</p>
-                  <p className="leading-relaxed text-sm" style={{ color: C.body }}>{t("about.desc2")}</p>
-                  <div className="grid grid-cols-2 gap-3 mt-6">
+              <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mt-8">
+                  <p className="leading-loose mb-5 text-base max-w-4xl" style={{ color: C.body }}>{t("about.desc1")}</p>
+                  <p className="leading-loose text-base max-w-4xl" style={{ color: C.body }}>{t("about.desc2")}</p>
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-6">
                     {[
                       { icon: <Shield size={18} />, label: t("about.feature1") },
                       { icon: <Clock size={18} />,  label: t("about.feature2") },
@@ -1507,18 +1507,18 @@ export default function Home() {
                     ))}
                   </div>
                   {/* Flow */}
-                  <div className="mt-6 p-4 rounded-xl" style={{ background: C.blueLight, border: `1px solid ${C.cardBorder}` }}>
-                    <div className="text-xs mb-3 tracking-wider uppercase font-semibold" style={{ color: C.blue }}>
+                  <div className="mt-8 p-6 rounded-2xl" style={{ background: C.blueLight, border: `1px solid ${C.cardBorder}` }}>
+                    <div className="text-xs mb-4 tracking-widest uppercase font-semibold" style={{ color: C.blue }}>
                       {lang === "zh" ? "全流程服务流程" : "Full-Cycle Engineering Process"}
                     </div>
-                    <div className="flex items-center gap-1 overflow-x-auto pb-1">
+                    <div className="flex items-center gap-2 overflow-x-auto pb-1">
                       {(lang === "zh"
                         ? ["需求","原理图","Layout","仿真验证","PCB制造","SMT组装","交付"]
                         : ["Req.","Schematic","Layout","Simulation","Fabrication","Assembly","Delivery"]
                       ).map((step, i, arr) => (
-                        <div key={step} className="flex items-center gap-1 shrink-0">
+                        <div key={step} className="flex items-center gap-2 shrink-0">
                           <FlowStep num={String(i + 1)} label={step} />
-                          {i < arr.length - 1 && <div className="w-4 h-px shrink-0" style={{ background: C.divider }} />}
+                          {i < arr.length - 1 && <div className="w-8 h-px shrink-0" style={{ background: C.divider }} />}
                         </div>
                       ))}
                     </div>
