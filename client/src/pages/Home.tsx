@@ -23,7 +23,7 @@ const SCHEMATIC_IMG  = "/manus-storage/schematic-design_7a529f76.webp";  // Engi
 const PCB_LAYOUT_IMG = "/manus-storage/pcb-layout-new_a89a07bb.jpg";    // PCB layout design image (manus-storage)
 const BOM_IMG        = "/manus-storage/bom-components_84ef3017.webp"; // TI/NXP/Infineon components tray
 const FAB_IMG        = "/manus-storage/pcb-fab-equipment_816f527d.webp";  // PCB production line equipment: Lamination, VCP, Drilling, LDI, AOI, Legend Printing
-const SMT_IMG        = "/manus-storage/smt-assembly_6cba567b.webp";  // ASM SIPLACE SMT line
+const SMT_IMG        = "/manus-storage/smt-production-line_540dfe99.jpg";  // SMT production line factory floor
 // Keep for backward compat / cases section
 const PCB_DESIGN_IMG = SCHEMATIC_IMG;
 const PCB_CLOSEUP_IMG= PCB_LAYOUT_IMG;
