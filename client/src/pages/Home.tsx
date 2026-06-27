@@ -611,10 +611,10 @@ function ServiceSection({ id, title, desc, img, caps, imgLeft, specs }: {
           {!imgLeft && (
             <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }} transition={{ duration: 0.6 }}
-              className={`relative rounded-2xl overflow-hidden shadow-lg ${isFab ? "min-h-[340px] lg:h-auto" : "h-64 lg:h-auto min-h-[260px]"}`}>
+              className={`relative rounded-2xl overflow-hidden shadow-lg ${isFab ? "aspect-video" : "h-64 lg:h-auto min-h-[260px]"}`}>
               <img src={img} alt={title} loading="lazy" decoding="async"
-                className="w-full h-full object-cover"
-                style={isFab ? { objectPosition: "center center", objectFit: "contain", background: "#111" } : undefined} />
+                className="w-full h-full"
+                style={isFab ? { objectFit: "contain", objectPosition: "center center", background: "#111" } : { objectFit: "cover" }} />
               <div className="absolute inset-0 rounded-2xl pointer-events-none" style={{ border: `1px solid ${C.cardBorder}` }} />
             </motion.div>
           )}
